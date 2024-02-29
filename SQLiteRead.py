@@ -1,6 +1,6 @@
 import sqlite3
 
-def GetDataFromTable(db_path, table):
+def get_data_from_table(db_path, table):
 
     conn = sqlite3.connect(f'{db_path}')
     cursor = conn.cursor()
@@ -8,7 +8,7 @@ def GetDataFromTable(db_path, table):
     cursor.execute(f"SELECT * FROM {table}")
 
     rows = cursor.fetchall() 
-    rowsUnTupled = Untuple(rows)
+    rowsUnTupled = untuple(rows)
 
     for row in rowsUnTupled:
         print(row)
@@ -18,7 +18,7 @@ def GetDataFromTable(db_path, table):
 
     return rowsUnTupled
 
-def Untuple(array):
+def untuple(array):
     I = 0
     unTupledArray = []
     for tup in array:
