@@ -1,5 +1,6 @@
 import sqlite3
 import datetime
+from SQLiteRead import get_last_timestamp_from_table
 
 def table_exists(db_path, table_name):
     conn = sqlite3.connect(db_path)
@@ -15,7 +16,6 @@ def table_exists(db_path, table_name):
 
 def define_new_table(db_path, table_name, data_column_name, data_array_length):
     try:
-        print(f"db_path {db_path} - Table_Name {table_name} - Column_name {data_column_name}")
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
 
@@ -51,6 +51,7 @@ def insert_data_into_table(db_path, table, column, data):
         insert_string = f"INSERT INTO {table} ({column_string}) VALUES ({value_string})"
 
         cursor.execute(insert_string)
+        print(f"Data succesfully logged to SQL ({get_last_timestamp_from_table(db_path, table)})")
 
         conn.commit()
         cursor.close()
