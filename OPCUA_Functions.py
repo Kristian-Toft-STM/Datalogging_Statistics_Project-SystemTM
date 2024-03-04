@@ -1,61 +1,64 @@
 from opcua import Client,ua
 from SQLiteWrite import define_new_table
 import time
+import numpy as np
 
 def connect_opcua_client():
     url = "opc.tcp://172.31.1.60:4840"  # Siemens PLC OPC UA server address
     client = Client(url)
     
     try:
+
         client.connect()
         print("Client connected to OPC UA server.")
         return client  # Return the client object after successful connection
+    
     except Exception as e:
         # If connection fails, raise the exception to be handled in the main script
         raise e
     
 def disconnect_opcua_client(client):
     try:
+
         client.disconnect()
         print("Client disconnected from OPC UA server.")
+
     except Exception as e:
         print("Disconnect error:", e)   
 
 def read_node_value(client, node_id):
     try:
+
         target_node = client.get_node(node_id)
         target_node_value = target_node.get_value()
         return target_node_value
+    
     except Exception as e:
         print("Read node value error: ", e)
         return None
 
 def monitor_and_get_data_on_trigger(client, trigger_node_id, data_node_id):
-    trigger_value = False 
+    trigger_value = 0 
+    trigger_node = client.get_node(trigger_node_id)
+    trigger_node.set_value(ua.DataValue(ua.Variant(2, ua.VariantType.Int32))) 
     try:
-        while not trigger_value:
+        while trigger_value == 0:
             try:
                 trigger_value = read_node_value(client, trigger_node_id)
-                if trigger_value: 
+                if trigger_value == 1: 
                     print("Logging triggered from PLC")
 
-                    trigger_node = client.get_node(trigger_node_id)
-                    trigger_node.set_attribute(ua.AttributeIds.Value, ua.DataValue(False))  
-
+                    
                     data_array = read_node_value(client, data_node_id)
+                    trigger_node.set_value(ua.DataValue(ua.Variant(2, ua.VariantType.Int32)))  
 
                     return data_array   
             except Exception as e:
-                print("Monitor Error:", e)
+                print("Monitor error:", e)
                 time.sleep(10)  # Wait before attempting to reconnect
                 client = connect_opcua_client() #Re-establish connection
     finally:
-        #time.sleep(1)
-        disconnect_opcua_client(client)  # Disconnect from the OPC UA server when the loop stops
-
-#def get_data_array_from_opc(client, node_id):
-    #data_array = read_node_value(client, node_id)
-    #return data_array
+        disconnect_opcua_client(client)  # Disconnect from the OPC UA server when the loop stops        
 
 def test():
     try:

@@ -1,0 +1,21 @@
+{
+"PLC_1": [
+        {
+            "ns=4;i=1": "Server Interface",
+            "ns=4;i=2": "DBinsert",
+            "ns=4;i=3": "DBinsert_Logging_trigger",
+            "ns=4;i=4": "Data", 
+            "column_names": [
+                {"Column 1": "TimeStamp"},
+                {"Column 2": "Test Data Column 1"},
+                {"Column 3": "Test Data Column 2"},
+                {"Column 4": "Test Data Column 3"},
+                {"Column 5": "Test Data Column 4"},
+                {"Column 6": "Test Data Column 5"},
+                {"Column 7": "Test Data Column 6"},
+                {"Column 8": "Test Data Column 7"},
+                {"Column 9": "Test Data Column 8"}
+            ]
+        }
+    ]
+}
