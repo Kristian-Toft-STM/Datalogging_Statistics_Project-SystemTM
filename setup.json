@@ -1,10 +1,10 @@
 {
 "PLC_1": [
         {
-            "ns=4;i=1": "Server Interface",
-            "ns=4;i=2": "DBinsert",
-            "ns=4;i=3": "DBinsert_Logging_trigger",
-            "ns=4;i=4": "Data", 
+            "Server Interface": "ns=4;i=1",
+            "DBinsert": "ns=4;i=2",
+            "DBinsert_Logging_trigger": "ns=4;i=3",
+            "Data": "ns=4;i=4", 
             "column_names": [
                 {"Column 1": "TimeStamp"},
                 {"Column 2": "Test Data Column 1"},
