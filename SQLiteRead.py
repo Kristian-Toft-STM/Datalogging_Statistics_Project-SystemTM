@@ -75,7 +75,7 @@ def get_logs_within_range(db_path, table, min_range, max_range):
         return data_untupled
      
     except Exception as e:
-        print("Get logs within range error:", e)
+        print("Get logs within range error:", e)     
 
 def untuple(tuple):
     try:
