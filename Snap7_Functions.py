@@ -1,23 +1,22 @@
 import snap7
 import time
 from snap7 import util
+from SQLiteWrite import insert_data_into_table
+from json_functions import get_dbinsert_number_from_file, get_dbinsert_logging_trigger_index_from_file, get_data_index_from_file, get_ip_from_file, get_plc_from_file
 
-ip_address = "172.31.1.60"
 client = snap7.client.Client()
 
-def connect_snap7_client():
+def connect_snap7_client(setup_file_step7): # overvej at lave json funktioner til rack, slot og tcpport
     try: 
-         
-            #client.connect(Address, rack, slot, tcpport)   
-            client.connect(ip_address, 0, 1, 102)
+        ip_address = get_ip_from_file(setup_file_step7)
+        #client.connect(Address, rack, slot, tcpport) 
+        client.connect(ip_address, get_plc_from_file(setup_file_step7).get('rack'), get_plc_from_file(setup_file_step7).get('slot'), get_plc_from_file(setup_file_step7).get('tcpport'))
 
-            print("Snap7 client connected to tcp server.")
-
-            return client
+        print("Snap7 client connected to tcp server.")
+        return client
             
-    
     except Exception as e:
-            print("Connect Snap7 client error:", e)
+        print("Connect snap7 client error:", e)
 
 
 def disconnect_snap7_client():
@@ -29,8 +28,7 @@ def disconnect_snap7_client():
     except Exception as e:
             print("Disconnect Snap7 client error:", e)
 
-
-def get_data_from_db(db_number,client, index):
+def get_data_from_plc_db(db_number,client, index):
     try:
 
         data = client.db_read(db_number, index, index+4)
@@ -39,16 +37,15 @@ def get_data_from_db(db_number,client, index):
         return data_fixed
 
     except Exception as e:
-            print("Get data from db error:", e)   
+            print("Get data from plc db error:", e)   
             
-def get_data_array_from_db(db_number,client):
+def get_data_array_from_plc_db(db_number, client, setup_file_step7):
     try:
-        
-        data = client.db_read(db_number, 4, 32)
+        data_index = get_data_index_from_file(setup_file_step7)
+        data = client.db_read(db_number, data_index, 32)
         array = []
-        print(data)
         
-        for I in range(0, len(data), 4): 
+        for I in range(0, len(data), data_index): 
             if I + 4 <= len(data):   
                 data_fixed = util.get_dint(data,I)           
                 array.append(data_fixed) 
@@ -59,41 +56,52 @@ def get_data_array_from_db(db_number,client):
 
     except Exception as e:
             print("Get data array from db error:", e)                
-          
-def monitor_and_get_data_on_trigger_snap7(db_number, client):
+
+def monitor_and_get_data_on_trigger_snap7(client, setup_file_step7):
     trigger_value = 0 
-    client.db_write(db_number, 0, int(2).to_bytes(4, byteorder='big'))
+    db_number = get_dbinsert_number_from_file(setup_file_step7)
+    logging_trigger_index = get_dbinsert_logging_trigger_index_from_file(setup_file_step7)
+
+    #int(2) = int value to convert to bytes - 4 is the length in bytes(int = 32 = 4 bytes) - byteorder is which direction you read the bytes
+    bytearray_to_Write = int(2).to_bytes(logging_trigger_index+4, byteorder='big')
+    client.db_write(db_number, logging_trigger_index, bytearray_to_Write)
     try:
+
         while trigger_value == 0:
             try:
-                trigger_value = get_data_from_db(db_number, client, 0)
+
+                trigger_value = get_data_from_plc_db(db_number, client, 0)
                 if trigger_value == 1: 
-                    print("Logging triggered from PLC")
                     
-                    data_array = get_data_array_from_db(db_number, client)
+                    data_array = get_data_array_from_plc_db(db_number, client, setup_file_step7)
+                    client.db_write(db_number, logging_trigger_index, bytearray_to_Write)
+                    print("Logging triggered from PLC")
 
-                    #int(2) = int value to convert to bytes - 4 is the length in bytes(int = 32 = 4 bytes) - byteorder is which direction you read the bytes
-                    client.db_write(db_number, 0, int(2).to_bytes(4, byteorder='big'))
-
-                    return data_array   
+                    return data_array  
+                 
             except Exception as e:
                 print("Monitor snap7 error:", e)
                 time.sleep(10)  # Wait before attempting to reconnect
-                client = connect_snap7_client() #Re-establish connection
+                client = connect_snap7_client(setup_file_step7) #Re-establish connection
+
     finally:
         disconnect_snap7_client()  
 
-#client = snap7.client.Client(lib_location="/path/to/snap7.dll")  # If the `snap7.dll` file is in another location
 
-#client
-#snap7.client.Client object at 0x0000028B257128E0>
+def monitor_and_insert_data_snap7(sql_db_path, table_name, setup_file_step7):        
+    try:    
 
-#data = client.db_read("DB number, start byte, amount of bytes to read")
-#data = client.db_read(2, 0, 4)
-#data
-#bytearray(b"\x00\x00\x00\x00")
-#data[3] = 0b00000001
-#data
-#bytearray(b'\x00\x00\x00\x01')
-#client.db_write(1, 0, data)
+        monitor_count = 1
+        while monitor_count <= 10:
+            client = connect_snap7_client(setup_file_step7)
+            data_array = monitor_and_get_data_on_trigger_snap7(client, setup_file_step7)
+
+            if data_array is not None:  
+                insert_data_into_table(sql_db_path, table_name, data_array, setup_file_step7)   
+
+            print(f"Monitor count: {monitor_count}")
+            monitor_count += 1
+
+    except Exception as e:
+            print("Monitor and insert data snap7 error:", e)   
 

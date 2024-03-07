@@ -1,7 +1,7 @@
 from opcua import Client,ua
-from SQLiteWrite import define_new_table
 import time
 import numpy as np
+from SQLiteWrite import insert_data_into_table
 
 def connect_opcua_client():
     url = "opc.tcp://172.31.1.60:4840"  # Siemens PLC OPC UA server address
@@ -14,8 +14,7 @@ def connect_opcua_client():
         return client  # Return the client object after successful connection
     
     except Exception as e:
-        # If connection fails, raise the exception to be handled in the main script
-        raise e
+        print("Connect opcua client error:", e)  
     
 def disconnect_opcua_client(client):
     try:
@@ -24,7 +23,7 @@ def disconnect_opcua_client(client):
         print("Client disconnected from OPC UA server.")
 
     except Exception as e:
-        print("Disconnect error:", e)   
+        print("Disconnect opcua client error:", e)   
 
 def read_node_value(client, node_id):
     try:
@@ -37,11 +36,12 @@ def read_node_value(client, node_id):
         print("Read node value error: ", e)
         return None
 
-def monitor_and_get_data_on_trigger(client, trigger_node_id, data_node_id):
+def monitor_and_get_data_on_trigger_opcua(client, trigger_node_id, data_node_id):
     trigger_value = 0 
     trigger_node = client.get_node(trigger_node_id)
     trigger_node.set_value(ua.DataValue(ua.Variant(2, ua.VariantType.Int32))) 
     try:
+        
         while trigger_value == 0:
             try:
                 trigger_value = read_node_value(client, trigger_node_id)
@@ -52,42 +52,30 @@ def monitor_and_get_data_on_trigger(client, trigger_node_id, data_node_id):
                     data_array = read_node_value(client, data_node_id)
                     trigger_node.set_value(ua.DataValue(ua.Variant(2, ua.VariantType.Int32)))  
 
-                    return data_array   
+                    return data_array  
+                 
             except Exception as e:
-                print("Monitor error:", e)
+                print("Monitor opcua error:", e)
                 time.sleep(10)  # Wait before attempting to reconnect
                 client = connect_opcua_client() #Re-establish connection
     finally:
-        disconnect_opcua_client(client)  # Disconnect from the OPC UA server when the loop stops        
+        disconnect_opcua_client(client)  # Disconnect from the OPC UA server when the loop stops      
 
-def test():
-    try:
-        client = connect_opcua_client()
+def monitor_and_insert_data_opcua(sql_db_path, plc_trigger_id, test_table, data_node_id, setup_file_opcua):        
+    try:   
         
-        root = client.get_root_node()
-        #node_3 = root.get_child(["0:Objects","3:ServerInterfaces"])
-        
-        #node_4_motor = root.get_child(["0:Objects","3:ServerInterfaces","4:Server interface_1","4:DB_OPC","4:Motor"])
-        node_4_motor = client.get_node("ns=4;i=4")
-        node_4_motor_value = node_4_motor.get_value()
-        
-        #node_4_motor.ServerTimestamp = datetime.datetime.now()
+        monitor_count = 1
+        while monitor_count <= 10:
+            client = connect_opcua_client()
 
-        #print(node_4_motor)
-        print(node_4_motor_value)
+            data_array = monitor_and_get_data_on_trigger_opcua(client, plc_trigger_id, data_node_id)
 
-        #dv = ua.DataValue(ua.Variant(True, ua.VariantType.Boolean))
-        #node_4_motor.set_value(dv)
-        
-        if node_4_motor_value == False:
-            node_4_motor.set_attribute(ua.AttributeIds.Value, ua.DataValue(True))
-        else:
-            node_4_motor.set_attribute(ua.AttributeIds.Value, ua.DataValue(False))    
+            if data_array is not None:
+                insert_data_into_table(sql_db_path, test_table, data_array, setup_file_opcua)   
 
-        node_4_motor_value = node_4_motor.get_value()
-        print(node_4_motor_value)
-
-        disconnect_opcua_client(client)
-
+            print(f"Monitor count: {monitor_count}")
+            monitor_count += 1
+            
     except Exception as e:
-        print("Error:", e)
+                print("Monitor and insert data opcua error:", e)           
+

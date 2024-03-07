@@ -1,16 +1,20 @@
 {
 "PLC_1": [
         {
-            "IP Address": "172.31.60.1",
-            "DBinsert DB Number": "10",
-            "DBinsert_Logging_Trigger Index": "0",
-            "Data Index": "4", 
+            "IP Address": "172.31.1.60",
+            "DBinsert DB Number": 10,
+            "DBinsert_Logging_Trigger Index": 0,
+            "Data Index": 4, 
+            "table name": "Test_Table_Name",
+            "rack": 0,
+            "slot": 1,
+            "tcpport": 102,
             "column_names": [
                 {"Column 1": "TimeStamp"},
                 {"Column 2": "Test_Data_Column_1"},
                 {"Column 3": "Test_Data_Column_2"},
                 {"Column 4": "Test_Data_Column_3"},
-                {"Column 5": "Test_Data_Column_4"},
+                {"Column 5": "Motor 1"},
                 {"Column 6": "Test_Data_Column_5"},
                 {"Column 7": "Test_Data_Column_6"},
                 {"Column 8": "Test_Data_Column_7"},

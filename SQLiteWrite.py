@@ -1,26 +1,13 @@
 import sqlite3
 import datetime
 import tzlocal
-from SQLiteRead import get_last_timestamp_from_table
-from json_functions import setup_get_sql_column_names_step7
+from SQLiteRead import get_last_timestamp_from_table, table_exists, table_not_empty
+from json_functions import setup_get_sql_column_names_from_file, setup_file_column_names_dict_to_array, get_plc_from_file
 
-def table_exists(db_path, table_name):
-    try:
-        conn = sqlite3.connect(db_path)
-        cursor = conn.cursor()
 
-        cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name=?",(table_name,))
-        result = cursor.fetchone()
-
-        cursor.close()
-        conn.close()
-    
-        return result is not None
-
-    except Exception as e:
-        print("Table exists error:", e)
-    
-def define_new_table(db_path, table_name, data_column_name, data_array_length): #Deprecated when setup_sql_table_from_json() is complete [delete]
+#Deprecated when setup_sql_table_from_json() is complete 
+""" 
+def define_new_table(db_path, table_name, data_column_name, data_array_length):
     try:
 
         conn = sqlite3.connect(db_path)
@@ -41,52 +28,39 @@ def define_new_table(db_path, table_name, data_column_name, data_array_length): 
 
     except Exception as e:
         print("Define new table error:", e)
+"""
 
-def check_table_not_empty(db_path, table):
-     try:
-
-        conn = sqlite3.connect(db_path)
-        cursor = conn.cursor()
-        cursor.execute(f"SELECT EXISTS(SELECT 1 FROM {table});") 
-        result = cursor.fetchone()      
-        return result
-     
-     except Exception as e:
-        print("Check table not empty error:", e)
-   
-def insert_data_into_table(db_path, table, column, data): #Deprecated when setup_sql_table_from_json() is complete [update]
+def insert_data_into_table(db_path, table_name, data, setup_file): # udvid til automatisk også at hente table name?
     try:
-
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
         
-        column_string = ""
-        value_string = ""
-        i = 1
-        for dat in data:
-            column_string += f"{column}_{i},"
-            value_string += f"{data[i-1]},"
-            i += 1   
-        column_string = column_string[:-1]
-        value_string = value_string[:-1]  
-        insert_string = f"INSERT INTO {table} ({column_string}) VALUES ({value_string})"
+        column_array = setup_file_column_names_dict_to_array(setup_get_sql_column_names_from_file(setup_file)) 
+        column_array = column_array[1:] # remove the first column (timestamp) from the array
+        
+        #column_string = ",".join(map(str, column_array)) 
+        column_string = ",".join(map(lambda column: f"[{column}]", column_array))
+        value_placeholders = ",".join(["?" for _ in data])  # create a string of placeholders to protect from sql injections
+        
+        insert_query = f"INSERT INTO {table_name} ({column_string}) VALUES ({value_placeholders})"
 
-        cursor.execute(insert_string)
-
+        cursor.execute(insert_query, data)
         conn.commit()
-
-        if (check_table_not_empty(db_path, table)):
-            print(f"Data succesfully logged to SQL ({get_last_timestamp_from_table(db_path, table)})")
+        if (table_exists(db_path, table_name)):
+            if (table_not_empty(db_path, table_name)):
+                print(f"Data succesfully logged to SQL ({get_last_timestamp_from_table(db_path, table_name)})")
+            else:
+                print("No data in table")
         else:
-            print("No data in table")
-
+                print("Table does not exist")
         cursor.close()
         conn.close()
 
     except Exception as e:
-        print("Insert data into table error:", e)   
+        print("Insert data into table error:", e)          
 
-def setup_sql_table_from_json(db_path, table_name, setup_file_step7):
+
+def setup_sql_table_from_json(db_path, table_name, setup_file):
     try:
 
         conn = sqlite3.connect(db_path)
@@ -98,17 +72,14 @@ def setup_sql_table_from_json(db_path, table_name, setup_file_step7):
             cursor.execute(f"CREATE TABLE {table_name} (Timestamp DATETIME DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (Timestamp))")
             print(f"Table {table_name} created.")
 
-        json_setup_column_names = setup_get_sql_column_names_step7(setup_file_step7)
-        print(json_setup_column_names)
-        print(type(json_setup_column_names))
-        print(type(json_setup_column_names[0]))
-        for I, dict in enumerate(json_setup_column_names):
-            if I == 0:
-                continue
-            for key in dict:
-                value = dict[key]
-                print(value)
-                cursor.execute(f"ALTER TABLE {table_name} ADD {value} VARCHAR(50);")
+        if not table_not_empty(db_path, table_name):
+            json_setup_column_names = setup_get_sql_column_names_from_file(setup_file)
+            for I, dict in enumerate(json_setup_column_names):
+                if I == 0:
+                    continue
+                for key in dict:
+                    value = dict[key]
+                    cursor.execute(f"ALTER TABLE {table_name} ADD [{value}] VARCHAR(50);")
 
         cursor.close()
         conn.close()

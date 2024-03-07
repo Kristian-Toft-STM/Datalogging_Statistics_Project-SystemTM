@@ -5,16 +5,17 @@
             "DBinsert NodeId": "ns=4;i=2",
             "DBinsert_Logging_Trigger NodeId": "ns=4;i=3",
             "Data_NodeId": "ns=4;i=4", 
+            "table name": "Test_Table_Name",
             "column_names": [
                 {"Column 1": "TimeStamp"},
-                {"Column 2": "Test Data Column 1"},
-                {"Column 3": "Test Data Column 2"},
-                {"Column 4": "Test Data Column 3"},
-                {"Column 5": "Test Data Column 4"},
-                {"Column 6": "Test Data Column 5"},
-                {"Column 7": "Test Data Column 6"},
-                {"Column 8": "Test Data Column 7"},
-                {"Column 9": "Test Data Column 8"}
+                {"Column 2": "Test_Data_Column_1"},
+                {"Column 3": "Test_Data_Column_2"},
+                {"Column 4": "Test_Data_Column_3"},
+                {"Column 5": "Test_Data_Column_4"},
+                {"Column 6": "Test_Data_Column_5"},
+                {"Column 7": "Test_Data_Column_6"},
+                {"Column 8": "Test_Data_Column_7"},
+                {"Column 9": "Test_Data_Column_8"}
             ]
         }
     ]
