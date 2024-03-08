@@ -2,7 +2,7 @@ import sqlite3
 import pytz
 from datetime import datetime
 from tzlocal import get_localzone
-from json_functions import get_plc_from_file
+from json_functions import get_plc_from_file, setup_file_column_names_dict_to_array, setup_get_sql_column_names_from_file
 
 def table_exists(db_path, table_name):
     try:
@@ -101,6 +101,38 @@ def get_logs_within_range(db_path, table, min_range, max_range):
     except Exception as e:
         print("Get logs within range error:", e)     
 
+def get_log_data_within_range(db_path, table, min_range, max_range, column=None):
+    try:
+
+        min_range_utc = min_range.astimezone(pytz.utc)
+        max_range_utc = max_range.astimezone(pytz.utc)
+
+        conn = sqlite3.connect(f'{db_path}')
+        cursor = conn.cursor()
+
+        if column is not None:
+           cursor.execute(f"SELECT {column} FROM {table} WHERE TimeStamp BETWEEN '{min_range_utc}' AND '{max_range_utc}';")     
+        else:
+            cursor.execute(f"SELECT * FROM {table} WHERE TimeStamp BETWEEN '{min_range_utc}' AND '{max_range_utc}';")
+
+        data_tuple = cursor.fetchall()
+        
+        cursor.close()
+        conn.close()
+
+        if column is not None:
+            data_array = untuple(data_tuple) 
+            data_array_summed = add_together_single_array_data(data_array)  
+        else:
+            data_array = untuple_data(data_tuple)
+            data_array_summed = add_together_array_data(data_array)
+
+        return data_array_summed
+     
+    except Exception as e:
+        print("Get logs within range error:", e)     
+
+
 def untuple(tuples):
     try:
 
@@ -108,3 +140,77 @@ def untuple(tuples):
     
     except Exception as e:
         print("Untuple error:", e)
+
+def untuple_all(tuples): # fix this and normal untuple
+    try:
+
+        data_array = [list(item[1:]) for item in tuples]
+        return data_array
+    
+    except Exception as e:
+        print("Untuple all error:", e)
+
+def untuple_data(tuples):
+    try:
+
+        data_array = [list(item[1:]) for item in tuples]
+        return data_array
+    
+    except Exception as e:
+        print("Untuple data error:", e)
+
+def add_together_single_array_data(array_of_data):
+    try:
+
+        data_as_int = [int(data) for data in array_of_data]
+        data_array_summed = sum(data_as_int) 
+
+        return data_array_summed  
+     
+    except Exception as e:
+        print("Add together single array data error:", e)    
+
+def add_together_array_data(array_of_arrays_of_data):
+    try:
+
+        data_as_int = [[int(data) for data in array_of_data] for array_of_data in array_of_arrays_of_data]
+
+        # Use zip to group each ith element of the subarrays together and sum them
+        data_array_summed = [sum(group) for group in zip(*data_as_int)]    
+
+        return data_array_summed  
+     
+    except Exception as e:
+        print("Add together array data error:", e)    
+
+def get_log_data_within_range_sql_sum(db_path, table, min_range, max_range, setup_file, column=None):
+    try:
+
+        min_range_utc = min_range.astimezone(pytz.utc)
+        max_range_utc = max_range.astimezone(pytz.utc)
+
+        conn = sqlite3.connect(f'{db_path}')
+        cursor = conn.cursor()
+
+        if column is not None:
+            cursor.execute(f"SELECT SUM({column}) FROM {table} WHERE TimeStamp BETWEEN '{min_range_utc}' AND '{max_range_utc}';")    
+        else:
+            column_array = setup_file_column_names_dict_to_array(setup_get_sql_column_names_from_file(setup_file)) 
+            sum_parts = ', '.join([f'SUM("{column}") AS "sum_{column}"' for column in column_array])
+            cursor.execute(f"SELECT {sum_parts} FROM {table} WHERE TimeStamp BETWEEN '{min_range_utc}' AND '{max_range_utc}';")
+
+        data_tuple = cursor.fetchall()
+        cursor.close()
+        conn.close()
+
+        if column is not None:
+            data_array = untuple(data_tuple) 
+            data_array_summed = add_together_single_array_data(data_array)  
+        else:
+            data_array = untuple_data(data_tuple)
+            data_array_summed = add_together_array_data(data_array)
+
+        return data_array_summed
+     
+    except Exception as e:
+        print("Get logs within range sql sum error:", e)      

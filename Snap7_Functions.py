@@ -62,9 +62,9 @@ def monitor_and_get_data_on_trigger_snap7(client, setup_file_step7):
     db_number = get_dbinsert_number_from_file(setup_file_step7)
     logging_trigger_index = get_dbinsert_logging_trigger_index_from_file(setup_file_step7)
 
-    #int(2) = int value to convert to bytes - 4 is the length in bytes(int = 32 = 4 bytes) - byteorder is which direction you read the bytes
-    bytearray_to_Write = int(2).to_bytes(logging_trigger_index+4, byteorder='big')
-    client.db_write(db_number, logging_trigger_index, bytearray_to_Write)
+    #int(2) = int value to convert to bytes - 4 is the length in bytes(int32 = 4 bytes) - byteorder is which direction you read the bytes
+    bytearray_to_write = int(2).to_bytes(4, byteorder='big')
+    client.db_write(db_number, logging_trigger_index, bytearray_to_write)
     try:
 
         while trigger_value == 0:
@@ -74,7 +74,7 @@ def monitor_and_get_data_on_trigger_snap7(client, setup_file_step7):
                 if trigger_value == 1: 
                     
                     data_array = get_data_array_from_plc_db(db_number, client, setup_file_step7)
-                    client.db_write(db_number, logging_trigger_index, bytearray_to_Write)
+                    client.db_write(db_number, logging_trigger_index, bytearray_to_write)
                     print("Logging triggered from PLC")
 
                     return data_array  
@@ -105,3 +105,23 @@ def monitor_and_insert_data_snap7(sql_db_path, table_name, setup_file_step7):
     except Exception as e:
             print("Monitor and insert data snap7 error:", e)   
 
+
+def write_data_dbresult(setup_file_name, data):
+    try:
+        client = connect_snap7_client(setup_file_name)
+        plc = get_plc_from_file(setup_file_name)
+        if type(data) == int: 
+            bytearray_to_write = data.to_bytes(4, byteorder='big')
+        elif type(data) == list: 
+            bytearray_to_write = bytearray()
+            for num in data:
+                bytearray_to_write += num.to_bytes(4, byteorder='big')   
+        else:
+             print('write_data_dbresult: unsupported datatype')
+             return     
+        client.db_write(plc.get("DBresult DB Number"), 0, bytearray_to_write)
+        return bytearray_to_write            
+
+    except Exception as e:
+        print("Write data dbresult error:", e)       
+    

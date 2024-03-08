@@ -1,7 +1,7 @@
 from SQLiteWrite import insert_data_into_table, delete_table_data, drop_table, setup_sql_table_from_json
-from SQLiteRead import get_data_from_table, get_logs_within_range
+from SQLiteRead import get_data_from_table, get_logs_within_range, get_log_data_within_range, get_log_data_within_range_sql_sum
 from OPCUA_Functions import connect_opcua_client, disconnect_opcua_client, read_node_value, monitor_and_get_data_on_trigger_opcua, monitor_and_insert_data_opcua
-from Snap7_Functions import connect_snap7_client, disconnect_snap7_client, get_data_from_plc_db, get_data_array_from_plc_db, monitor_and_get_data_on_trigger_snap7, monitor_and_insert_data_snap7
+from Snap7_Functions import connect_snap7_client, disconnect_snap7_client, get_data_from_plc_db, get_data_array_from_plc_db, monitor_and_get_data_on_trigger_snap7, monitor_and_insert_data_snap7, write_data_dbresult
 from json_functions import setup_get_sql_column_names_from_file, setup_file_column_names_dict_to_array, get_dbinsert_number_from_file, get_plc_from_file
 from opcua import ua
 import datetime
@@ -18,8 +18,8 @@ setup_file_opcua = "setup_opcua.json"
 setup_file_step7 = "setup_step7.json"
 
 local_tz = get_localzone()
-test_min_range = datetime.datetime(2024,3,6,8,39,20).astimezone(local_tz)
-test_max_range = datetime.datetime(2024,3,6,8,41,42).astimezone(local_tz)          
+test_min_range = datetime.datetime(2024,3,7,13,5,28).astimezone(local_tz)
+test_max_range = datetime.datetime(2024,3,7,14,58,31).astimezone(local_tz)          
 
 def step7_or_opcua_switch(file_to_run):
     script_directory = os.path.dirname(__file__)
@@ -82,14 +82,15 @@ def main_script(file_to_run=''):
         print("main script error: ", e)
 
 
-main_script(setup_file_step7)
+#main_script(setup_file_step7)
 
 #main_script_opcua_start(plc_trigger_id, data_node_id, sql_db_path, test_table, test_column_name, setup_file_opcua)
 #main_script_snap7_start(sql_db_path, dbinsert_number, test_table, test_column_name, setup_file_step7)
 
 #delete_table_data(sql_db_path, test_table) 
 #drop_table(sql_db_path, test_table)         
-#print(get_logs_within_range(sql_db_path, test_table, test_min_range, test_max_range))
+#print(get_logs_within_range(sql_db_path, 'Test_Table_Name', test_min_range, test_max_range))
+#print(get_log_data_within_range(sql_db_path, 'Test_Table_Name', test_min_range, test_max_range, 'Test_Data_Column_1'))
 
 #print(read_setup_file())
 #print(map_node(0))
@@ -105,4 +106,6 @@ main_script(setup_file_step7)
 #columns_array = setup_file_column_names_dict_to_array(setup_get_sql_column_names_from_file(setup_file_step7)) 
 #print(tuple(columns_array))
              
-#print(get_dbinsert_number_from_file(setup_file_step7))
+#print(get_dbinsert_number_from_file(setup_file_step7))    
+#write_data_dbresult(setup_file_step7, get_log_data_within_range(sql_db_path, 'Test_Table_Name',test_min_range, test_max_range, 'Test_Data_Column_1'))
+print(write_data_dbresult(setup_file_step7, get_log_data_within_range_sql_sum(sql_db_path, 'Test_Table_Name', test_min_range, test_max_range, setup_file_step7)))       

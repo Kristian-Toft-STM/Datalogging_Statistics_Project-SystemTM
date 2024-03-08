@@ -2,13 +2,14 @@
 "PLC_1": [
         {
             "IP Address": "172.31.1.60",
-            "DBinsert DB Number": 10,
-            "DBinsert_Logging_Trigger Index": 0,
-            "Data Index": 4, 
-            "table name": "Test_Table_Name",
             "rack": 0,
             "slot": 1,
             "tcpport": 102,
+            "DBinsert DB Number": 10,
+            "DBinsert_Logging_Trigger Index": 0,
+            "Data Index": 4, 
+            "DBresult DB Number": 11,
+            "table name": "Test_Table_Name",
             "column_names": [
                 {"Column 1": "TimeStamp"},
                 {"Column 2": "Test_Data_Column_1"},
