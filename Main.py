@@ -1,5 +1,5 @@
 from SQLiteWrite import insert_data_into_table, delete_table_data, drop_table, setup_sql_table_from_json
-from SQLiteRead import get_data_from_table, get_logs_within_range, get_log_data_within_range, get_log_data_within_range_sql_sum
+from SQLiteRead import get_all_data_from_table, get_log_timestamps_within_range, get_log_data_within_range, get_log_data_within_range_sql_sum
 from OPCUA_Functions import connect_opcua_client, disconnect_opcua_client, read_node_value, monitor_and_get_data_on_trigger_opcua, monitor_and_insert_data_opcua
 from Snap7_Functions import connect_snap7_client, disconnect_snap7_client, get_data_from_plc_db, get_data_array_from_plc_db, monitor_and_get_data_on_trigger_snap7, monitor_and_insert_data_snap7, write_data_dbresult
 from json_functions import setup_get_sql_column_names_from_file, setup_file_column_names_dict_to_array, get_dbinsert_number_from_file, get_plc_from_file
@@ -89,8 +89,10 @@ def main_script(file_to_run=''):
 
 #delete_table_data(sql_db_path, test_table) 
 #drop_table(sql_db_path, test_table)         
-#print(get_logs_within_range(sql_db_path, 'Test_Table_Name', test_min_range, test_max_range))
+#print(get_log_timestamps_within_range(sql_db_path, 'Test_Table_Name', test_min_range, test_max_range))
 #print(get_log_data_within_range(sql_db_path, 'Test_Table_Name', test_min_range, test_max_range, 'Test_Data_Column_1'))
+#print(get_log_data_within_range(sql_db_path, 'Test_Table_Name', test_min_range, test_max_range))
+print(get_all_data_from_table(sql_db_path, 'Test_Table_Name'))        
 
 #print(read_setup_file())
 #print(map_node(0))
@@ -108,4 +110,4 @@ def main_script(file_to_run=''):
              
 #print(get_dbinsert_number_from_file(setup_file_step7))    
 #write_data_dbresult(setup_file_step7, get_log_data_within_range(sql_db_path, 'Test_Table_Name',test_min_range, test_max_range, 'Test_Data_Column_1'))
-print(write_data_dbresult(setup_file_step7, get_log_data_within_range_sql_sum(sql_db_path, 'Test_Table_Name', test_min_range, test_max_range, setup_file_step7)))       
+#print(write_data_dbresult(setup_file_step7, get_log_data_within_range_sql_sum(sql_db_path, 'Test_Table_Name', test_min_range, test_max_range, setup_file_step7)))       

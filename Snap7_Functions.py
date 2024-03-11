@@ -9,8 +9,11 @@ client = snap7.client.Client()
 def connect_snap7_client(setup_file_step7): # overvej at lave json funktioner til rack, slot og tcpport
     try: 
         ip_address = get_ip_from_file(setup_file_step7)
-        #client.connect(Address, rack, slot, tcpport) 
-        client.connect(ip_address, get_plc_from_file(setup_file_step7).get('rack'), get_plc_from_file(setup_file_step7).get('slot'), get_plc_from_file(setup_file_step7).get('tcpport'))
+        rack = get_plc_from_file(setup_file_step7).get('rack')
+        slot = get_plc_from_file(setup_file_step7).get('slot')
+        tcpport = get_plc_from_file(setup_file_step7).get('tcpport')
+
+        client.connect(ip_address, rack, slot, tcpport)
 
         print("Snap7 client connected to tcp server.")
         return client

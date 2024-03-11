@@ -34,7 +34,7 @@ def table_not_empty(db_path, table):
      except Exception as e:
         print("Table not empty error:", e)
 
-def get_data_from_table(db_path, table):
+def get_all_data_from_table(db_path, table):
     try:
 
         conn = sqlite3.connect(f'{db_path}')
@@ -42,8 +42,8 @@ def get_data_from_table(db_path, table):
 
         cursor.execute(f"SELECT * FROM {table}")
 
-        rows = cursor.fetchall() 
-        rowsUnTupled = untuple(rows)
+        rows = cursor.fetchall()
+        rowsUnTupled = untuple_all_items(rows)
 
         cursor.close()
         conn.close()
@@ -72,7 +72,7 @@ def get_last_timestamp_from_table(db_path, table):
         print("Get last timestamp from table error:", e)
 
 
-def get_logs_within_range(db_path, table, min_range, max_range):
+def get_log_timestamps_within_range(db_path, table, min_range, max_range):
     try:
 
         local_tz = get_localzone()
@@ -88,7 +88,7 @@ def get_logs_within_range(db_path, table, min_range, max_range):
 
         date_format = "%Y-%m-%d %H:%M:%S"
 
-        data_array = untuple(data_tuple)
+        data_array = untuple_first_item(data_tuple)
 
         # converts each timestamps from string to datetime, then utc to local time, then converts back to string according to date_format 
         data_array = [pytz.utc.localize(datetime.strptime(data, date_format)).astimezone(local_tz).strftime(date_format) for data in data_array]
@@ -116,15 +116,14 @@ def get_log_data_within_range(db_path, table, min_range, max_range, column=None)
             cursor.execute(f"SELECT * FROM {table} WHERE TimeStamp BETWEEN '{min_range_utc}' AND '{max_range_utc}';")
 
         data_tuple = cursor.fetchall()
-        
         cursor.close()
         conn.close()
 
         if column is not None:
-            data_array = untuple(data_tuple) 
+            data_array = untuple_first_item(data_tuple) 
             data_array_summed = add_together_single_array_data(data_array)  
         else:
-            data_array = untuple_data(data_tuple)
+            data_array = untuple_all_excluding_first_item(data_tuple)
             data_array_summed = add_together_array_data(data_array)
 
         return data_array_summed
@@ -132,29 +131,58 @@ def get_log_data_within_range(db_path, table, min_range, max_range, column=None)
     except Exception as e:
         print("Get logs within range error:", e)     
 
+def get_log_data_within_range_sql_sum(db_path, table, min_range, max_range, setup_file, column=None):
+    try:
 
-def untuple(tuples):
+        min_range_utc = min_range.astimezone(pytz.utc)
+        max_range_utc = max_range.astimezone(pytz.utc)
+
+        conn = sqlite3.connect(f'{db_path}')
+        cursor = conn.cursor()
+
+        if column is not None:
+            cursor.execute(f"SELECT SUM({column}) FROM {table} WHERE TimeStamp BETWEEN '{min_range_utc}' AND '{max_range_utc}';")    
+        else:
+            column_array = setup_file_column_names_dict_to_array(setup_get_sql_column_names_from_file(setup_file)) 
+            sum_parts = ', '.join([f'SUM("{column}") AS "sum_{column}"' for column in column_array])
+            cursor.execute(f"SELECT {sum_parts} FROM {table} WHERE TimeStamp BETWEEN '{min_range_utc}' AND '{max_range_utc}';")
+
+        data_tuple = cursor.fetchall()
+        cursor.close()
+        conn.close()
+
+        if column is not None:
+            data_array = untuple_first_item(data_tuple) 
+            data_array_summed = add_together_single_array_data(data_array)  
+        else:
+            data_array = untuple_all_excluding_first_item(data_tuple)
+            data_array_summed = add_together_array_data(data_array)
+
+        return data_array_summed
+     
+    except Exception as e:
+        print("Get logs within range sql sum error:", e)      
+
+def untuple_first_item(tuples):
     try:
 
         return [item[0] for item in tuples]
     
     except Exception as e:
-        print("Untuple error:", e)
+        print("Untuple first item error:", e)
 
-def untuple_all(tuples): # fix this and normal untuple
+def untuple_all_items(tuples):
     try:
 
-        data_array = [list(item[1:]) for item in tuples]
-        return data_array
+        return [list(item) for item in tuples]
     
     except Exception as e:
         print("Untuple all error:", e)
 
-def untuple_data(tuples):
+def untuple_all_excluding_first_item(tuples):
     try:
 
-        data_array = [list(item[1:]) for item in tuples]
-        return data_array
+        return [list(item[1:]) for item in tuples]
     
     except Exception as e:
         print("Untuple data error:", e)
@@ -183,34 +211,3 @@ def add_together_array_data(array_of_arrays_of_data):
     except Exception as e:
         print("Add together array data error:", e)    
 
-def get_log_data_within_range_sql_sum(db_path, table, min_range, max_range, setup_file, column=None):
-    try:
-
-        min_range_utc = min_range.astimezone(pytz.utc)
-        max_range_utc = max_range.astimezone(pytz.utc)
-
-        conn = sqlite3.connect(f'{db_path}')
-        cursor = conn.cursor()
-
-        if column is not None:
-            cursor.execute(f"SELECT SUM({column}) FROM {table} WHERE TimeStamp BETWEEN '{min_range_utc}' AND '{max_range_utc}';")    
-        else:
-            column_array = setup_file_column_names_dict_to_array(setup_get_sql_column_names_from_file(setup_file)) 
-            sum_parts = ', '.join([f'SUM("{column}") AS "sum_{column}"' for column in column_array])
-            cursor.execute(f"SELECT {sum_parts} FROM {table} WHERE TimeStamp BETWEEN '{min_range_utc}' AND '{max_range_utc}';")
-
-        data_tuple = cursor.fetchall()
-        cursor.close()
-        conn.close()
-
-        if column is not None:
-            data_array = untuple(data_tuple) 
-            data_array_summed = add_together_single_array_data(data_array)  
-        else:
-            data_array = untuple_data(data_tuple)
-            data_array_summed = add_together_array_data(data_array)
-
-        return data_array_summed
-     
-    except Exception as e:
-        print("Get logs within range sql sum error:", e)      
