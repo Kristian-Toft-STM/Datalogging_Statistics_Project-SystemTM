@@ -1,25 +1,45 @@
 {
-"PLC_1": [
+    "PLC_1": [
         {
-            "IP Address": "172.31.1.60",
+            "ip address": "172.31.1.60",
             "rack": 0,
             "slot": 1,
             "tcpport": 102,
-            "DBinsert DB Number": 10,
-            "DBinsert_Logging_Trigger Index": 0,
-            "Data Index": 4, 
-            "DBresult DB Number": 11,
-            "table name": "Test_Table_Name",
-            "column_names": [
-                {"Column 1": "TimeStamp"},
-                {"Column 2": "Test_Data_Column_1"},
-                {"Column 3": "Test_Data_Column_2"},
-                {"Column 4": "Test_Data_Column_3"},
-                {"Column 5": "Motor 1"},
-                {"Column 6": "Test_Data_Column_5"},
-                {"Column 7": "Test_Data_Column_6"},
-                {"Column 8": "Test_Data_Column_7"},
-                {"Column 9": "Test_Data_Column_8"}
+            "dbinsert db number": 10,
+            "dbinsert_logging_trigger index": 0,
+            "dbinsert data index": 4,
+            "dbresult db number": 11,
+            "dbresult span index": 0, 
+            "DBresult data index": 4,
+            "table name": "Test_Table",
+            "column names": [
+                {
+                    "column 1": "TimeStamp"
+                },
+                {
+                    "column 2": "Test_Data_Column_1"
+                },
+                {
+                    "column 3": "add_test"
+                },
+                {
+                    "column 4": "Test_Data_Column_3"
+                },
+                {
+                    "column 5": "Motor 1"
+                },
+                {
+                    "column 6": "Test_Data_Column_5"
+                },
+                {
+                    "column 7": "Test_Data_Column_6"
+                },
+                {
+                    "column 8": "Test_Data_Column_7"
+                },
+                {
+                    "column 9": "Test_Data_Column_8"
+                }
             ]
         }
     ]

@@ -2,9 +2,10 @@ import json
 
 def read_setup_file(setup_file_name):
     try: 
-        
+
         setup_file = open(f'{setup_file_name}')
-        setup = json.load(setup_file)  
+        setup = json.load(setup_file)
+        
         return setup
 
     except Exception as e:
@@ -24,7 +25,7 @@ def get_dbinsert_number_from_file(setup_file_name):
     try: 
     
         plc1 = get_plc_from_file(setup_file_name)
-        dbinsert_number = plc1.get('DBinsert DB Number')
+        dbinsert_number = plc1.get('dbinsert db number')
         return dbinsert_number
 
     except Exception as e:
@@ -33,27 +34,27 @@ def get_dbinsert_number_from_file(setup_file_name):
 def get_dbinsert_logging_trigger_index_from_file(setup_file_name):
     try:
         plc1 = get_plc_from_file(setup_file_name)
-        index = plc1.get('DBinsert_Logging_Trigger Index')
+        index = plc1.get('dbinsert_logging_trigger index')
         return index
 
     except Exception as e:
         print("Get DBinsert logging trigger index from file error: ", e)          
 
-def get_data_index_from_file(setup_file_name):
+def get_dbinsert_data_index_from_file(setup_file_name):
     try:
 
         plc1 = get_plc_from_file(setup_file_name)
-        index = plc1.get('Data Index')
+        index = plc1.get('dbinsert data index')
         return index
 
     except Exception as e:
-        print("Get data index from file error: ", e)  
+        print("Get dbinsert data index from file error: ", e)  
 
 def get_ip_from_file(setup_file_name):                        
     try:
         
         plc1 = get_plc_from_file(setup_file_name)
-        ip = plc1.get('IP Address')
+        ip = plc1.get('ip address')
         return ip
 
     except Exception as e:
@@ -63,7 +64,7 @@ def setup_get_sql_column_names_from_file(setup_file_name):
     try:
             
         plc1 = get_plc_from_file(setup_file_name)
-        columns = plc1.get('column_names')
+        columns = plc1.get('column names')
         
         return columns
 
@@ -92,9 +93,89 @@ def map_node(key): #Start with mapping a single node, then expand to map all fro
     except Exception as e:
         print("Map node error: ", e)    
 
-def file_changed(setup_file_name, previous_setup_file_name):
-    return
+def file_changed(setup_file_name, previous_setup_file):
+    try:
 
+        if setup_file_name != previous_setup_file:
+            return True
+        else:
+            return False
+        
+    except Exception as e:
+        print("File changed error: ", e)  
+    
+
+def setup_file_get_number_of_data_columns(setup_file_name):
+    try:
+
+        plc = get_plc_from_file(setup_file_name)
+        column_names = plc.get('column names')
+        return len(column_names[1:])
+        
+    except Exception as e:
+        print("Setup file get column names length error: ", e)   
+
+def setup_file_add_column(setup_file_name, new_key, new_key_value, position):
+    try:
+        with open(setup_file_name, 'r') as setup_file:
+            setup = json.load(setup_file)
+
+        columns = setup['PLC_1'][0]['column names']
+        columns.insert(position, {new_key: new_key_value})
+
+        with open(setup_file_name, 'w') as file:
+            json.dump(setup, file, indent=4, separators=(',', ': '))
+
+        return
+    
+    except Exception as e:
+        print("Setup file add column error: ", e)  
+    
+def setup_file_rename_column(setup_file_name, key, key_value):
+    try:
+
+        with open(setup_file_name, 'r') as setup_file:
+            setup = json.load(setup_file)
+        
+        # Directly navigate to the 'column_names' assuming the structure you've provided
+        columns = setup['PLC_1'][0]['column names']
+    
+        # Update the value of the specified key
+        for column in columns:
+            if key in column:
+                column[key] = key_value
+
+        # Write the updated setup back to the file
+        with open(setup_file_name, 'w') as file:
+            json.dump(setup, file, indent=4, separators=(',', ': '))
+
+        return 
+
+    except Exception as e:
+        print("Setup file rename column error: ", e)          
+
+def setup_file_delete_column(setup_file_name, key):
+    try:
+
+        with open(setup_file_name, 'r') as setup_file:
+            setup = json.load(setup_file)
+        
+        columns = setup['PLC_1'][0]['column names']
+        updated_columns = []
+
+        for column in columns:
+            if key not in column:
+                updated_columns.append(column)
+
+        setup['PLC_1'][0]['column names'] = updated_columns
+
+        with open(setup_file_name, 'w') as file:
+            json.dump(setup, file, indent=4, separators=(',', ': '))
+
+        return 
+
+    except Exception as e:
+        print("Setup file delete column error: ", e)    
 
 #Incomplete. Delete if easier to integrate directly in sql functions           
 """

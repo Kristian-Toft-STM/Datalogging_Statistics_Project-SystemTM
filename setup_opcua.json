@@ -6,7 +6,7 @@
             "DBinsert_Logging_Trigger NodeId": "ns=4;i=3",
             "Data_NodeId": "ns=4;i=4", 
             "table name": "Test_Table_Name",
-            "column_names": [
+            "column names": [
                 {"Column 1": "TimeStamp"},
                 {"Column 2": "Test_Data_Column_1"},
                 {"Column 3": "Test_Data_Column_2"},

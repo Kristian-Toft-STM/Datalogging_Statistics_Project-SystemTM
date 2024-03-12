@@ -21,6 +21,24 @@ def table_exists(db_path, table_name):
     except Exception as e:
         print("Table exists error:", e)
 
+def any_table_exists(db_path):
+    
+    try:
+
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+
+        cursor.execute("SELECT name FROM sqlite_master WHERE type='table'")
+        result = cursor.fetchone()
+
+        cursor.close()
+        conn.close()
+    
+        return result is not None
+    
+    except Exception as e:
+        print("Any table exists error:", e)
+
 def table_not_empty(db_path, table):
      try:
 
@@ -47,7 +65,7 @@ def get_all_data_from_table(db_path, table):
 
         cursor.close()
         conn.close()
-
+   
         return rowsUnTupled
 
     except Exception as e:
@@ -190,8 +208,7 @@ def untuple_all_excluding_first_item(tuples):
 def add_together_single_array_data(array_of_data):
     try:
 
-        data_as_int = [int(data) for data in array_of_data]
-        data_array_summed = sum(data_as_int) 
+        data_array_summed = sum(array_of_data) 
 
         return data_array_summed  
      
@@ -201,13 +218,16 @@ def add_together_single_array_data(array_of_data):
 def add_together_array_data(array_of_arrays_of_data):
     try:
 
-        data_as_int = [[int(data) for data in array_of_data] for array_of_data in array_of_arrays_of_data]
-
         # Use zip to group each ith element of the subarrays together and sum them
-        data_array_summed = [sum(group) for group in zip(*data_as_int)]    
+        data_array_summed = [sum(group) for group in zip(*array_of_arrays_of_data)]    
 
         return data_array_summed  
      
     except Exception as e:
         print("Add together array data error:", e)    
 
+def get_number_of_rows_in_range(db_path, table, min_range, max_range):
+    timestamp_array = get_log_timestamps_within_range(db_path, table, min_range, max_range)
+    number_of_rows = len(timestamp_array)
+    return number_of_rows
+    
