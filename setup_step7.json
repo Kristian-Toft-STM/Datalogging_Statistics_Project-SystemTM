@@ -10,7 +10,8 @@
             "dbinsert data index": 4,
             "dbresult db number": 11,
             "dbresult span index": 0, 
-            "DBresult data index": 4,
+            "dbresult data index": 4,
+            "dresult data index": 4,
             "table name": "Test_Table",
             "column names": [
                 {
@@ -26,7 +27,7 @@
                     "column 4": "Test_Data_Column_3"
                 },
                 {
-                    "column 5": "Motor 1"
+                    "column 5": "!Motor 1"
                 },
                 {
                     "column 6": "Test_Data_Column_5"

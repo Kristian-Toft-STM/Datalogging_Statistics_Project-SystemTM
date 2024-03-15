@@ -2,6 +2,7 @@ from opcua import Client,ua
 import time
 import numpy as np
 from SQLiteWrite import insert_data_into_table
+import logging
 
 def connect_opcua_client():
     url = "opc.tcp://172.31.1.60:4840"  # Siemens PLC OPC UA server address
@@ -14,8 +15,10 @@ def connect_opcua_client():
         return client  # Return the client object after successful connection
     
     except Exception as e:
-        print("Connect opcua client error:", e)  
+        print(e)
+        logging.error(f"Connect opcua client error: {e}", exc_info=True)      
     
+
 def disconnect_opcua_client(client):
     try:
 
@@ -23,7 +26,9 @@ def disconnect_opcua_client(client):
         print("Client disconnected from OPC UA server.")
 
     except Exception as e:
-        print("Disconnect opcua client error:", e)   
+        print(e)
+        logging.error(f"Disconnect opcua client error: {e}", exc_info=True)       
+
 
 def read_node_value(client, node_id):
     try:
@@ -33,8 +38,10 @@ def read_node_value(client, node_id):
         return target_node_value
     
     except Exception as e:
-        print("Read node value error: ", e)
+        print(e)
+        logging.error(f"Read node value error: {e}", exc_info=True)    
         return None
+
 
 def monitor_and_get_data_on_trigger_opcua(client, trigger_node_id, data_node_id):
     trigger_value = 0 
@@ -55,11 +62,13 @@ def monitor_and_get_data_on_trigger_opcua(client, trigger_node_id, data_node_id)
                     return data_array  
                  
             except Exception as e:
-                print("Monitor opcua error:", e)
+                print(e)
+                logging.error(f"Monitor opcua error: {e}", exc_info=True)    
                 time.sleep(10)  # Wait before attempting to reconnect
                 client = connect_opcua_client() #Re-establish connection
     finally:
         disconnect_opcua_client(client)  # Disconnect from the OPC UA server when the loop stops      
+
 
 def monitor_and_insert_data_opcua(sql_db_path, plc_trigger_id, test_table, data_node_id, setup_file_opcua):        
     try:   
@@ -77,5 +86,6 @@ def monitor_and_insert_data_opcua(sql_db_path, plc_trigger_id, test_table, data_
             monitor_count += 1
             
     except Exception as e:
-                print("Monitor and insert data opcua error:", e)           
+        print(e)
+        logging.error(f"onitor and insert data opcua error: {e}", exc_info=True)               
 

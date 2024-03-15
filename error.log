@@ -1,0 +1,51 @@
+2024-03-13 09:57:24,391 - ERROR - Table name not found in setup file: setup_step7.json
+2024-03-13 10:09:25,145 - ERROR - main_script_snap7_start: Table name not found in setup file: setup_step7.json
+2024-03-13 10:11:08,856 - ERROR - main_script_snap7_start at line 84: Table name not found in setup file: setup_step7.json
+2024-03-13 10:18:50,683 - ERROR - b'CLI : Cannot change this param now'
+2024-03-13 10:18:50,683 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 18, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-03-13 10:18:50,697 - ERROR - Write data dbresult error: 'NoneType' object has no attribute 'db_write'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 134, in write_data_dbresult
+    client.db_write(plc.get("dbresult db number"), plc.get('dbresult data index'), bytearray_to_write)
+    ^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'db_write'
+2024-03-13 10:19:00,685 - ERROR - b'CLI : Cannot change this param now'
+2024-03-13 10:19:00,685 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 18, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-03-13 10:19:00,686 - ERROR - Write data dbresult error: 'NoneType' object has no attribute 'db_write'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 134, in write_data_dbresult
+    client.db_write(plc.get("dbresult db number"), plc.get('dbresult data index'), bytearray_to_write)
+    ^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'db_write'
+2024-03-13 11:31:09,655 - ERROR - Setup file keys changed error: 'NoneType' object has no attribute 'values'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\json_functions.py", line 113, in setup_file_keys_changed
+    for plc_setup in previous_setup_file.values():
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'values'

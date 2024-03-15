@@ -3,6 +3,7 @@ import pytz
 from datetime import datetime
 from tzlocal import get_localzone
 from json_functions import get_plc_from_file, setup_file_column_names_dict_to_array, setup_get_sql_column_names_from_file
+import logging
 
 def table_exists(db_path, table_name):
     try:
@@ -19,7 +20,9 @@ def table_exists(db_path, table_name):
         return result is not None
 
     except Exception as e:
-        print("Table exists error:", e)
+        print(e)
+        logging.error(f"Table exists error: {e}", exc_info=True)
+
 
 def any_table_exists(db_path):
     
@@ -37,7 +40,9 @@ def any_table_exists(db_path):
         return result is not None
     
     except Exception as e:
-        print("Any table exists error:", e)
+        print(e)
+        logging.error(f"Any table exists error: {e}", exc_info=True)
+
 
 def table_not_empty(db_path, table):
      try:
@@ -50,7 +55,9 @@ def table_not_empty(db_path, table):
         return bool(result)
      
      except Exception as e:
-        print("Table not empty error:", e)
+        print(e)
+        logging.error(f"Table not empty error: {e}", exc_info=True)
+
 
 def get_all_data_from_table(db_path, table):
     try:
@@ -69,7 +76,9 @@ def get_all_data_from_table(db_path, table):
         return rowsUnTupled
 
     except Exception as e:
-            print("Get data from table error:", e)
+        print(e)
+        logging.error(f"Get data from table error: {e}", exc_info=True)
+
 
 def get_last_timestamp_from_table(db_path, table):
      try:
@@ -87,7 +96,8 @@ def get_last_timestamp_from_table(db_path, table):
         return last_timestamp
 
      except Exception as e:
-        print("Get last timestamp from table error:", e)
+        print(e)
+        logging.error(f"Get last timestamp from table error: {e}", exc_info=True)
 
 
 def get_log_timestamps_within_range(db_path, table, min_range, max_range):
@@ -117,7 +127,9 @@ def get_log_timestamps_within_range(db_path, table, min_range, max_range):
         return data_array
      
     except Exception as e:
-        print("Get logs within range error:", e)     
+        print(e)
+        logging.error(f"Get logs within range error: {e}", exc_info=True)     
+
 
 def get_log_data_within_range(db_path, table, min_range, max_range, column=None):
     try:
@@ -147,7 +159,9 @@ def get_log_data_within_range(db_path, table, min_range, max_range, column=None)
         return data_array_summed
      
     except Exception as e:
-        print("Get logs within range error:", e)     
+        print(e)
+        logging.error(f"Get log data within range error: {e}", exc_info=True)     
+
 
 def get_log_data_within_range_sql_sum(db_path, table, min_range, max_range, setup_file, column=None):
     try:
@@ -179,7 +193,9 @@ def get_log_data_within_range_sql_sum(db_path, table, min_range, max_range, setu
         return data_array_summed
      
     except Exception as e:
-        print("Get logs within range sql sum error:", e)      
+        print(e)
+        logging.error(f"Get logs within range sql sum error: {e}", exc_info=True)      
+
 
 def untuple_first_item(tuples):
     try:
@@ -187,7 +203,9 @@ def untuple_first_item(tuples):
         return [item[0] for item in tuples]
     
     except Exception as e:
-        print("Untuple first item error:", e)
+        print(e)
+        logging.error(f"Untuple first item error: {e}", exc_info=True)
+
 
 def untuple_all_items(tuples):
     try:
@@ -195,7 +213,9 @@ def untuple_all_items(tuples):
         return [list(item) for item in tuples]
     
     except Exception as e:
-        print("Untuple all error:", e)
+        print(e)
+        logging.error(f"Untuple all error: {e}", exc_info=True)
+
 
 def untuple_all_excluding_first_item(tuples):
     try:
@@ -203,7 +223,9 @@ def untuple_all_excluding_first_item(tuples):
         return [list(item[1:]) for item in tuples]
     
     except Exception as e:
-        print("Untuple data error:", e)
+        print(e)
+        logging.error(f"Untuple data error: {e}", exc_info=True)
+
 
 def add_together_single_array_data(array_of_data):
     try:
@@ -213,7 +235,9 @@ def add_together_single_array_data(array_of_data):
         return data_array_summed  
      
     except Exception as e:
-        print("Add together single array data error:", e)    
+        print(e)
+        logging.error(f"Add together single array data error: {e}", exc_info=True)    
+
 
 def add_together_array_data(array_of_arrays_of_data):
     try:
@@ -224,10 +248,18 @@ def add_together_array_data(array_of_arrays_of_data):
         return data_array_summed  
      
     except Exception as e:
-        print("Add together array data error:", e)    
+        print(e)
+        logging.error(f"Add together array data error: {e}", exc_info=True)    
+
 
 def get_number_of_rows_in_range(db_path, table, min_range, max_range):
-    timestamp_array = get_log_timestamps_within_range(db_path, table, min_range, max_range)
-    number_of_rows = len(timestamp_array)
-    return number_of_rows
+    try:
+
+        timestamp_array = get_log_timestamps_within_range(db_path, table, min_range, max_range)
+        number_of_rows = len(timestamp_array)
+        return number_of_rows
+
+    except Exception as e:
+        print(e)
+        logging.error(f"Get number of rows in range error: {e}", exc_info=True) 
     

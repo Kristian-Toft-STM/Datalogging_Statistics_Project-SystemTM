@@ -4,6 +4,7 @@ from snap7 import util
 from SQLiteWrite import insert_data_into_table
 from SQLiteRead import get_log_data_within_range, get_number_of_rows_in_range
 from json_functions import get_dbinsert_number_from_file, get_dbinsert_logging_trigger_index_from_file, get_dbinsert_data_index_from_file, get_ip_from_file, get_plc_from_file, setup_file_get_number_of_data_columns
+import logging
 
 client = snap7.client.Client()
 
@@ -20,7 +21,8 @@ def connect_snap7_client(setup_file_step7): # overvej at lave json funktioner ti
         return client
             
     except Exception as e:
-        print("Connect snap7 client error:", e)
+        print(e)
+        logging.error(f"Connect snap7 client error: {e}", exc_info=True)
 
 
 def disconnect_snap7_client():
@@ -30,7 +32,9 @@ def disconnect_snap7_client():
         return
     
     except Exception as e:
-            print("Disconnect Snap7 client error:", e)
+        print(e)
+        logging.error(f"Disconnect snap7 client error: {e}", exc_info=True)
+
 
 def get_data_from_plc_db(db_number, client, index):
     try:
@@ -40,9 +44,11 @@ def get_data_from_plc_db(db_number, client, index):
 
         return data_fixed
 
-    except Exception as e:
-            print("Get data from plc db error:", e)   
-            
+    except Exception as e: 
+        print(e)
+        logging.error(f"Get data from plc db error: {e}", exc_info=True)
+
+
 def get_data_array_from_plc_db(db_number, client, setup_file_step7):
     try:
         data_index = get_dbinsert_data_index_from_file(setup_file_step7)
@@ -59,7 +65,9 @@ def get_data_array_from_plc_db(db_number, client, setup_file_step7):
         return array
 
     except Exception as e:
-            print("Get data array from db error:", e)                
+        print(e)
+        logging.error(f"Get data array from db error: {e}", exc_info=True)                
+
 
 def monitor_and_get_data_on_trigger_snap7(client, setup_file_step7):
     trigger_value = 0 
@@ -83,7 +91,8 @@ def monitor_and_get_data_on_trigger_snap7(client, setup_file_step7):
                 return data_array  
                     
         except Exception as e:
-            print("Monitor snap7 error:", e)
+            print(e)
+            logging.error(f"Monitor snap7 error: {e}", exc_info=True) 
             time.sleep(10)  # Wait before attempting to reconnect
             client = connect_snap7_client(setup_file_step7) #Re-establish connection  
 
@@ -105,15 +114,14 @@ def monitor_and_insert_data_snap7(sql_db_path, table_name, setup_file_step7, tes
             monitor_count += 1
 
     except Exception as e:
-        print("Monitor and insert data snap7 error:", e)   
+        print(e)
+        logging.error(f"Monitor and insert data snap7 error: {e}", exc_info=True)    
 
-  
 
 def write_data_dbresult(setup_file_name, sql_db_path, datetime_min_range, datetime_max_range):
     try:    
         try:
 
-            #client = connect_snap7_client(setup_file_name)
             plc = get_plc_from_file(setup_file_name)
             data = get_log_data_within_range(sql_db_path, 'Test_Table', datetime_min_range, datetime_max_range)
                 
@@ -134,6 +142,7 @@ def write_data_dbresult(setup_file_name, sql_db_path, datetime_min_range, dateti
             return bytearray_to_write            
 
         except Exception as e:
-            print("Write data dbresult error:", e)       
+            print(e)
+            logging.error(f"Write data dbresult error: {e}", exc_info=True)         
     finally:
         disconnect_snap7_client()

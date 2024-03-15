@@ -3,6 +3,7 @@ import datetime
 import tzlocal
 from SQLiteRead import get_last_timestamp_from_table, table_exists, table_not_empty, any_table_exists
 from json_functions import setup_get_sql_column_names_from_file, setup_file_column_names_dict_to_array, get_plc_from_file
+import logging
 
 
 def insert_data_into_table(db_path, table_name, data, setup_file): # udvid til automatisk også at hente table name?
@@ -32,7 +33,8 @@ def insert_data_into_table(db_path, table_name, data, setup_file): # udvid til a
         conn.close()
 
     except Exception as e:
-        print("Insert data into table error:", e)          
+        print(e)
+        logging.error(f"Insert data into table error: {e}", exc_info=True)           
 
 
 def setup_sql_table_from_json(db_path, table_name, setup_file):
@@ -71,7 +73,9 @@ def setup_sql_table_from_json(db_path, table_name, setup_file):
         conn.close()
 
     except Exception as e:
-        print("Setup sql table from json error:", e)              
+        print(e)
+        logging.error(f"Setup sql table from json error: {e}", exc_info=True)               
+
 
 def delete_table_data(db_path, table):
     try:
@@ -88,7 +92,9 @@ def delete_table_data(db_path, table):
         return
     
     except Exception as e:
-        print("Delete table data error:", e)     
+        print(e)
+        logging.error(f"Delete table data error: {e}", exc_info=True)      
+
 
 def drop_table(db_path, table):
     try:
@@ -105,7 +111,9 @@ def drop_table(db_path, table):
         return
     
     except Exception as e:
-        print("Drop table error:", e)   
+        print(e)
+        logging.error(f"Drop table error: {e}", exc_info=True)    
+
 
 def sql_add_column(db_path, table, column_name):
     try:
@@ -122,7 +130,9 @@ def sql_add_column(db_path, table, column_name):
         return
 
     except Exception as e:
-        print("SQL add column error:", e) 
+        print(e)
+        logging.error(f"SQL add column error: {e}", exc_info=True)  
+
 
 def sql_rename_column(db_path, table, column, column_name):
     try:
@@ -139,7 +149,9 @@ def sql_rename_column(db_path, table, column, column_name):
         return
 
     except Exception as e:
-        print("SQL rename column error:", e)   
+        print(e)
+        logging.error(f"SQL rename column error: {e}", exc_info=True)    
+
 
 def sql_drop_column(db_path, table, column):
     try:
@@ -156,5 +168,6 @@ def sql_drop_column(db_path, table, column):
         return
 
     except Exception as e:
-        print("SQL drop column error:", e)   
+        print(e)
+        logging.error(f"SQL drop column error: {e}", exc_info=True)    
 

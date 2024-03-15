@@ -1,4 +1,5 @@
 import json
+import logging
 
 def read_setup_file(setup_file_name):
     try: 
@@ -9,7 +10,9 @@ def read_setup_file(setup_file_name):
         return setup
 
     except Exception as e:
-        print("Read setup file error: ", e)   
+        print(e)
+        logging.error(f"Read setup file error: {e}", exc_info=True)   
+
 
 def get_plc_from_file(setup_file_name):
     try:
@@ -19,7 +22,9 @@ def get_plc_from_file(setup_file_name):
         return plc1[0]
 
     except Exception as e:
-        print("Get plc from file error: ", e)       
+        print(e)
+        logging.error(f"Get plc from file error: {e}", exc_info=True)       
+
 
 def get_dbinsert_number_from_file(setup_file_name):
     try: 
@@ -29,7 +34,9 @@ def get_dbinsert_number_from_file(setup_file_name):
         return dbinsert_number
 
     except Exception as e:
-        print("Get dbinsert number from file error: ", e)        
+        print(e)
+        logging.error(f"Get dbinsert number from file error: {e}", exc_info=True)        
+
 
 def get_dbinsert_logging_trigger_index_from_file(setup_file_name):
     try:
@@ -38,7 +45,9 @@ def get_dbinsert_logging_trigger_index_from_file(setup_file_name):
         return index
 
     except Exception as e:
-        print("Get DBinsert logging trigger index from file error: ", e)          
+        print(e)
+        logging.error(f"Get dbinsert logging trigger index from file error: {e}", exc_info=True)          
+
 
 def get_dbinsert_data_index_from_file(setup_file_name):
     try:
@@ -48,7 +57,9 @@ def get_dbinsert_data_index_from_file(setup_file_name):
         return index
 
     except Exception as e:
-        print("Get dbinsert data index from file error: ", e)  
+        print(e)
+        logging.error(f"Get dbinsert data index from file error: {e}", exc_info=True)  
+
 
 def get_ip_from_file(setup_file_name):                        
     try:
@@ -58,7 +69,9 @@ def get_ip_from_file(setup_file_name):
         return ip
 
     except Exception as e:
-        print("Get ip from file error: ", e)  
+        print(e)
+        logging.error(f"Get ip from file error: {e}", exc_info=True)  
+
 
 def setup_get_sql_column_names_from_file(setup_file_name):
     try:
@@ -69,7 +82,9 @@ def setup_get_sql_column_names_from_file(setup_file_name):
         return columns
 
     except Exception as e:
-        print("Setup get sql column names from file error: ", e)  
+        print(e)
+        logging.error(f"Setup get sql column names from file error: {e}", exc_info=True)  
+
 
 def setup_file_column_names_dict_to_array(dict_columns):        
     try: 
@@ -81,7 +96,9 @@ def setup_file_column_names_dict_to_array(dict_columns):
         return value_array 
     
     except Exception as e:
-        print("Setup file column names dict to array error: ", e)  
+        print(e)
+        logging.error(f"Setup file column names dict to array error: {e}", exc_info=True)  
+
 
 def map_node(key): #Start with mapping a single node, then expand to map all from file ""unfinished, continue later""
     try:
@@ -91,18 +108,44 @@ def map_node(key): #Start with mapping a single node, then expand to map all fro
         return node
 
     except Exception as e:
-        print("Map node error: ", e)    
+        print(e)
+        logging.error(f"Map node error: {e}", exc_info=True)    
 
-def file_changed(setup_file_name, previous_setup_file):
+
+def setup_file_keys_changed(setup_file_name, previous_setup_file):
     try:
 
-        if setup_file_name != previous_setup_file:
+        previous_keys = set()
+        current_keys = set()
+
+        # Get all keys from the previous setup
+        for plc_setup in previous_setup_file.values():
+            for plc_info in plc_setup:
+                previous_keys.update(plc_info.keys())
+
+        # Get all keys from the current setup
+        for plc_setup in setup_file_name.values():
+            for plc_info in plc_setup:
+                current_keys.update(plc_info.keys())
+
+        # Find the keys that have been added or removed
+        added_keys = current_keys - previous_keys
+        removed_keys = previous_keys - current_keys
+
+        if added_keys:
+            print("Added keys:", added_keys)
+            
+        if removed_keys:
+            print("Removed keys:", removed_keys)
+            
+        if removed_keys or added_keys:
             return True
-        else:
-            return False
         
+        return False
+    
     except Exception as e:
-        print("File changed error: ", e)  
+        print(e)
+        logging.error(f"Setup file keys changed error: {e}", exc_info=True)  
     
 
 def setup_file_get_number_of_data_columns(setup_file_name):
@@ -113,7 +156,9 @@ def setup_file_get_number_of_data_columns(setup_file_name):
         return len(column_names[1:])
         
     except Exception as e:
-        print("Setup file get column names length error: ", e)   
+        print(e)
+        logging.error(f"Setup file get column names length error: {e}", exc_info=True)   
+
 
 def setup_file_add_column(setup_file_name, new_key, new_key_value, position):
     try:
@@ -129,8 +174,10 @@ def setup_file_add_column(setup_file_name, new_key, new_key_value, position):
         return
     
     except Exception as e:
-        print("Setup file add column error: ", e)  
-    
+        print(e)
+        logging.error(f"Setup file add column error: {e}", exc_info=True)  
+
+
 def setup_file_rename_column(setup_file_name, key, key_value):
     try:
 
@@ -152,7 +199,9 @@ def setup_file_rename_column(setup_file_name, key, key_value):
         return 
 
     except Exception as e:
-        print("Setup file rename column error: ", e)          
+        print(e)
+        logging.error(f"Setup file rename column error: {e}", exc_info=True)          
+
 
 def setup_file_delete_column(setup_file_name, key):
     try:
@@ -175,16 +224,47 @@ def setup_file_delete_column(setup_file_name, key):
         return 
 
     except Exception as e:
-        print("Setup file delete column error: ", e)    
+        print(e)
+        logging.error(f"Setup file delete column error: {e}", exc_info=True)   
 
-#Incomplete. Delete if easier to integrate directly in sql functions           
-"""
-def map_sql_columns_step7(setup_file_step7): 
-    try:
 
-        columns = setup_get_sql_column_names_step7(setup_file_step7)
-        return columns        
+def setup_file_delete_or_rename(setup_file_name, key):
+    try:    
+        
+        column_names = setup_get_sql_column_names_from_file(setup_file_name)
+        for column in column_names:
+            if key in column:
+                if column[key][:1] == '!': 
+                    print('Make new column with new name and delete data')  
+                else:
+                    print('Rename column and keep data') 
+                      
+        return
 
     except Exception as e:
-        print("Map sql columns error: ", e)  
-"""          
+            print(e)
+            logging.error(f"Setup file delete column error: {e}", exc_info=True)
+
+
+def save_previous_setup_step7(previous_setup_step7, filename='previous_setup_step7.json'):
+    try: 
+
+        with open(filename, 'w') as file:
+            json.dump(previous_setup_step7, file)
+
+    except Exception as e:
+            print(e)
+            logging.error(f"Save previous setup step7 error: {e}", exc_info=True)   
+
+
+def load_previous_setup_step7(filename='previous_setup_step7.json'):
+    try:
+
+        with open(filename, 'r') as file:
+            previous_setup_step7 = json.load(file)
+        return previous_setup_step7
+    
+    except Exception as e:
+            print(e)
+            logging.error(f"Load previous setup step7 error: {e}", exc_info=True)
+            
