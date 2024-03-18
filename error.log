@@ -49,3 +49,193 @@ Traceback (most recent call last):
     for plc_setup in previous_setup_file.values():
                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
 AttributeError: 'NoneType' object has no attribute 'values'
+2024-03-18 10:32:20,128 - ERROR - Get seconds in range error: 'str' object has no attribute 'getSeconds'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 277, in get_seconds_in_range
+    print(ts.getSeconds())
+          ^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'getSeconds'
+2024-03-18 10:33:03,920 - ERROR - Get seconds in range error: 'str' object has no attribute 'getSeconds'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 279, in get_seconds_in_range
+    print(ts.getSeconds())
+          ^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'getSeconds'
+2024-03-18 10:50:58,615 - ERROR - Get seconds in range error: cannot access local variable 'time_delta_seconds' where it is not associated with a value
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 279, in get_seconds_in_range
+    time_delta_seconds = time_delta_seconds.total_seconds()
+                         ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'time_delta_seconds' where it is not associated with a value
+2024-03-18 10:50:58,615 - ERROR - Write data dbresult error: 'NoneType' object has no attribute 'to_bytes'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 135, in write_data_dbresult
+    spanbyte_to_write = time_sec.to_bytes(4, byteorder='big')
+                 ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'to_bytes'
+2024-03-18 10:51:15,326 - ERROR - Write data dbresult error: 'float' object has no attribute 'to_bytes'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 135, in write_data_dbresult
+    spanbyte_to_write = time_sec.to_bytes(4, byteorder='big')
+                 ^^^^^^^^^^^^^^^^^
+AttributeError: 'float' object has no attribute 'to_bytes'
+2024-03-18 10:51:50,974 - ERROR - b' ISO : Datasize passed to send/recv buffer is invalid'
+2024-03-18 10:51:50,975 - ERROR - Write data dbresult error: b' ISO : Datasize passed to send/recv buffer is invalid'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 140, in write_data_dbresult
+    client.db_write(plc.get("dbresult db number"), plc.get('dbresult data index'), bytearray_to_write)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : Datasize passed to send/recv buffer is invalid'
+2024-03-18 10:53:22,174 - ERROR - b' ISO : An error occurred during send TCP : Connection timed out'
+2024-03-18 10:53:22,174 - ERROR - Write data dbresult error: b' ISO : An error occurred during send TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 142, in write_data_dbresult
+    client.db_write(plc.get("dbresult db number"), plc.get('dbresult data index'), bytearray_to_write)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during send TCP : Connection timed out'
+2024-03-18 10:53:33,175 - ERROR - b' ISO : An error occurred during send TCP : Connection timed out'
+2024-03-18 10:53:33,175 - ERROR - Write data dbresult error: b' ISO : An error occurred during send TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 142, in write_data_dbresult
+    client.db_write(plc.get("dbresult db number"), plc.get('dbresult data index'), bytearray_to_write)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during send TCP : Connection timed out'
+2024-03-18 10:59:00,082 - ERROR - b' ISO : An error occurred during send TCP : Connection timed out'
+2024-03-18 10:59:00,083 - ERROR - Write data dbresult error: b' ISO : An error occurred during send TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 143, in write_data_dbresult
+    client.db_write(plc.get("dbresult db number"), plc.get('dbresult data index'), bytearray_to_write)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during send TCP : Connection timed out'
+2024-03-18 10:59:33,658 - ERROR - b' ISO : Datasize passed to send/recv buffer is invalid'
+2024-03-18 10:59:33,658 - ERROR - Write data dbresult error: b' ISO : Datasize passed to send/recv buffer is invalid'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 144, in write_data_dbresult
+    client.db_write(plc.get("dbresult db number"), plc.get('dbresult data index'), bytearray_to_write)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : Datasize passed to send/recv buffer is invalid'
+2024-03-18 11:04:10,576 - ERROR - b' ISO : Datasize passed to send/recv buffer is invalid'
+2024-03-18 11:04:10,576 - ERROR - Write data dbresult error: b' ISO : Datasize passed to send/recv buffer is invalid'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 144, in write_data_dbresult
+    client.db_write(plc.get("dbresult db number"), plc.get('dbresult data index'), bytearray_to_write)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : Datasize passed to send/recv buffer is invalid'
+2024-03-18 11:06:08,753 - ERROR - b' ISO : Datasize passed to send/recv buffer is invalid'
+2024-03-18 11:06:08,754 - ERROR - Write data dbresult error: b' ISO : Datasize passed to send/recv buffer is invalid'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 142, in write_data_dbresult
+    client.db_write(plc.get("dbresult db number"), plc.get('dbresult data index'), bytearray_to_write)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : Datasize passed to send/recv buffer is invalid'
+2024-03-18 11:07:22,535 - ERROR - b' ISO : An error occurred during send TCP : Connection timed out'
+2024-03-18 11:07:22,536 - ERROR - Write data dbresult error: b' ISO : An error occurred during send TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 143, in write_data_dbresult
+    client.db_write(plc.get("dbresult db number"), plc.get('dbresult data index'), bytearray_to_write)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during send TCP : Connection timed out'
+2024-03-18 11:11:27,482 - ERROR - b' ISO : Datasize passed to send/recv buffer is invalid'
+2024-03-18 11:11:27,482 - ERROR - Write data dbresult error: b' ISO : Datasize passed to send/recv buffer is invalid'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 145, in write_data_dbresult
+    client.db_write(plc.get("dbresult db number"), plc.get('dbresult data index'), bytearray_to_write)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : Datasize passed to send/recv buffer is invalid'
+2024-03-18 11:18:27,249 - ERROR - b' ISO : An error occurred during send TCP : Connection timed out'
+2024-03-18 11:18:27,249 - ERROR - Write data dbresult error: b' ISO : An error occurred during send TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 145, in write_data_dbresult
+    client.db_write(plc.get("dbresult db number"), plc.get('dbresult data index'), bytearray_to_write)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during send TCP : Connection timed out'
+2024-03-18 11:18:43,861 - ERROR - b' ISO : Datasize passed to send/recv buffer is invalid'
+2024-03-18 11:18:43,862 - ERROR - Write data dbresult error: b' ISO : Datasize passed to send/recv buffer is invalid'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 145, in write_data_dbresult
+    client.db_write(plc.get("dbresult db number"), plc.get('dbresult data index'), bytearray_to_write)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : Datasize passed to send/recv buffer is invalid'
+2024-03-18 11:20:08,806 - ERROR - b' ISO : Datasize passed to send/recv buffer is invalid'
+2024-03-18 11:20:08,806 - ERROR - Write data dbresult error: b' ISO : Datasize passed to send/recv buffer is invalid'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 145, in write_data_dbresult
+    client.db_write(plc.get("dbresult db number"), plc.get('dbresult data index'), bytearray_to_write)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : Datasize passed to send/recv buffer is invalid'
+2024-03-18 11:23:30,504 - ERROR - b' ISO : Datasize passed to send/recv buffer is invalid'
+2024-03-18 11:23:30,505 - ERROR - Write data dbresult error: b' ISO : Datasize passed to send/recv buffer is invalid'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 146, in write_data_dbresult
+    client.db_write(plc.get("dbresult db number"), plc.get('dbresult data index'), bytearray_to_write)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : Datasize passed to send/recv buffer is invalid'
+2024-03-18 11:28:18,348 - ERROR - b' ISO : Datasize passed to send/recv buffer is invalid'
+2024-03-18 11:28:18,348 - ERROR - Write data dbresult error: b' ISO : Datasize passed to send/recv buffer is invalid'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 147, in write_data_dbresult
+    client.db_write(plc.get("dbresult db number"), plc.get('dbresult data index'), bytearray_to_write)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : Datasize passed to send/recv buffer is invalid'
+2024-03-18 11:33:02,919 - ERROR - b' ISO : An error occurred during send TCP : Connection timed out'
+2024-03-18 11:33:02,919 - ERROR - Write data dbresult error: b' ISO : An error occurred during send TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 147, in write_data_dbresult
+    client.db_write(plc.get("dbresult db number"), plc.get('dbresult data index'), bytearray_to_write)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during send TCP : Connection timed out'
+2024-03-18 11:33:09,194 - ERROR - b' ISO : Datasize passed to send/recv buffer is invalid'
+2024-03-18 11:33:09,195 - ERROR - Write data dbresult error: b' ISO : Datasize passed to send/recv buffer is invalid'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 147, in write_data_dbresult
+    client.db_write(plc.get("dbresult db number"), plc.get('dbresult data index'), bytearray_to_write)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : Datasize passed to send/recv buffer is invalid'

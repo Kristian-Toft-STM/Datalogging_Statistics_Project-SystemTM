@@ -1,7 +1,7 @@
 import sqlite3
 import datetime
 import tzlocal
-from SQLiteRead import get_last_timestamp_from_table, table_exists, table_not_empty, any_table_exists
+from SQLiteRead import get_last_timestamp_from_table, table_exists, table_not_empty, any_table_exists, column_exists_in_table
 from json_functions import setup_get_sql_column_names_from_file, setup_file_column_names_dict_to_array, get_plc_from_file
 import logging
 
@@ -29,6 +29,7 @@ def insert_data_into_table(db_path, table_name, data, setup_file): # udvid til a
                 print("No data in table")
         else:
                 print("Table does not exist")
+        cursor. execute('VACUUM;')        
         cursor.close()
         conn.close()
 
@@ -47,7 +48,7 @@ def setup_sql_table_from_json(db_path, table_name, setup_file):
             if not any_table_exists(db_path):
                 # If the table does not exist, create it
                 print(f"Table {table_name} does not exist. Creating it...")
-                cursor.execute(f"CREATE TABLE {table_name} (Timestamp DATETIME DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (Timestamp))")
+                cursor.execute(f"CREATE TABLE {table_name} (TimeStamp DATETIME DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (TimeStamp))")
                 print(f"Table {table_name} created.")
             else:
                 print('Table name has changed, renaming table...')
@@ -64,9 +65,9 @@ def setup_sql_table_from_json(db_path, table_name, setup_file):
                     continue
                 for column_key in column_dict:
                     column_value = column_dict[column_key]
-                    cursor.execute(f"ALTER TABLE {table_name} ADD [{column_value}] INTEGER;")
+                    if not column_exists_in_table(db_path, table_name, column_value):                
+                        cursor.execute(f"ALTER TABLE {table_name} ADD [{column_value}] INTEGER;")
         else:
-
             return
 
         cursor.close()

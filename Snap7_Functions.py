@@ -2,7 +2,7 @@ import snap7
 import time
 from snap7 import util
 from SQLiteWrite import insert_data_into_table
-from SQLiteRead import get_log_data_within_range, get_number_of_rows_in_range
+from SQLiteRead import get_log_data_within_range, get_number_of_rows_in_range, get_seconds_in_range
 from json_functions import get_dbinsert_number_from_file, get_dbinsert_logging_trigger_index_from_file, get_dbinsert_data_index_from_file, get_ip_from_file, get_plc_from_file, setup_file_get_number_of_data_columns
 import logging
 
@@ -124,21 +124,23 @@ def write_data_dbresult(setup_file_name, sql_db_path, datetime_min_range, dateti
 
             plc = get_plc_from_file(setup_file_name)
             data = get_log_data_within_range(sql_db_path, 'Test_Table', datetime_min_range, datetime_max_range)
+            print(data)
                 
             if type(data) == int: 
                 bytearray_to_write = data.to_bytes(4, byteorder='big')
             elif type(data) == list: 
-                span = get_number_of_rows_in_range(sql_db_path, 'Test_Table', datetime_min_range, datetime_max_range)
+                time_sec = get_seconds_in_range(sql_db_path, 'Test_Table', datetime_min_range, datetime_max_range)
                 bytearray_to_write = bytearray()
                 for num in data:
                     bytearray_to_write += num.to_bytes(4, byteorder='big')
-                spanbyte_to_write = span.to_bytes(4, byteorder='big')       
+                time_sec_byte_to_write = time_sec.to_bytes(4, byteorder='big')
+          
             else:
                 print('write_data_dbresult: unsupported datatype')
                 return     
                 
             client.db_write(plc.get("dbresult db number"), plc.get('dbresult data index'), bytearray_to_write)
-            client.db_write(plc.get("dbresult db number"), plc.get('dbresult span index'), spanbyte_to_write)
+            client.db_write(plc.get("dbresult db number"), plc.get('dbresult time_sec index'), time_sec_byte_to_write)
             return bytearray_to_write            
 
         except Exception as e:

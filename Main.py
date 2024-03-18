@@ -1,6 +1,6 @@
 # sub-script imports
 from SQLiteWrite import insert_data_into_table, delete_table_data, drop_table, setup_sql_table_from_json, sql_rename_column, sql_drop_column, sql_add_column
-from SQLiteRead import get_all_data_from_table, get_log_timestamps_within_range, get_log_data_within_range, get_log_data_within_range_sql_sum, any_table_exists
+from SQLiteRead import get_all_data_from_table, get_log_timestamps_within_range, get_log_data_within_range, get_log_data_within_range_sql_sum, any_table_exists, get_seconds_in_range, get_db_size
 from OPCUA_Functions import connect_opcua_client, disconnect_opcua_client, read_node_value, monitor_and_get_data_on_trigger_opcua, monitor_and_insert_data_opcua
 from Snap7_Functions import connect_snap7_client, disconnect_snap7_client, get_data_from_plc_db, get_data_array_from_plc_db, monitor_and_get_data_on_trigger_snap7, monitor_and_insert_data_snap7, write_data_dbresult
 from json_functions import setup_get_sql_column_names_from_file, setup_file_column_names_dict_to_array, get_dbinsert_number_from_file, get_plc_from_file, setup_file_get_number_of_data_columns, read_setup_file, setup_file_keys_changed, setup_file_rename_column, setup_file_delete_column, setup_file_add_column, setup_file_delete_or_rename, save_previous_setup_step7, load_previous_setup_step7
@@ -13,6 +13,7 @@ import pytz
 import os
 import logging
 import inspect
+import csv
 
 # classes
 class TableNotFoundError(Exception):
@@ -39,14 +40,14 @@ previous_setup_file = None
 local_tz = get_localzone()
 test_min_range = datetime.datetime(2024,3,12,13,0,0).astimezone(local_tz)
 test_max_range = datetime.datetime(2024,3,30,23,0,0).astimezone(local_tz)
+test_tid = any
 #test_max_range = datetime.datetime.now()
          
 # main functions
 def step7_or_opcua_switch(file_to_run):
-    script_directory = os.path.dirname(__file__)
-    directory_contents = os.listdir(script_directory)
     try:
-        
+        script_directory = os.path.dirname(__file__)
+        directory_contents = os.listdir(script_directory)
         if 'setup_opcua.json' in directory_contents and 'setup_step7.json' in directory_contents:
             if file_to_run == 'setup_step7.json':
                 return 1
@@ -90,7 +91,10 @@ def main_script_snap7_start(sql_db_path, setup_file_step7): # current standard f
         if table_name is None:
            raise TableNotFoundError(f"Table name not found in setup file: {setup_file_step7}")
         
+        #initialization
         setup_sql_table_from_json(sql_db_path, table_name, setup_file_step7)
+        
+        #cycle
         monitor_and_insert_data_snap7(sql_db_path, table_name, setup_file_step7, test_min_range, test_max_range)
  
     except TableNotFoundError as e:
@@ -171,8 +175,31 @@ def delete_datapoint(setup_file_name, datapoint_key, sql_db_path): # maybe make 
         logging.error(f"Delete datapoint error: {e}", exc_info=True)
 
 
+def export_sql_to_csv(db_path, table_name):
+    try:    
+
+        table_data = get_all_data_from_table(db_path, table_name)
+        filename = 'raw_data.csv'
+
+        # Writing to the CSV file
+        with open(filename, 'w', newline='') as csvfile:
+            writer = csv.writer(csvfile)
+            for row in table_data:
+                writer.writerow(row)
+        return
+    
+    except Exception as e:
+        print(e)
+        logging.error(f"Export sql to csv error: {e}", exc_info=True)
 
 main_script(setup_file_step7)
+
+print(get_db_size(sql_db_path))
+print(type(get_db_size(sql_db_path)))
+
+#export_sql_to_csv(sql_db_path, 'Test_Table')
+
+#print(get_seconds_in_range(sql_db_path, 'Test_Table', test_min_range, test_max_range))
 
 #rename_datapoint(setup_file_step7, 'Column 3', 'rename_test', sql_db_path)
 #delete_datapoint(setup_file_step7, 'Column 3', sql_db_path)
@@ -209,6 +236,7 @@ main_script(setup_file_step7)
 #print(get_log_data_within_range(sql_db_path, 'Test_Table', test_min_range, test_max_range))
 
 #write_data_dbresult(setup_file_step7, sql_db_path, test_min_range, test_max_range)    
+
 #setup_sql_table_from_json(sql_db_path, 'Test_Table', setup_file_step7)
         
 #print(setup_file_get_number_of_data_columns(setup_file_step7))

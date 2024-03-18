@@ -4,6 +4,14 @@ from datetime import datetime
 from tzlocal import get_localzone
 from json_functions import get_plc_from_file, setup_file_column_names_dict_to_array, setup_get_sql_column_names_from_file
 import logging
+import os
+
+class SQLDatabaseManager:
+    def __init__(self, db_path, table_name, setup_file):
+        self.db_path = db_path
+        self.table_name = table_name
+        self.setup_file = setup_file
+    
 
 def table_exists(db_path, table_name):
     try:
@@ -25,7 +33,6 @@ def table_exists(db_path, table_name):
 
 
 def any_table_exists(db_path):
-    
     try:
 
         conn = sqlite3.connect(db_path)
@@ -262,4 +269,42 @@ def get_number_of_rows_in_range(db_path, table, min_range, max_range):
     except Exception as e:
         print(e)
         logging.error(f"Get number of rows in range error: {e}", exc_info=True) 
+
+def get_seconds_in_range(db_path, table, min_range, max_range):
+    try:
+
+        timestamp_array = get_log_timestamps_within_range(db_path, table, min_range, max_range)
+        first_timestamp = datetime.strptime(timestamp_array[0]  , "%Y-%m-%d %H:%M:%S")
+        last_timestamp = datetime.strptime(timestamp_array[-1]  , "%Y-%m-%d %H:%M:%S")  
+        time_delta = last_timestamp - first_timestamp
+        time_delta_seconds = time_delta.total_seconds()
+
+        return int(time_delta_seconds)
+
+    except Exception as e:
+        print(e)
+        logging.error(f"Get seconds in range error: {e}", exc_info=True) 
+
+def column_exists_in_table(db_path, table, target_column):
+    try:
+
+        conn = sqlite3.connect(f'{db_path}')
+        cursor = conn.cursor()
+
+        cursor.execute(f'SELECT * FROM {table} LIMIT 0')
+        columns = [description[0] for description in cursor.description]
+
+        for column in columns:
+            if column == target_column:
+                cursor.close()
+                return True
+            
+        cursor.close()
+        return False
     
+    except Exception as e:
+        print(e)
+        logging.error(f"Column exists in table error: {e}", exc_info=True)     
+
+def get_db_size(path_to_db):
+    return os.path.getsize(path_to_db)
