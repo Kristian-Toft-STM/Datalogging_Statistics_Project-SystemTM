@@ -57,7 +57,7 @@ def get_data_array_from_plc_db(db_number, client, setup_file_step7):
         
         for I in range(0, len(data), 4):
             if I + 4 <= len(data):   
-                data_fixed = util.get_dint(data,I)           
+                data_fixed = util.get_dint(data,I)    
                 array.append(data_fixed) 
             else:
                 break  
@@ -100,36 +100,31 @@ def monitor_and_get_data_on_trigger_snap7(client, setup_file_step7):
 def monitor_and_insert_data_snap7(sql_db_path, table_name, setup_file_step7, test_min_range, test_max_range):               
     try:    
 
-        monitor_count = 1
-        while monitor_count <= 10:
             client = connect_snap7_client(setup_file_step7)
             data_array = monitor_and_get_data_on_trigger_snap7(client, setup_file_step7)
 
             if data_array is not None:  
-                insert_data_into_table(sql_db_path, table_name, data_array, setup_file_step7)   
-
-            write_data_dbresult(setup_file_step7, sql_db_path, test_min_range, test_max_range)  
-
-            print(f"Monitor count: {monitor_count}")
-            monitor_count += 1
+                insert_data_into_table(sql_db_path, table_name, data_array, setup_file_step7)  
+                
+            write_data_dbresult(setup_file_step7, sql_db_path, table_name, test_min_range, test_max_range)  
 
     except Exception as e:
         print(e)
         logging.error(f"Monitor and insert data snap7 error: {e}", exc_info=True)    
 
 
-def write_data_dbresult(setup_file_name, sql_db_path, datetime_min_range, datetime_max_range):
+def write_data_dbresult(setup_file_name, sql_db_path, table_name, datetime_min_range, datetime_max_range):
     try:    
         try:
 
             plc = get_plc_from_file(setup_file_name)
-            data = get_log_data_within_range(sql_db_path, 'Test_Table', datetime_min_range, datetime_max_range)
+            data = get_log_data_within_range(sql_db_path, table_name, datetime_min_range, datetime_max_range)
             print(data)
                 
             if type(data) == int: 
                 bytearray_to_write = data.to_bytes(4, byteorder='big')
             elif type(data) == list: 
-                time_sec = get_seconds_in_range(sql_db_path, 'Test_Table', datetime_min_range, datetime_max_range)
+                time_sec = get_seconds_in_range(sql_db_path, table_name, datetime_min_range, datetime_max_range)
                 bytearray_to_write = bytearray()
                 for num in data:
                     bytearray_to_write += num.to_bytes(4, byteorder='big')

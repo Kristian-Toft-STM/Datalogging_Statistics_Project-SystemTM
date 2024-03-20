@@ -70,7 +70,7 @@ def monitor_and_get_data_on_trigger_opcua(client, trigger_node_id, data_node_id)
         disconnect_opcua_client(client)  # Disconnect from the OPC UA server when the loop stops      
 
 
-def monitor_and_insert_data_opcua(sql_db_path, plc_trigger_id, test_table, data_node_id, setup_file_opcua):        
+def monitor_and_insert_data_opcua(sql_db_path, plc_trigger_id, table_name, data_node_id, setup_file_opcua):        
     try:   
         
         monitor_count = 1
@@ -80,7 +80,7 @@ def monitor_and_insert_data_opcua(sql_db_path, plc_trigger_id, test_table, data_
             data_array = monitor_and_get_data_on_trigger_opcua(client, plc_trigger_id, data_node_id)
 
             if data_array is not None:
-                insert_data_into_table(sql_db_path, test_table, data_array, setup_file_opcua)   
+                insert_data_into_table(sql_db_path, table_name, data_array, setup_file_opcua)   
 
             print(f"Monitor count: {monitor_count}")
             monitor_count += 1

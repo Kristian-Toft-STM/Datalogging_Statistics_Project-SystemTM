@@ -1,9 +1,10 @@
 # sub-script imports
-from SQLiteWrite import insert_data_into_table, delete_table_data, drop_table, setup_sql_table_from_json, sql_rename_column, sql_drop_column, sql_add_column
+from SQLiteWrite import insert_data_into_table, delete_table_data, drop_table, setup_sql_table_from_json, sql_rename_column, sql_drop_column, sql_add_column, manage_db_size
 from SQLiteRead import get_all_data_from_table, get_log_timestamps_within_range, get_log_data_within_range, get_log_data_within_range_sql_sum, any_table_exists, get_seconds_in_range, get_db_size
 from OPCUA_Functions import connect_opcua_client, disconnect_opcua_client, read_node_value, monitor_and_get_data_on_trigger_opcua, monitor_and_insert_data_opcua
 from Snap7_Functions import connect_snap7_client, disconnect_snap7_client, get_data_from_plc_db, get_data_array_from_plc_db, monitor_and_get_data_on_trigger_snap7, monitor_and_insert_data_snap7, write_data_dbresult
 from json_functions import setup_get_sql_column_names_from_file, setup_file_column_names_dict_to_array, get_dbinsert_number_from_file, get_plc_from_file, setup_file_get_number_of_data_columns, read_setup_file, setup_file_keys_changed, setup_file_rename_column, setup_file_delete_column, setup_file_add_column, setup_file_delete_or_rename, save_previous_setup_step7, load_previous_setup_step7
+from Misc import csv_export_timer, export_sql_to_csv
 
 # library imports
 from opcua import ua
@@ -13,7 +14,8 @@ import pytz
 import os
 import logging
 import inspect
-import csv
+import asyncio
+from multiprocessing import Process
 
 # classes
 class TableNotFoundError(Exception):
@@ -42,8 +44,33 @@ test_min_range = datetime.datetime(2024,3,12,13,0,0).astimezone(local_tz)
 test_max_range = datetime.datetime(2024,3,30,23,0,0).astimezone(local_tz)
 test_tid = any
 #test_max_range = datetime.datetime.now()
+
+setup_file_to_run = ''
+table_name = ''
          
 # main functions
+def start_init():
+    global setup_file_to_run
+    setup_file_to_run = step7_or_opcua_switch(setup_file_step7)
+
+    init()
+    
+    return
+
+
+def start_main():
+    while True:
+        main_script_process = Process(target=main_script)
+        #csv_export_timer_process = Process(target=csv_export_timer, args=(sql_db_path, table_name))
+
+        main_script_process.start()
+        #csv_export_timer_process.start()
+
+        #main_script()
+        #csv_export_timer(sql_db_path, table_name)
+        return
+
+
 def step7_or_opcua_switch(file_to_run):
     try:
         script_directory = os.path.dirname(__file__)
@@ -81,33 +108,24 @@ def main_script_opcua_start(plc_trigger_id, data_node_id, sql_db_path, setup_fil
 
 def main_script_snap7_start(sql_db_path, setup_file_step7): # current standard for error handling
     try:
-        
-        global previous_setup_file
-        setup = read_setup_file(setup_file_step7)
-        
-        previous_setup_file = setup
-       
-        table_name = get_plc_from_file(setup_file_step7).get('table name')
-        if table_name is None:
-           raise TableNotFoundError(f"Table name not found in setup file: {setup_file_step7}")
-        
-        #initialization
-        setup_sql_table_from_json(sql_db_path, table_name, setup_file_step7)
-        
-        #cycle
-        monitor_and_insert_data_snap7(sql_db_path, table_name, setup_file_step7, test_min_range, test_max_range)
- 
-    except TableNotFoundError as e:
-        logging.error(e)
+
+        monitor_count = 1
+        while monitor_count <= 10:
+
+            monitor_and_insert_data_snap7(sql_db_path, table_name, setup_file_step7, test_min_range, test_max_range)
+
+            print(f"Monitor count: {monitor_count}")
+            monitor_count += 1
+
     except Exception as e:
         print(e)
         logging.error(f"Main snap7 script error: {e}", exc_info=True)
 
 
-def main_script(file_to_run=''):
+def main_script():
     try:    
 
-        match step7_or_opcua_switch(file_to_run):
+        match setup_file_to_run:
             case 0:
                 print('No setup file found')
             case 1:
@@ -124,78 +142,75 @@ def main_script(file_to_run=''):
         logging.error(f"Main script error: {e}", exc_info=True)
 
 
-def add_datapoint(setup_file_name, datapoint_key, datapoint_key_value, sql_db_path, position): # maybe make a new script for this and similar functions 
-    try:
-        
-        table = get_plc_from_file(setup_file_step7).get('table name')
-
-        setup_file_add_column(setup_file_name, datapoint_key, datapoint_key_value, position)
-        sql_add_column(sql_db_path, table, datapoint_key_value)
-        return
-
-    except Exception as e:
-        print(e)
-        logging.error(f"Add datapoint error: {e}", exc_info=True)
-
-
-def rename_datapoint(setup_file_name, datapoint_key, datapoint_key_value, sql_db_path): # maybe make a new script for this and similar functions 
-    try:
-        
-        table = get_plc_from_file(setup_file_step7).get('table name')
-        columns = get_plc_from_file(setup_file_step7).get('column names')
-
-        for column_dict in columns:
-            if datapoint_key in column_dict:
-                column = column_dict[datapoint_key]
-
-        setup_file_rename_column(setup_file_name, datapoint_key, datapoint_key_value)
-        sql_rename_column(sql_db_path, table, column, datapoint_key_value)
-        return
-
-    except Exception as e:
-        print(e)
-        logging.error(f"Rename datapoint error: {e}", exc_info=True)
-
-
-def delete_datapoint(setup_file_name, datapoint_key, sql_db_path): # maybe make a new script for this and similar functions 
-    try:
-        table = get_plc_from_file(setup_file_step7).get('table name')
-        columns = get_plc_from_file(setup_file_step7).get('column names')
-
-        for column_dict in columns:
-            if datapoint_key in column_dict:
-                column = column_dict[datapoint_key]
-
-        setup_file_delete_column(setup_file_name, datapoint_key)
-        sql_drop_column(sql_db_path, table, column)    
-        return 
-      
-    except Exception as e:
-        print(e)
-        logging.error(f"Delete datapoint error: {e}", exc_info=True)
-
-
-def export_sql_to_csv(db_path, table_name):
+def init():
     try:    
 
-        table_data = get_all_data_from_table(db_path, table_name)
-        filename = 'raw_data.csv'
+        match setup_file_to_run:
+            case 0:
+                print('No setup file found')
+            case 1:
+                initialization_step7()
+            case 2:
+                initialization_opcua()
+            case 3:
+                print('Multiple setup files found and no file specified.')    
+            case _:
+                print('Case mismatch')
 
-        # Writing to the CSV file
-        with open(filename, 'w', newline='') as csvfile:
-            writer = csv.writer(csvfile)
-            for row in table_data:
-                writer.writerow(row)
-        return
-    
     except Exception as e:
         print(e)
-        logging.error(f"Export sql to csv error: {e}", exc_info=True)
+        logging.error(f"Initialization error: {e}", exc_info=True)   
 
-main_script(setup_file_step7)
 
-print(get_db_size(sql_db_path))
-print(type(get_db_size(sql_db_path)))
+def initialization_step7():
+    try:
+        global previous_setup_file
+        global table_name
+        setup = read_setup_file(setup_file_step7)
+        previous_setup_file = setup
+        table_name = get_plc_from_file(setup_file_step7).get('table name')
+
+        if table_name is None:
+            raise TableNotFoundError(f"Table name not found in setup file: {setup_file_step7}")
+
+        setup_sql_table_from_json(sql_db_path, table_name, setup_file_step7)
+
+        return
+
+    except TableNotFoundError as e:
+        logging.error(e)
+
+
+def initialization_opcua():
+    return
+
+
+def reinitialize_setup():
+    try: 
+       
+        delete_table_data(sql_db_path, table_name)
+        drop_table(table_name)
+        init()
+        return  
+
+    except Exception as e:
+        print(e)
+        logging.error(f"Reinitialize setup error: {e}", exc_info=True)     
+
+
+start_init()
+#if __name__ == '__main__':
+    #start_main()
+
+#print(get_db_size(sql_db_path))
+
+#print(get_db_size(sql_db_path))
+
+#csv_export_timer(sql_db_path, table_name)
+
+#manage_db_size(sql_db_path)
+
+#main_script(setup_file_step7)
 
 #export_sql_to_csv(sql_db_path, 'Test_Table')
 

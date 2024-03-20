@@ -1,0 +1,45 @@
+{
+    "PLC_1": [
+        {
+            "ip address": "172.31.1.60",
+            "rack": 0,
+            "slot": 1,
+            "tcpport": 102,
+            "dbinsert db number": 10,
+            "dbinsert_logging_trigger index": 0,
+            "dbresult db number": 11,
+            "dbresult time_sec index": 0, 
+            "dbresult data index": 4,
+            "table name": "Test_Table",
+            "data columns": [
+                {
+                    "column 1": "TimeStamp"
+                },
+                {
+                    "column 2": {"name": "Test_Data_Column_1", "index": 4}
+                },
+                {
+                    "column 3": {"name": "add_test", "index": 8}
+                },
+                {
+                    "column 4": {"name": "Test_Data_Column_3", "index": 12}
+                },
+                {
+                    "column 5": {"name": "Motor 1", "index": 16}
+                },
+                {
+                    "column 6": {"name": "Test_Data_Column_5", "index": 20}
+                },
+                {
+                    "column 7": {"name": "Test_Data_Column_6", "index": 24}
+                },
+                {
+                    "column 8": {"name": "Test_Data_Column_7", "index": 28}
+                },
+                {
+                    "column 9": {"name": "Test_Data_Column_8", "index": 32}
+                }
+            ]
+        }
+    ]
+}

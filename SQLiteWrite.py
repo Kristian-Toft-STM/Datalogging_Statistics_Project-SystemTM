@@ -1,7 +1,7 @@
 import sqlite3
 import datetime
 import tzlocal
-from SQLiteRead import get_last_timestamp_from_table, table_exists, table_not_empty, any_table_exists, column_exists_in_table
+from SQLiteRead import get_last_timestamp_from_table, table_exists, table_not_empty, any_table_exists, column_exists_in_table, get_db_size
 from json_functions import setup_get_sql_column_names_from_file, setup_file_column_names_dict_to_array, get_plc_from_file
 import logging
 
@@ -22,6 +22,8 @@ def insert_data_into_table(db_path, table_name, data, setup_file): # udvid til a
 
         cursor.execute(insert_query, data)
         conn.commit()
+        cursor. execute('VACUUM;')   
+        
         if (table_exists(db_path, table_name)):
             if (table_not_empty(db_path, table_name)):
                 print(f"Data succesfully logged to SQL ({get_last_timestamp_from_table(db_path, table_name)})")
@@ -29,7 +31,7 @@ def insert_data_into_table(db_path, table_name, data, setup_file): # udvid til a
                 print("No data in table")
         else:
                 print("Table does not exist")
-        cursor. execute('VACUUM;')        
+             
         cursor.close()
         conn.close()
 
@@ -172,3 +174,20 @@ def sql_drop_column(db_path, table, column):
         print(e)
         logging.error(f"SQL drop column error: {e}", exc_info=True)    
 
+def manage_db_size(db_path, table_name):
+    try: 
+                                  #100000000                      
+        if get_db_size(db_path) >= 10:
+            conn = sqlite3.connect(f'{db_path}')
+            cursor = conn.cursor()
+
+            cursor.execute(f"DELETE FROM {table_name} WHERE TimeStamp IN (SELECT TimeStamp FROM {table_name} ORDER BY TimeStamp ASC LIMIT 10)")
+
+            conn.commit()
+            cursor.close()
+            conn.close()    
+        return  
+
+    except Exception as e:
+        print(e)
+        logging.error(f"manage database size error: {e}", exc_info=True)  

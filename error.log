@@ -239,3 +239,365 @@ Traceback (most recent call last):
   File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
     raise RuntimeError(error)
 RuntimeError: b' ISO : Datasize passed to send/recv buffer is invalid'
+2024-03-18 15:18:32,251 - ERROR - Insert data into table error: cannot VACUUM from within a transaction
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 24, in insert_data_into_table
+    cursor. execute('VACUUM;')
+sqlite3.OperationalError: cannot VACUUM from within a transaction
+2024-03-18 15:18:42,483 - ERROR - Insert data into table error: cannot VACUUM from within a transaction
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 24, in insert_data_into_table
+    cursor. execute('VACUUM;')
+sqlite3.OperationalError: cannot VACUUM from within a transaction
+2024-03-18 15:18:56,013 - ERROR - Insert data into table error: database is locked
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 23, in insert_data_into_table
+    cursor.execute(insert_query, data)
+sqlite3.OperationalError: database is locked
+2024-03-18 15:19:03,871 - ERROR - Insert data into table error: database is locked
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 23, in insert_data_into_table
+    cursor.execute(insert_query, data)
+sqlite3.OperationalError: database is locked
+2024-03-18 15:19:10,944 - ERROR - Insert data into table error: database is locked
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 23, in insert_data_into_table
+    cursor.execute(insert_query, data)
+sqlite3.OperationalError: database is locked
+2024-03-18 15:19:18,430 - ERROR - Insert data into table error: database is locked
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 23, in insert_data_into_table
+    cursor.execute(insert_query, data)
+sqlite3.OperationalError: database is locked
+2024-03-18 15:19:26,669 - ERROR - Insert data into table error: database is locked
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 23, in insert_data_into_table
+    cursor.execute(insert_query, data)
+sqlite3.OperationalError: database is locked
+2024-03-18 15:19:35,731 - ERROR - Insert data into table error: database is locked
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 23, in insert_data_into_table
+    cursor.execute(insert_query, data)
+sqlite3.OperationalError: database is locked
+2024-03-18 15:19:45,689 - ERROR - Insert data into table error: database is locked
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 23, in insert_data_into_table
+    cursor.execute(insert_query, data)
+sqlite3.OperationalError: database is locked
+2024-03-18 15:19:56,658 - ERROR - Insert data into table error: database is locked
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 23, in insert_data_into_table
+    cursor.execute(insert_query, data)
+sqlite3.OperationalError: database is locked
+2024-03-18 15:33:54,826 - ERROR - manage database size error: unrecognized token: "{"
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 184, in manage_db_size
+    cursor.execute("DELETE FROM {'Test_Table'} ORDER BY TimeStamp DESC LIMIT 10")
+sqlite3.OperationalError: unrecognized token: "{"
+2024-03-18 15:34:10,237 - ERROR - manage database size error: near "ORDER": syntax error
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 184, in manage_db_size
+    cursor.execute("DELETE FROM 'Test_Table' ORDER BY TimeStamp DESC LIMIT 10")
+sqlite3.OperationalError: near "ORDER": syntax error
+2024-03-18 15:34:44,660 - ERROR - manage database size error: near "ORDER": syntax error
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 184, in manage_db_size
+    cursor.execute("DELETE FROM 'Test_Table' ORDER BY TimeStamp DESC LIMIT 10")
+sqlite3.OperationalError: near "ORDER": syntax error
+2024-03-18 15:35:04,419 - ERROR - manage database size error: near "ORDER": syntax error
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 184, in manage_db_size
+    cursor.execute("DELETE FROM Test_Table ORDER BY TimeStamp DESC LIMIT 10")
+sqlite3.OperationalError: near "ORDER": syntax error
+2024-03-19 07:47:35,340 - ERROR - Read setup file error: [Errno 2] No such file or directory: '1'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\json_functions.py", line 7, in read_setup_file
+    setup_file = open(f'{setup_file_name}')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '1'
+2024-03-19 07:47:35,345 - ERROR - Get plc from file error: 'NoneType' object has no attribute 'get'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\json_functions.py", line 21, in get_plc_from_file
+    plc1 = setup.get('PLC_1')
+           ^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+2024-03-19 07:47:35,345 - ERROR - Setup get sql column names from file error: 'NoneType' object has no attribute 'get'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\json_functions.py", line 80, in setup_get_sql_column_names_from_file
+    columns = plc1.get('column names')
+              ^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+2024-03-19 07:47:35,345 - ERROR - Setup sql table from json error: 'NoneType' object is not iterable
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 65, in setup_sql_table_from_json
+    for I, column_dict in enumerate(json_setup_column_names):
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+2024-03-19 07:47:38,285 - ERROR - Insert data into table error: table Test_Table has no column named Test_Data_Column_1
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 23, in insert_data_into_table
+    cursor.execute(insert_query, data)
+sqlite3.OperationalError: table Test_Table has no column named Test_Data_Column_1
+2024-03-19 07:47:38,285 - ERROR - Get seconds in range error: list index out of range
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 277, in get_seconds_in_range
+    first_timestamp = datetime.strptime(timestamp_array[0]  , "%Y-%m-%d %H:%M:%S")
+                                        ~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+2024-03-19 07:47:38,290 - ERROR - Write data dbresult error: 'NoneType' object has no attribute 'to_bytes'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 131, in write_data_dbresult
+    time_sec_byte_to_write = time_sec.to_bytes(4, byteorder='big')
+                             ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'to_bytes'
+2024-03-19 07:47:46,034 - ERROR - Insert data into table error: table Test_Table has no column named Test_Data_Column_1
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 23, in insert_data_into_table
+    cursor.execute(insert_query, data)
+sqlite3.OperationalError: table Test_Table has no column named Test_Data_Column_1
+2024-03-19 07:47:46,034 - ERROR - Get seconds in range error: list index out of range
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 277, in get_seconds_in_range
+    first_timestamp = datetime.strptime(timestamp_array[0]  , "%Y-%m-%d %H:%M:%S")
+                                        ~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+2024-03-19 07:47:46,035 - ERROR - Write data dbresult error: 'NoneType' object has no attribute 'to_bytes'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 131, in write_data_dbresult
+    time_sec_byte_to_write = time_sec.to_bytes(4, byteorder='big')
+                             ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'to_bytes'
+2024-03-19 07:47:52,096 - ERROR - Read setup file error: [Errno 2] No such file or directory: '1'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\json_functions.py", line 7, in read_setup_file
+    setup_file = open(f'{setup_file_name}')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '1'
+2024-03-19 07:47:52,097 - ERROR - Get plc from file error: 'NoneType' object has no attribute 'get'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\json_functions.py", line 21, in get_plc_from_file
+    plc1 = setup.get('PLC_1')
+           ^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+2024-03-19 07:47:52,097 - ERROR - Setup get sql column names from file error: 'NoneType' object has no attribute 'get'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\json_functions.py", line 80, in setup_get_sql_column_names_from_file
+    columns = plc1.get('column names')
+              ^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+2024-03-19 07:47:52,098 - ERROR - Setup sql table from json error: 'NoneType' object is not iterable
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 65, in setup_sql_table_from_json
+    for I, column_dict in enumerate(json_setup_column_names):
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+2024-03-19 07:47:54,565 - ERROR - Insert data into table error: table Test_Table has no column named Test_Data_Column_1
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 23, in insert_data_into_table
+    cursor.execute(insert_query, data)
+sqlite3.OperationalError: table Test_Table has no column named Test_Data_Column_1
+2024-03-19 07:47:54,567 - ERROR - Get seconds in range error: list index out of range
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 277, in get_seconds_in_range
+    first_timestamp = datetime.strptime(timestamp_array[0]  , "%Y-%m-%d %H:%M:%S")
+                                        ~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+2024-03-19 07:47:54,567 - ERROR - Write data dbresult error: 'NoneType' object has no attribute 'to_bytes'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 131, in write_data_dbresult
+    time_sec_byte_to_write = time_sec.to_bytes(4, byteorder='big')
+                             ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'to_bytes'
+2024-03-19 07:48:03,922 - ERROR - Insert data into table error: table Test_Table has no column named Test_Data_Column_1
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 23, in insert_data_into_table
+    cursor.execute(insert_query, data)
+sqlite3.OperationalError: table Test_Table has no column named Test_Data_Column_1
+2024-03-19 07:48:03,924 - ERROR - Get seconds in range error: list index out of range
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 277, in get_seconds_in_range
+    first_timestamp = datetime.strptime(timestamp_array[0]  , "%Y-%m-%d %H:%M:%S")
+                                        ~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+2024-03-19 07:48:03,924 - ERROR - Write data dbresult error: 'NoneType' object has no attribute 'to_bytes'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 131, in write_data_dbresult
+    time_sec_byte_to_write = time_sec.to_bytes(4, byteorder='big')
+                             ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'to_bytes'
+2024-03-19 07:52:11,107 - ERROR - Read setup file error: [Errno 2] No such file or directory: '1'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\json_functions.py", line 7, in read_setup_file
+    setup_file = open(f'{setup_file_name}')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '1'
+2024-03-19 07:52:11,107 - ERROR - Get plc from file error: 'NoneType' object has no attribute 'get'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\json_functions.py", line 21, in get_plc_from_file
+    plc1 = setup.get('PLC_1')
+           ^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+2024-03-19 07:52:11,109 - ERROR - Setup get sql column names from file error: 'NoneType' object has no attribute 'get'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\json_functions.py", line 80, in setup_get_sql_column_names_from_file
+    columns = plc1.get('column names')
+              ^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+2024-03-19 07:52:11,109 - ERROR - Setup sql table from json error: 'NoneType' object is not iterable
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 65, in setup_sql_table_from_json
+    for I, column_dict in enumerate(json_setup_column_names):
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+2024-03-19 07:52:11,140 - ERROR - Insert data into table error: table Test_Table has no column named Test_Data_Column_1
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 23, in insert_data_into_table
+    cursor.execute(insert_query, data)
+sqlite3.OperationalError: table Test_Table has no column named Test_Data_Column_1
+2024-03-19 07:52:11,142 - ERROR - Get seconds in range error: list index out of range
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 277, in get_seconds_in_range
+    first_timestamp = datetime.strptime(timestamp_array[0]  , "%Y-%m-%d %H:%M:%S")
+                                        ~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+2024-03-19 07:52:11,143 - ERROR - Write data dbresult error: 'NoneType' object has no attribute 'to_bytes'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 131, in write_data_dbresult
+    time_sec_byte_to_write = time_sec.to_bytes(4, byteorder='big')
+                             ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'to_bytes'
+2024-03-19 07:52:21,140 - ERROR - Insert data into table error: table Test_Table has no column named Test_Data_Column_1
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 23, in insert_data_into_table
+    cursor.execute(insert_query, data)
+sqlite3.OperationalError: table Test_Table has no column named Test_Data_Column_1
+2024-03-19 07:52:21,142 - ERROR - Get seconds in range error: list index out of range
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 277, in get_seconds_in_range
+    first_timestamp = datetime.strptime(timestamp_array[0]  , "%Y-%m-%d %H:%M:%S")
+                                        ~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+2024-03-19 07:52:21,142 - ERROR - Write data dbresult error: 'NoneType' object has no attribute 'to_bytes'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 131, in write_data_dbresult
+    time_sec_byte_to_write = time_sec.to_bytes(4, byteorder='big')
+                             ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'to_bytes'
+2024-03-19 07:55:01,327 - ERROR - Read setup file error: [Errno 2] No such file or directory: "{'PLC_1': [{'ip address': '172.31.1.60', 'rack': 0, 'slot': 1, 'tcpport': 102, 'dbinsert db number': 10, 'dbinsert_logging_trigger index': 0, 'dbinsert data index': 4, 'dbresult db number': 11, 'dbresult time_sec index': 0, 'dbresult data index': 4, 'table name': 'Test_Table', 'column names': [{'column 1': 'TimeStamp'}, {'column 2': 'Test_Data_Column_1'}, {'column 3': 'add_test'}, {'column 4': 'Test_Data_Column_3'}, {'column 5': 'Motor 1'}, {'column 6': 'Test_Data_Column_5'}, {'column 7': 'Test_Data_Column_6'}, {'column 8': 'Test_Data_Column_7'}, {'column 9': 'Test_Data_Column_8'}]}]}"
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\json_functions.py", line 7, in read_setup_file
+    setup_file = open(f'{setup_file_name}')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: "{'PLC_1': [{'ip address': '172.31.1.60', 'rack': 0, 'slot': 1, 'tcpport': 102, 'dbinsert db number': 10, 'dbinsert_logging_trigger index': 0, 'dbinsert data index': 4, 'dbresult db number': 11, 'dbresult time_sec index': 0, 'dbresult data index': 4, 'table name': 'Test_Table', 'column names': [{'column 1': 'TimeStamp'}, {'column 2': 'Test_Data_Column_1'}, {'column 3': 'add_test'}, {'column 4': 'Test_Data_Column_3'}, {'column 5': 'Motor 1'}, {'column 6': 'Test_Data_Column_5'}, {'column 7': 'Test_Data_Column_6'}, {'column 8': 'Test_Data_Column_7'}, {'column 9': 'Test_Data_Column_8'}]}]}"
+2024-03-19 07:55:01,327 - ERROR - Get plc from file error: 'NoneType' object has no attribute 'get'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\json_functions.py", line 21, in get_plc_from_file
+    plc1 = setup.get('PLC_1')
+           ^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+2024-03-19 07:55:01,327 - ERROR - Setup get sql column names from file error: 'NoneType' object has no attribute 'get'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\json_functions.py", line 80, in setup_get_sql_column_names_from_file
+    columns = plc1.get('column names')
+              ^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+2024-03-19 07:55:01,328 - ERROR - Setup sql table from json error: 'NoneType' object is not iterable
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 65, in setup_sql_table_from_json
+    for I, column_dict in enumerate(json_setup_column_names):
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+2024-03-19 07:55:01,355 - ERROR - Insert data into table error: table Test_Table has no column named Test_Data_Column_1
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 23, in insert_data_into_table
+    cursor.execute(insert_query, data)
+sqlite3.OperationalError: table Test_Table has no column named Test_Data_Column_1
+2024-03-19 07:55:01,356 - ERROR - Get seconds in range error: list index out of range
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 277, in get_seconds_in_range
+    first_timestamp = datetime.strptime(timestamp_array[0]  , "%Y-%m-%d %H:%M:%S")
+                                        ~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+2024-03-19 07:55:01,357 - ERROR - Write data dbresult error: 'NoneType' object has no attribute 'to_bytes'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 131, in write_data_dbresult
+    time_sec_byte_to_write = time_sec.to_bytes(4, byteorder='big')
+                             ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'to_bytes'
+2024-03-19 07:55:13,908 - ERROR - Read setup file error: [Errno 2] No such file or directory: "{'PLC_1': [{'ip address': '172.31.1.60', 'rack': 0, 'slot': 1, 'tcpport': 102, 'dbinsert db number': 10, 'dbinsert_logging_trigger index': 0, 'dbinsert data index': 4, 'dbresult db number': 11, 'dbresult time_sec index': 0, 'dbresult data index': 4, 'table name': 'Test_Table', 'column names': [{'column 1': 'TimeStamp'}, {'column 2': 'Test_Data_Column_1'}, {'column 3': 'add_test'}, {'column 4': 'Test_Data_Column_3'}, {'column 5': 'Motor 1'}, {'column 6': 'Test_Data_Column_5'}, {'column 7': 'Test_Data_Column_6'}, {'column 8': 'Test_Data_Column_7'}, {'column 9': 'Test_Data_Column_8'}]}]}"
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\json_functions.py", line 7, in read_setup_file
+    setup_file = open(f'{setup_file_name}')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: "{'PLC_1': [{'ip address': '172.31.1.60', 'rack': 0, 'slot': 1, 'tcpport': 102, 'dbinsert db number': 10, 'dbinsert_logging_trigger index': 0, 'dbinsert data index': 4, 'dbresult db number': 11, 'dbresult time_sec index': 0, 'dbresult data index': 4, 'table name': 'Test_Table', 'column names': [{'column 1': 'TimeStamp'}, {'column 2': 'Test_Data_Column_1'}, {'column 3': 'add_test'}, {'column 4': 'Test_Data_Column_3'}, {'column 5': 'Motor 1'}, {'column 6': 'Test_Data_Column_5'}, {'column 7': 'Test_Data_Column_6'}, {'column 8': 'Test_Data_Column_7'}, {'column 9': 'Test_Data_Column_8'}]}]}"
+2024-03-19 07:55:13,908 - ERROR - Get plc from file error: 'NoneType' object has no attribute 'get'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\json_functions.py", line 21, in get_plc_from_file
+    plc1 = setup.get('PLC_1')
+           ^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+2024-03-19 07:55:13,909 - ERROR - Setup get sql column names from file error: 'NoneType' object has no attribute 'get'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\json_functions.py", line 80, in setup_get_sql_column_names_from_file
+    columns = plc1.get('column names')
+              ^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+2024-03-19 07:55:13,910 - ERROR - Setup sql table from json error: 'NoneType' object is not iterable
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 65, in setup_sql_table_from_json
+    for I, column_dict in enumerate(json_setup_column_names):
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+2024-03-19 07:55:21,362 - ERROR - Insert data into table error: table Test_Table has no column named Test_Data_Column_1
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 23, in insert_data_into_table
+    cursor.execute(insert_query, data)
+sqlite3.OperationalError: table Test_Table has no column named Test_Data_Column_1
+2024-03-19 07:55:21,365 - ERROR - Get seconds in range error: list index out of range
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 277, in get_seconds_in_range
+    first_timestamp = datetime.strptime(timestamp_array[0]  , "%Y-%m-%d %H:%M:%S")
+                                        ~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+2024-03-19 07:55:21,366 - ERROR - Write data dbresult error: 'NoneType' object has no attribute 'to_bytes'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 131, in write_data_dbresult
+    time_sec_byte_to_write = time_sec.to_bytes(4, byteorder='big')
+                             ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'to_bytes'
+2024-03-19 10:15:54,035 - ERROR - Main script error: asyncio.run() cannot be called from a running event loop
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Main.py", line 132, in main_script
+    asyncio.run(main_script_snap7_start(sql_db_path, setup_file_step7))
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 190, in run
+    raise RuntimeError(
+RuntimeError: asyncio.run() cannot be called from a running event loop
+2024-03-19 10:29:02,227 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-03-19 10:29:02,228 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 18, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-03-19 10:29:02,237 - ERROR - Monitor and insert data snap7 error: 'NoneType' object has no attribute 'db_write'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 104, in monitor_and_insert_data_snap7
+    data_array = monitor_and_get_data_on_trigger_snap7(client, setup_file_step7)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 80, in monitor_and_get_data_on_trigger_snap7
+    client.db_write(db_number, logging_trigger_index, bytearray_to_write)
+    ^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'db_write'
+2024-03-19 10:29:02,765 - ERROR - Insert data into table error: UNIQUE constraint failed: Test_Table.TimeStamp
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 23, in insert_data_into_table
+    cursor.execute(insert_query, data)
+sqlite3.IntegrityError: UNIQUE constraint failed: Test_Table.TimeStamp
+2024-03-19 10:29:04,749 - ERROR - Insert data into table error: UNIQUE constraint failed: Test_Table.TimeStamp
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 23, in insert_data_into_table
+    cursor.execute(insert_query, data)
+sqlite3.IntegrityError: UNIQUE constraint failed: Test_Table.TimeStamp
