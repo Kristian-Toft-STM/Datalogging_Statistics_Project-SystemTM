@@ -3,17 +3,18 @@ import time
 from snap7 import util
 from SQLiteWrite import insert_data_into_table
 from SQLiteRead import get_log_data_within_range, get_number_of_rows_in_range, get_seconds_in_range
-from json_functions import get_dbinsert_number_from_file, get_dbinsert_logging_trigger_index_from_file, get_dbinsert_data_index_from_file, get_ip_from_file, get_plc_from_file, setup_file_get_number_of_data_columns
+from json_functions import get_plc_from_file, setup_file_get_number_of_data_columns
 import logging
 
 client = snap7.client.Client()
 
 def connect_snap7_client(setup_file_step7): # overvej at lave json funktioner til rack, slot og tcpport
     try: 
-        ip_address = get_ip_from_file(setup_file_step7)
-        rack = get_plc_from_file(setup_file_step7).get('rack')
-        slot = get_plc_from_file(setup_file_step7).get('slot')
-        tcpport = get_plc_from_file(setup_file_step7).get('tcpport')
+        plc = get_plc_from_file(setup_file_step7)
+        ip_address = plc.get('ip address')
+        rack = plc.get('rack')
+        slot = plc.get('slot')
+        tcpport = plc.get('tcpport')
 
         client.connect(ip_address, rack, slot, tcpport)
 
@@ -49,9 +50,9 @@ def get_data_from_plc_db(db_number, client, index):
         logging.error(f"Get data from plc db error: {e}", exc_info=True)
 
 
-def get_data_array_from_plc_db(db_number, client, setup_file_step7):
+def get_data_array_from_plc_db(db_number, client, setup_file_step7): 
     try:
-        data_index = get_dbinsert_data_index_from_file(setup_file_step7)
+        data_index = get_plc_from_file.get('dbinsert data index')
         data = client.db_read(db_number, data_index, setup_file_get_number_of_data_columns(setup_file_step7)*4)
         array = []
         
@@ -71,8 +72,9 @@ def get_data_array_from_plc_db(db_number, client, setup_file_step7):
 
 def monitor_and_get_data_on_trigger_snap7(client, setup_file_step7):
     trigger_value = 0 
-    db_number = get_dbinsert_number_from_file(setup_file_step7)
-    logging_trigger_index = get_dbinsert_logging_trigger_index_from_file(setup_file_step7)
+    plc = get_plc_from_file(setup_file_step7)
+    db_number = plc.get('dbinsert db number')
+    logging_trigger_index = plc.get('dbinsert_logging_trigger index')
 
     # Set handshake trigger bit
     # int(2) = int value to convert to bytes - 4 is the length in bytes(int32 = 4 bytes) - byteorder is which direction you read the bytes
@@ -114,32 +116,41 @@ def monitor_and_insert_data_snap7(sql_db_path, table_name, setup_file_step7, tes
 
 
 def write_data_dbresult(setup_file_name, sql_db_path, table_name, datetime_min_range, datetime_max_range):
-    try:    
-        try:
+    try:
+        client = connect_snap7_client(setup_file_name)
+        trigger_value = 0 
+        plc = get_plc_from_file(setup_file_name)
+        db_number = plc.get('dbresult db number')
+        logging_trigger_index = plc.get('dbresult_logging_trigger index')
+        bytearray_to_trigger = int(2).to_bytes(4, byteorder='big')
 
-            plc = get_plc_from_file(setup_file_name)
-            data = get_log_data_within_range(sql_db_path, table_name, datetime_min_range, datetime_max_range)
-            print(data)
+        data = get_log_data_within_range(sql_db_path, table_name, datetime_min_range, datetime_max_range)
+        print(data)
+        while trigger_value == 0:    
+            try:
+                trigger_value = get_data_from_plc_db(db_number, client, logging_trigger_index)
+                if trigger_value == 1: 
+                    if type(data) == int: 
+                        bytearray_to_data = data.to_bytes(4, byteorder='big')
+                    elif type(data) == list: 
+                        time_sec = get_seconds_in_range(sql_db_path, table_name, datetime_min_range, datetime_max_range)
+                        bytearray_to_data = bytearray()
+                        for num in data:
+                            bytearray_to_data += num.to_bytes(4, byteorder='big')
+                        bytearray_to_time_sec = time_sec.to_bytes(4, byteorder='big')
                 
-            if type(data) == int: 
-                bytearray_to_write = data.to_bytes(4, byteorder='big')
-            elif type(data) == list: 
-                time_sec = get_seconds_in_range(sql_db_path, table_name, datetime_min_range, datetime_max_range)
-                bytearray_to_write = bytearray()
-                for num in data:
-                    bytearray_to_write += num.to_bytes(4, byteorder='big')
-                time_sec_byte_to_write = time_sec.to_bytes(4, byteorder='big')
-          
-            else:
-                print('write_data_dbresult: unsupported datatype')
-                return     
-                
-            client.db_write(plc.get("dbresult db number"), plc.get('dbresult data index'), bytearray_to_write)
-            client.db_write(plc.get("dbresult db number"), plc.get('dbresult time_sec index'), time_sec_byte_to_write)
-            return bytearray_to_write            
+                    else:
+                        print('write_data_dbresult: unsupported datatype')
+                        return     
 
-        except Exception as e:
-            print(e)
-            logging.error(f"Write data dbresult error: {e}", exc_info=True)         
+                    print(time_sec)
+                    client.db_write(db_number, plc.get('dbresult time_sec index'), bytearray_to_time_sec)    
+                    client.db_write(db_number, plc.get('dbresult data index'), bytearray_to_data)
+                    client.db_write(db_number, logging_trigger_index, bytearray_to_trigger)
+                    return bytearray_to_data            
+
+            except Exception as e:
+                print(e)
+                logging.error(f"Write data dbresult error: {e}", exc_info=True)         
     finally:
         disconnect_snap7_client()

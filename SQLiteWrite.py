@@ -30,7 +30,7 @@ def insert_data_into_table(db_path, table_name, data, setup_file): # udvid til a
             else:
                 print("No data in table")
         else:
-                print("Table does not exist")
+            print("Table does not exist")
              
         cursor.close()
         conn.close()
@@ -190,4 +190,4 @@ def manage_db_size(db_path, table_name):
 
     except Exception as e:
         print(e)
-        logging.error(f"manage database size error: {e}", exc_info=True)  
+        logging.error(f"Manage database size error: {e}", exc_info=True)  

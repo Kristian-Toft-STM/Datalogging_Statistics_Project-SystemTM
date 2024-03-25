@@ -23,54 +23,7 @@ def get_plc_from_file(setup_file_name):
 
     except Exception as e:
         print(e)
-        logging.error(f"Get plc from file error: {e}", exc_info=True)       
-
-
-def get_dbinsert_number_from_file(setup_file_name):
-    try: 
-    
-        plc1 = get_plc_from_file(setup_file_name)
-        dbinsert_number = plc1.get('dbinsert db number')
-        return dbinsert_number
-
-    except Exception as e:
-        print(e)
-        logging.error(f"Get dbinsert number from file error: {e}", exc_info=True)        
-
-
-def get_dbinsert_logging_trigger_index_from_file(setup_file_name):
-    try:
-        plc1 = get_plc_from_file(setup_file_name)
-        index = plc1.get('dbinsert_logging_trigger index')
-        return index
-
-    except Exception as e:
-        print(e)
-        logging.error(f"Get dbinsert logging trigger index from file error: {e}", exc_info=True)          
-
-
-def get_dbinsert_data_index_from_file(setup_file_name):
-    try:
-
-        plc1 = get_plc_from_file(setup_file_name)
-        index = plc1.get('dbinsert data index')
-        return index
-
-    except Exception as e:
-        print(e)
-        logging.error(f"Get dbinsert data index from file error: {e}", exc_info=True)  
-
-
-def get_ip_from_file(setup_file_name):                        
-    try:
-        
-        plc1 = get_plc_from_file(setup_file_name)
-        ip = plc1.get('ip address')
-        return ip
-
-    except Exception as e:
-        print(e)
-        logging.error(f"Get ip from file error: {e}", exc_info=True)  
+        logging.error(f"Get plc from file error: {e}", exc_info=True)            
 
 
 def setup_get_sql_column_names_from_file(setup_file_name):
@@ -112,7 +65,7 @@ def map_node(key): #Start with mapping a single node, then expand to map all fro
         logging.error(f"Map node error: {e}", exc_info=True)    
 
 
-def setup_file_keys_changed(setup_file_name, previous_setup_file):
+def setup_file_keys_changed(setup_file_name, previous_setup_file): # not in use, possibly delete later
     try:
 
         previous_keys = set()
@@ -268,3 +221,30 @@ def load_previous_setup_step7(filename='previous_setup_step7.json'):
             print(e)
             logging.error(f"Load previous setup step7 error: {e}", exc_info=True)
             
+
+def insert_list_of_column_names_from_txt_into_json(text_file, setup_file_path):
+    try:
+    
+        name_array = []
+
+        with open(text_file, 'r') as txtfile:
+                line = txtfile.readline()
+                while line:
+                    name_array.append(line[:-1])
+                    line = txtfile.readline()
+
+        with open(setup_file_path, 'r') as setup_file:
+            setup = json.load(setup_file)            
+            column_names = setup['PLC_1'][0]['column names']  
+
+        with open(setup_file_path, 'w') as setup_file:
+            for I, column in enumerate(column_names[1:]):
+                    key = f'column {I+2}'
+                    column[key] = name_array[I]        
+            json.dump(setup, setup_file, indent=4, separators=(',', ': '))         
+    
+        return name_array     
+           
+    except Exception as e:
+            print(e)
+            logging.error(f"insert list of column names from txt into json error: {e}", exc_info=True)

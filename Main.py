@@ -3,7 +3,7 @@ from SQLiteWrite import insert_data_into_table, delete_table_data, drop_table, s
 from SQLiteRead import get_all_data_from_table, get_log_timestamps_within_range, get_log_data_within_range, get_log_data_within_range_sql_sum, any_table_exists, get_seconds_in_range, get_db_size
 from OPCUA_Functions import connect_opcua_client, disconnect_opcua_client, read_node_value, monitor_and_get_data_on_trigger_opcua, monitor_and_insert_data_opcua
 from Snap7_Functions import connect_snap7_client, disconnect_snap7_client, get_data_from_plc_db, get_data_array_from_plc_db, monitor_and_get_data_on_trigger_snap7, monitor_and_insert_data_snap7, write_data_dbresult
-from json_functions import setup_get_sql_column_names_from_file, setup_file_column_names_dict_to_array, get_dbinsert_number_from_file, get_plc_from_file, setup_file_get_number_of_data_columns, read_setup_file, setup_file_keys_changed, setup_file_rename_column, setup_file_delete_column, setup_file_add_column, setup_file_delete_or_rename, save_previous_setup_step7, load_previous_setup_step7
+from json_functions import setup_get_sql_column_names_from_file, setup_file_column_names_dict_to_array, get_plc_from_file, setup_file_get_number_of_data_columns, read_setup_file, setup_file_keys_changed, setup_file_rename_column, setup_file_delete_column, setup_file_add_column, setup_file_delete_or_rename, save_previous_setup_step7, load_previous_setup_step7, insert_list_of_column_names_from_txt_into_json
 from Misc import csv_export_timer, export_sql_to_csv
 
 # library imports
@@ -50,29 +50,40 @@ table_name = ''
          
 # main functions
 def start_init():
-    global setup_file_to_run
-    setup_file_to_run = step7_or_opcua_switch(setup_file_step7)
+    try:
 
-    init()
+        global setup_file_to_run
+        setup_file_to_run = step7_or_opcua_switch(setup_file_step7)
+
+        init()
+        
+        return
     
-    return
-
+    except Exception as e:
+        print(e)
+        logging.error(f"start init error: {e}", exc_info=True)
 
 def start_main():
-    while True:
-        main_script_process = Process(target=main_script)
-        #csv_export_timer_process = Process(target=csv_export_timer, args=(sql_db_path, table_name))
+    try:
 
-        main_script_process.start()
-        #csv_export_timer_process.start()
+        while True:
+            main_script_process = Process(target=main_script)
+            #csv_export_timer_process = Process(target=csv_export_timer, args=(sql_db_path, table_name))
 
-        #main_script()
-        #csv_export_timer(sql_db_path, table_name)
-        return
+            main_script_process.start()
+            #csv_export_timer_process.start()
 
+            #main_script()
+            #csv_export_timer(sql_db_path, table_name)
+            return
+        
+    except Exception as e:
+        print(e)
+        logging.error(f"start main error: {e}", exc_info=True)
 
 def step7_or_opcua_switch(file_to_run):
     try:
+
         script_directory = os.path.dirname(__file__)
         directory_contents = os.listdir(script_directory)
         if 'setup_opcua.json' in directory_contents and 'setup_step7.json' in directory_contents:
@@ -174,7 +185,6 @@ def initialization_step7():
             raise TableNotFoundError(f"Table name not found in setup file: {setup_file_step7}")
 
         setup_sql_table_from_json(sql_db_path, table_name, setup_file_step7)
-
         return
 
     except TableNotFoundError as e:
@@ -201,6 +211,8 @@ def reinitialize_setup():
 start_init()
 #if __name__ == '__main__':
     #start_main()
+
+#print(insert_list_of_column_names_from_txt_into_json('column_names.txt', setup_file_step7))
 
 #print(get_db_size(sql_db_path))
 
@@ -233,8 +245,10 @@ start_init()
 #print(read_setup_file())
 #print(map_node(0))
 
-#client = connect_Snap7_client()
-#print(get_data_from_db(dbinsert_number, client, 0))   
+#client = connect_snap7_client(setup_file_step7)
+#print(get_data_array_from_plc_db(1, client, setup_file_step7)) 
+#print(client.db_read(1, 0, 1008))
+
 #print(get_data_array_from_db(dbinsert_number, client))        
 #monitor_and_get_data_on_trigger_Snap7(dbinsert_number, client)
 
@@ -250,7 +264,7 @@ start_init()
 
 #print(get_log_data_within_range(sql_db_path, 'Test_Table', test_min_range, test_max_range))
 
-#write_data_dbresult(setup_file_step7, sql_db_path, test_min_range, test_max_range)    
+#write_data_dbresult(setup_file_step7, sql_db_path, table_name, test_min_range, test_max_range)    
 
 #setup_sql_table_from_json(sql_db_path, 'Test_Table', setup_file_step7)
         

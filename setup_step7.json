@@ -9,36 +9,37 @@
             "dbinsert_logging_trigger index": 0,
             "dbinsert data index": 4,
             "dbresult db number": 11,
-            "dbresult time_sec index": 0, 
-            "dbresult data index": 4,
+            "dbresult_logging_trigger index": 0,
+            "dbresult time_sec index": 4,
+            "dbresult data index": 8,
             "table name": "Test_Table",
             "column names": [
                 {
                     "column 1": "TimeStamp"
                 },
                 {
-                    "column 2": "Test_Data_Column_1"
+                    "column 2": "TotalMeters"
                 },
                 {
-                    "column 3": "add_test"
+                    "column 3": "CubicMeters"
                 },
                 {
-                    "column 4": "Test_Data_Column_3"
+                    "column 4": "OperationTimeSeconds"
                 },
                 {
-                    "column 5": "Motor 1"
+                    "column 5": "ProductionTimePressSeconds"
                 },
                 {
-                    "column 6": "Test_Data_Column_5"
+                    "column 6": "PressWaitingForWoodSeconds"
                 },
                 {
-                    "column 7": "Test_Data_Column_6"
+                    "column 7": "PressPausedSeconds"
                 },
                 {
-                    "column 8": "Test_Data_Column_7"
+                    "column 8": "TransfStPausedSeconds"
                 },
                 {
-                    "column 9": "Test_Data_Column_8"
+                    "column 9": "ProductionTimeShaper1Seconds"
                 }
             ]
         }

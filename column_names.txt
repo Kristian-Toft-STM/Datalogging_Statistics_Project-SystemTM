@@ -1,0 +1,8 @@
+TotalMeters
+CubicMeters
+OperationTimeSeconds
+ProductionTimePressSeconds
+PressWaitingForWoodSeconds
+PressPausedSeconds
+TransfStPausedSeconds
+ProductionTimeShaper1Seconds

@@ -7,37 +7,38 @@
             "tcpport": 102,
             "dbinsert db number": 10,
             "dbinsert_logging_trigger index": 0,
+            "dbinsert data index": 4,
             "dbresult db number": 11,
             "dbresult time_sec index": 0, 
             "dbresult data index": 4,
             "table name": "Test_Table",
-            "data columns": [
+            "column names": [
                 {
                     "column 1": "TimeStamp"
                 },
                 {
-                    "column 2": {"name": "Test_Data_Column_1", "index": 4}
+                    "column 2": "Test_Data_Column_1"
                 },
                 {
-                    "column 3": {"name": "add_test", "index": 8}
+                    "column 3": "add_test"
                 },
                 {
-                    "column 4": {"name": "Test_Data_Column_3", "index": 12}
+                    "column 4": "Test_Data_Column_3"
                 },
                 {
-                    "column 5": {"name": "Motor 1", "index": 16}
+                    "column 5": "Motor 1"
                 },
                 {
-                    "column 6": {"name": "Test_Data_Column_5", "index": 20}
+                    "column 6": "Test_Data_Column_5"
                 },
                 {
-                    "column 7": {"name": "Test_Data_Column_6", "index": 24}
+                    "column 7": "Test_Data_Column_6"
                 },
                 {
-                    "column 8": {"name": "Test_Data_Column_7", "index": 28}
+                    "column 8": "Test_Data_Column_7"
                 },
                 {
-                    "column 9": {"name": "Test_Data_Column_8", "index": 32}
+                    "column 9": "Test_Data_Column_8"
                 }
             ]
         }
