@@ -1,10 +1,9 @@
 # sub-script imports
-from SQLiteWrite import insert_data_into_table, delete_table_data, drop_table, setup_sql_table_from_json, sql_rename_column, sql_drop_column, sql_add_column, manage_db_size
-from SQLiteRead import get_all_data_from_table, get_log_timestamps_within_range, get_log_data_within_range, get_log_data_within_range_sql_sum, any_table_exists, get_seconds_in_range, get_db_size
 from OPCUA_Functions import connect_opcua_client, disconnect_opcua_client, read_node_value, monitor_and_get_data_on_trigger_opcua, monitor_and_insert_data_opcua
 from Snap7_Functions import connect_snap7_client, disconnect_snap7_client, get_data_from_plc_db, get_data_array_from_plc_db, monitor_and_get_data_on_trigger_snap7, monitor_and_insert_data_snap7, write_data_dbresult
 from json_functions import setup_get_sql_column_names_from_file, setup_file_column_names_dict_to_array, get_plc_from_file, setup_file_get_number_of_data_columns, read_setup_file, setup_file_keys_changed, setup_file_rename_column, setup_file_delete_column, setup_file_add_column, setup_file_delete_or_rename, save_previous_setup_step7, load_previous_setup_step7, insert_list_of_column_names_from_txt_into_json
 from Misc import csv_export_timer, export_sql_to_csv
+from SQLiteRead import SQLDatabaseManager
 
 # library imports
 from opcua import ua
@@ -25,6 +24,8 @@ class TableNotFoundError(Exception):
         line_number = caller_frame.lineno
         full_message = f"{caller_func_name} at line {line_number}: {message}"
         super().__init__(full_message, *args)
+        
+db_manager = SQLDatabaseManager('','','')
 
 # setup logging
 logging.basicConfig(level=logging.ERROR, filename='error.log', format='%(asctime)s - %(levelname)s - %(message)s')
@@ -32,8 +33,8 @@ logging.basicConfig(level=logging.ERROR, filename='error.log', format='%(asctime
 
 # test variables
 plc_trigger_id = "ns=4;i=3"
-data_node_id = "ns=4;i=4"
-sql_db_path = "projekttestDB.db" 
+data_node_id = "ns=4;i=4" 
+#sql_db_path = "projekttestDB.db" 
 setup_file_opcua = "setup_opcua.json"
 setup_file_step7 = "setup_step7.json"
 
@@ -46,15 +47,18 @@ test_tid = any
 #test_max_range = datetime.datetime.now()
 
 setup_file_to_run = ''
-table_name = ''
-         
+#table_name = ''
+
+
+
 # main functions
+
+# start initialization
 def start_init():
     try:
 
         global setup_file_to_run
         setup_file_to_run = step7_or_opcua_switch(setup_file_step7)
-
         init()
         
         return
@@ -63,6 +67,7 @@ def start_init():
         print(e)
         logging.error(f"start init error: {e}", exc_info=True)
 
+# start main loop
 def start_main():
     try:
 
@@ -81,6 +86,7 @@ def start_main():
         print(e)
         logging.error(f"start main error: {e}", exc_info=True)
 
+# check setup file/s in projekt folder, and set setup file variable accordingly 
 def step7_or_opcua_switch(file_to_run):
     try:
 
@@ -104,26 +110,26 @@ def step7_or_opcua_switch(file_to_run):
         print(e)
         logging.error(f"Step7 or opcua switch error: {e}", exc_info=True)
 
-
+# main script for opcua communication
 def main_script_opcua_start(plc_trigger_id, data_node_id, sql_db_path, setup_file_opcua):
     try:
         
         table_name = get_plc_from_file(setup_file_opcua).get('table name')
-        setup_sql_table_from_json(sql_db_path, table_name, setup_file_opcua)
+        db_manager.setup_sql_table_from_json()
         monitor_and_insert_data_opcua(sql_db_path, plc_trigger_id, table_name, data_node_id, setup_file_opcua)
 
     except Exception as e:
         print(e)
         logging.error(f"Main opcua script error: {e}", exc_info=True)
 
-
-def main_script_snap7_start(sql_db_path, setup_file_step7): # current standard for error handling
+# main script for step7/snap7 communication
+def main_script_snap7_start(): # current standard for error handling
     try:
 
         monitor_count = 1
-        while monitor_count <= 10:
+        while monitor_count <= 50:
 
-            monitor_and_insert_data_snap7(sql_db_path, table_name, setup_file_step7, test_min_range, test_max_range)
+            monitor_and_insert_data_snap7(db_manager, test_min_range, test_max_range)
 
             print(f"Monitor count: {monitor_count}")
             monitor_count += 1
@@ -132,7 +138,7 @@ def main_script_snap7_start(sql_db_path, setup_file_step7): # current standard f
         print(e)
         logging.error(f"Main snap7 script error: {e}", exc_info=True)
 
-
+# case for deciding which main script to run, depending on the setup file
 def main_script():
     try:    
 
@@ -140,9 +146,10 @@ def main_script():
             case 0:
                 print('No setup file found')
             case 1:
-                main_script_snap7_start(sql_db_path, setup_file_step7)
+                main_script_snap7_start()
             case 2:
-                main_script_opcua_start(plc_trigger_id, data_node_id, sql_db_path, setup_file_opcua)
+                pass
+                #main_script_opcua_start(plc_trigger_id, data_node_id, sql_db_path, setup_file_opcua)
             case 3:
                 print('Multiple setup files found and no file specified.')    
             case _:
@@ -152,7 +159,7 @@ def main_script():
         print(e)
         logging.error(f"Main script error: {e}", exc_info=True)
 
-
+# case for deciding which initialization script to run, depending on the setup file
 def init():
     try:    
 
@@ -172,34 +179,37 @@ def init():
         print(e)
         logging.error(f"Initialization error: {e}", exc_info=True)   
 
-
+# initialization for step7/snap7
 def initialization_step7():
     try:
         global previous_setup_file
-        global table_name
         setup = read_setup_file(setup_file_step7)
         previous_setup_file = setup
         table_name = get_plc_from_file(setup_file_step7).get('table name')
 
-        if table_name is None:
-            raise TableNotFoundError(f"Table name not found in setup file: {setup_file_step7}")
+        db_manager.sql_db_path = 'projekttestDB.db'
+        db_manager.setup_file = setup_file_step7 
+        db_manager.table_name = table_name
 
-        setup_sql_table_from_json(sql_db_path, table_name, setup_file_step7)
+        if table_name is None:
+            raise TableNotFoundError(f"Table name not found in setup file: {db_manager.setup_file}")
+
+        db_manager.setup_sql_table_from_json()
         return
 
     except TableNotFoundError as e:
         logging.error(e)
 
-
+# initialization for opcua
 def initialization_opcua():
     return
 
-
+# reinitialization of sql database and settings from setup file
 def reinitialize_setup():
     try: 
-       
-        delete_table_data(sql_db_path, table_name)
-        drop_table(table_name)
+
+        db_manager.delete_table_data()
+        db_manager.drop_table()
         init()
         return  
 
@@ -211,6 +221,8 @@ def reinitialize_setup():
 start_init()
 #if __name__ == '__main__':
     #start_main()
+
+write_data_dbresult(db_manager, test_min_range)
 
 #print(insert_list_of_column_names_from_txt_into_json('column_names.txt', setup_file_step7))
 
@@ -262,9 +274,7 @@ start_init()
 #write_data_dbresult(setup_file_step7)
 #print(get_log_data_within_range_sql_sum(sql_db_path, 'Test_Table', test_min_range, test_max_range, setup_file_step7))
 
-#print(get_log_data_within_range(sql_db_path, 'Test_Table', test_min_range, test_max_range))
-
-#write_data_dbresult(setup_file_step7, sql_db_path, table_name, test_min_range, test_max_range)    
+#print(get_log_data_within_range(sql_db_path, 'Test_Table', test_min_range, test_max_range))    
 
 #setup_sql_table_from_json(sql_db_path, 'Test_Table', setup_file_step7)
         

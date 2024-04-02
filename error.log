@@ -626,3 +626,534 @@ Traceback (most recent call last):
   File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 153, in get_log_data_within_range
     cursor.execute(f"SELECT * FROM {table} WHERE TimeStamp BETWEEN '{min_range_utc}' AND '{max_range_utc}';")
 sqlite3.OperationalError: near "WHERE": syntax error
+2024-03-25 10:05:49,611 - ERROR - Main snap7 script error: monitor_and_insert_data_snap7() takes 3 positional arguments but 5 were given
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Main.py", line 126, in main_script_snap7_start
+    monitor_and_insert_data_snap7(db_manager.sql_db_path, db_manager.table_name, db_manager.setup_file, test_min_range, test_max_range)
+TypeError: monitor_and_insert_data_snap7() takes 3 positional arguments but 5 were given
+2024-03-25 10:06:41,440 - ERROR - Get data array from db error: 'function' object has no attribute 'get'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 53, in get_data_array_from_plc_db
+    data_index = get_plc_from_file.get('dbinsert data index')
+                 ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'function' object has no attribute 'get'
+2024-03-25 10:06:41,445 - ERROR - b'CLI : Cannot change this param now'
+2024-03-25 10:06:41,446 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 17, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-03-25 10:06:41,456 - ERROR - Get data from plc db error: 'NoneType' object has no attribute 'db_read'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 41, in get_data_from_plc_db
+    data = client.db_read(db_number, index, index+4)
+           ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'db_read'
+2024-03-25 10:06:46,439 - ERROR - Get data array from db error: 'function' object has no attribute 'get'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 53, in get_data_array_from_plc_db
+    data_index = get_plc_from_file.get('dbinsert data index')
+                 ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'function' object has no attribute 'get'
+2024-03-25 10:06:46,442 - ERROR - b'CLI : Cannot change this param now'
+2024-03-25 10:06:46,442 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 17, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-03-25 10:06:46,446 - ERROR - Get data from plc db error: 'NoneType' object has no attribute 'db_read'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 41, in get_data_from_plc_db
+    data = client.db_read(db_number, index, index+4)
+           ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'db_read'
+2024-03-25 10:06:51,443 - ERROR - Get data array from db error: 'function' object has no attribute 'get'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 53, in get_data_array_from_plc_db
+    data_index = get_plc_from_file.get('dbinsert data index')
+                 ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'function' object has no attribute 'get'
+2024-03-25 10:06:51,449 - ERROR - b'CLI : Cannot change this param now'
+2024-03-25 10:06:51,450 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 17, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-03-25 10:06:51,453 - ERROR - Get data from plc db error: 'NoneType' object has no attribute 'db_read'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 41, in get_data_from_plc_db
+    data = client.db_read(db_number, index, index+4)
+           ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'db_read'
+2024-03-25 10:06:56,447 - ERROR - Get data array from db error: 'function' object has no attribute 'get'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 53, in get_data_array_from_plc_db
+    data_index = get_plc_from_file.get('dbinsert data index')
+                 ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'function' object has no attribute 'get'
+2024-03-25 10:06:56,450 - ERROR - b'CLI : Cannot change this param now'
+2024-03-25 10:06:56,450 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 17, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-03-25 10:06:56,452 - ERROR - Get data from plc db error: 'NoneType' object has no attribute 'db_read'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 41, in get_data_from_plc_db
+    data = client.db_read(db_number, index, index+4)
+           ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'db_read'
+2024-03-25 10:10:43,235 - ERROR - Get data array from db error: 'function' object has no attribute 'get'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 53, in get_data_array_from_plc_db
+    data_index = get_plc_from_file.get('dbinsert data index')
+                 ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'function' object has no attribute 'get'
+2024-03-25 10:10:43,239 - ERROR - b'CLI : Cannot change this param now'
+2024-03-25 10:10:43,239 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 17, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-03-25 10:10:43,241 - ERROR - Get data from plc db error: 'NoneType' object has no attribute 'db_read'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 41, in get_data_from_plc_db
+    data = client.db_read(db_number, index, index+4)
+           ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'db_read'
+2024-03-25 10:16:29,832 - ERROR - Get data array from db error: 'function' object has no attribute 'get'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 53, in get_data_array_from_plc_db
+    data_index = get_plc_from_file.get('dbinsert data index')
+                 ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'function' object has no attribute 'get'
+2024-03-25 10:16:29,837 - ERROR - b'CLI : Cannot change this param now'
+2024-03-25 10:16:29,837 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 17, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-03-25 10:16:29,840 - ERROR - Get data from plc db error: 'NoneType' object has no attribute 'db_read'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 41, in get_data_from_plc_db
+    data = client.db_read(db_number, index, index+4)
+           ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'db_read'
+2024-03-25 10:19:24,376 - ERROR - Get data array from db error: 'function' object has no attribute 'get'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 53, in get_data_array_from_plc_db
+    data_index = get_plc_from_file.get('dbinsert data index')
+                 ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'function' object has no attribute 'get'
+2024-03-25 10:19:24,381 - ERROR - b'CLI : Cannot change this param now'
+2024-03-25 10:19:24,381 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 17, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-03-25 10:19:24,384 - ERROR - Get data from plc db error: 'NoneType' object has no attribute 'db_read'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 41, in get_data_from_plc_db
+    data = client.db_read(db_number, index, index+4)
+           ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'db_read'
+2024-03-25 10:29:31,618 - ERROR - Get data array from db error: 'function' object has no attribute 'get'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 54, in get_data_array_from_plc_db
+    data_index = get_plc_from_file.get('dbinsert data index')
+                 ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'function' object has no attribute 'get'
+2024-03-25 10:29:31,624 - ERROR - b'CLI : Cannot change this param now'
+2024-03-25 10:29:31,625 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 17, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-03-25 10:29:31,628 - ERROR - Get data from plc db error: 'NoneType' object has no attribute 'db_read'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 41, in get_data_from_plc_db
+    data = client.db_read(db_number, index, index+4)
+           ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'db_read'
+2024-03-25 10:31:04,312 - ERROR - Insert data into table error: table Test_Table has no column named TotalMeters
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 24, in insert_data_into_table
+    cursor.execute(insert_query, data)
+sqlite3.OperationalError: table Test_Table has no column named TotalMeters
+2024-03-25 10:31:04,313 - ERROR - b'CLI : Cannot change this param now'
+2024-03-25 10:31:04,313 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 17, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-03-25 10:31:04,315 - ERROR - Get data from plc db error: 'NoneType' object has no attribute 'db_read'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 41, in get_data_from_plc_db
+    data = client.db_read(db_number, index, index+4)
+           ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'db_read'
+2024-03-25 10:31:44,074 - ERROR - b'CLI : Cannot change this param now'
+2024-03-25 10:31:44,075 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 17, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-03-25 10:31:44,077 - ERROR - Get data from plc db error: 'NoneType' object has no attribute 'db_read'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 41, in get_data_from_plc_db
+    data = client.db_read(db_number, index, index+4)
+           ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'db_read'
+2024-03-25 10:31:49,081 - ERROR - b'CLI : Cannot change this param now'
+2024-03-25 10:31:49,081 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 17, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-03-25 10:31:49,084 - ERROR - Get data from plc db error: 'NoneType' object has no attribute 'db_read'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 41, in get_data_from_plc_db
+    data = client.db_read(db_number, index, index+4)
+           ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'db_read'
+2024-03-25 10:35:26,104 - ERROR - b'CLI : Cannot change this param now'
+2024-03-25 10:35:26,104 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 19, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-03-25 10:35:26,106 - ERROR - Get data from plc db error: 'NoneType' object has no attribute 'db_read'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 43, in get_data_from_plc_db
+    data = client.db_read(db_number, index, index+4)
+           ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'db_read'
+2024-03-25 10:38:07,119 - ERROR - b'CLI : Cannot change this param now'
+2024-03-25 10:38:07,119 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 19, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-03-25 10:38:07,120 - ERROR - Get data from plc db error: 'NoneType' object has no attribute 'db_read'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 43, in get_data_from_plc_db
+    data = client.db_read(db_number, index, index+4)
+           ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'db_read'
+2024-03-25 10:38:12,111 - ERROR - b'CLI : Cannot change this param now'
+2024-03-25 10:38:12,112 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 19, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-03-25 10:38:12,113 - ERROR - Get data from plc db error: 'NoneType' object has no attribute 'db_read'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 43, in get_data_from_plc_db
+    data = client.db_read(db_number, index, index+4)
+           ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'db_read'
+2024-03-25 10:39:01,662 - ERROR - b'CLI : Cannot change this param now'
+2024-03-25 10:39:01,662 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 19, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-03-25 10:39:01,665 - ERROR - Get data from plc db error: 'NoneType' object has no attribute 'db_read'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 43, in get_data_from_plc_db
+    data = client.db_read(db_number, index, index+4)
+           ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'db_read'
+2024-03-25 10:39:06,671 - ERROR - b'CLI : Cannot change this param now'
+2024-03-25 10:39:06,671 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 19, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-03-25 10:39:06,674 - ERROR - Get data from plc db error: 'NoneType' object has no attribute 'db_read'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 43, in get_data_from_plc_db
+    data = client.db_read(db_number, index, index+4)
+           ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'db_read'
+2024-03-25 10:43:07,256 - ERROR - b'CLI : Cannot change this param now'
+2024-03-25 10:43:07,256 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 19, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-03-25 10:43:07,258 - ERROR - Get data from plc db error: 'NoneType' object has no attribute 'db_read'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 43, in get_data_from_plc_db
+    data = client.db_read(db_number, index, index+4)
+           ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'db_read'
+2024-03-25 10:43:12,269 - ERROR - b'CLI : Cannot change this param now'
+2024-03-25 10:43:12,270 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 19, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-03-25 10:43:12,272 - ERROR - Get data from plc db error: 'NoneType' object has no attribute 'db_read'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 43, in get_data_from_plc_db
+    data = client.db_read(db_number, index, index+4)
+           ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'db_read'
+2024-03-25 15:33:59,055 - ERROR - Write data dbresult error: pack expected 4 items for packing (got 3)
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 137, in write_data_dbresult
+    print(format_dtl_bytearray(testtags_db_number, dtl_index))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 173, in format_dtl_bytearray
+    data_fixed = util.get_dint(dtl_bytearray,I+1)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\util.py", line 637, in get_dint
+    dint = struct.unpack('>i', struct.pack('4B', *data))[0]
+                               ^^^^^^^^^^^^^^^^^^^^^^^^
+struct.error: pack expected 4 items for packing (got 3)
+2024-03-25 15:34:44,173 - ERROR - Write data dbresult error: pack expected 4 items for packing (got 3)
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 137, in write_data_dbresult
+    print(format_dtl_bytearray(testtags_db_number, dtl_index))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 173, in format_dtl_bytearray
+    data_fixed = util.get_dint(dtl_bytearray,I+1)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\util.py", line 637, in get_dint
+    dint = struct.unpack('>i', struct.pack('4B', *data))[0]
+                               ^^^^^^^^^^^^^^^^^^^^^^^^
+struct.error: pack expected 4 items for packing (got 3)
+2024-03-26 08:51:56,467 - ERROR - Write data dbresult error: 'module' object is not callable. Did you mean: 'datetime.datetime(...)'?
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 141, in write_data_dbresult
+    dtl_datetime = datetime(year, month, day, hour, minute, second)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'module' object is not callable. Did you mean: 'datetime.datetime(...)'?
+2024-03-26 08:59:23,446 - ERROR - Write data dbresult error: not enough values to unpack (expected 6, got 0)
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 140, in write_data_dbresult
+    year, month, day, hour, minute, second = dtl_array[:6]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 6, got 0)
+2024-03-26 09:12:49,711 - ERROR - b'CLI : invalid param(s) supplied'
+2024-03-26 09:12:49,711 - ERROR - Write data dbresult error: b'CLI : invalid param(s) supplied'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 162, in write_data_dbresult
+    client.db_write(db_number, plc.get('dbresult data index'), bytearray_to_data)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : invalid param(s) supplied'
+2024-03-26 09:13:35,411 - ERROR - b'CLI : invalid param(s) supplied'
+2024-03-26 09:13:35,412 - ERROR - Write data dbresult error: b'CLI : invalid param(s) supplied'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 162, in write_data_dbresult
+    client.db_write(db_number, plc.get('dbresult data index'), bytearray_to_data)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : invalid param(s) supplied'
+2024-03-26 09:28:59,848 - ERROR - Write data dbresult error: type object 'datetime.datetime' has no attribute 'datetime'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 137, in write_data_dbresult
+    start_dtl_datetime = get_and_format_dtl_bytearray(testtags_db_number, dtl_index)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 187, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second)
+                   ^^^^^^^^^^^^^^^^^
+AttributeError: type object 'datetime.datetime' has no attribute 'datetime'
+2024-03-26 09:29:21,530 - ERROR - Get log data within range error: 'builtin_function_or_method' object has no attribute 'astimezone'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 140, in get_log_data_within_range
+    max_range_utc = max_range.astimezone(pytz.utc)
+                    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'builtin_function_or_method' object has no attribute 'astimezone'
+2024-03-26 09:30:03,030 - ERROR - Get log data within range error: 'builtin_function_or_method' object has no attribute 'astimezone'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 140, in get_log_data_within_range
+    max_range_utc = max_range.astimezone(pytz.utc)
+                    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'builtin_function_or_method' object has no attribute 'astimezone'
+2024-03-26 09:31:21,560 - ERROR - Get log data within range error: 'builtin_function_or_method' object has no attribute 'astimezone'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 141, in get_log_data_within_range
+    max_range_utc = max_range.astimezone(pytz.utc)
+                    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'builtin_function_or_method' object has no attribute 'astimezone'
+2024-03-26 09:32:05,553 - ERROR - Get log data within range error: 'builtin_function_or_method' object has no attribute 'astimezone'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 141, in get_log_data_within_range
+    max_range_utc = max_range.astimezone(pytz.utc)
+                    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'builtin_function_or_method' object has no attribute 'astimezone'
+2024-03-26 09:34:07,365 - ERROR - Get log data within range error: 'NoneType' object has no attribute 'astimezone'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 140, in get_log_data_within_range
+    max_range_utc = max_range.astimezone(pytz.utc)
+                    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'astimezone'

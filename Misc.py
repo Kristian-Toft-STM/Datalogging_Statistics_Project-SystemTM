@@ -1,5 +1,4 @@
 from json_functions import get_plc_from_file, setup_file_add_column, setup_file_rename_column, setup_file_delete_column
-from SQLiteRead import get_all_data_from_table
 from SQLiteWrite import sql_add_column, sql_rename_column, sql_drop_column
 
 import logging
@@ -7,6 +6,7 @@ import csv
 import time
 import asyncio
 
+# add a datapoint in the given setup file and in the sql database
 def add_datapoint(setup_file_name, datapoint_key, datapoint_key_value, sql_db_path, position):
     try:
         
@@ -20,7 +20,7 @@ def add_datapoint(setup_file_name, datapoint_key, datapoint_key_value, sql_db_pa
         print(e)
         logging.error(f"Add datapoint error: {e}", exc_info=True)
 
-
+# rename a datapoint in the given setup file and in the sql database
 def rename_datapoint(setup_file_name, datapoint_key, datapoint_key_value, sql_db_path):
     try:
         
@@ -39,7 +39,7 @@ def rename_datapoint(setup_file_name, datapoint_key, datapoint_key_value, sql_db
         print(e)
         logging.error(f"Rename datapoint error: {e}", exc_info=True)
 
-
+# delete a datapoint in the given setup file and in the sql database
 def delete_datapoint(setup_file_name, datapoint_key, sql_db_path): 
     try:
         table = get_plc_from_file(setup_file_name).get('table name')
@@ -57,11 +57,11 @@ def delete_datapoint(setup_file_name, datapoint_key, sql_db_path):
         print(e)
         logging.error(f"Delete datapoint error: {e}", exc_info=True)
 
-
-def export_sql_to_csv(db_path, table_name):
+# export table data from sql to csv file
+def export_sql_to_csv(db_manager):
     try:    
 
-        table_data = get_all_data_from_table(db_path, table_name)
+        table_data = db_manager.get_all_data_from_table()
         filename = 'raw_data.csv'
 
         # Writing to the CSV file
@@ -75,8 +75,8 @@ def export_sql_to_csv(db_path, table_name):
         print(e)
         logging.error(f"Export sql to csv error: {e}", exc_info=True)
 
-   
-def csv_export_timer(db_path, table_name):
+# timer for executing export_sql_to_csv()   
+def csv_export_timer(db_manager):
     try: 
 
         while True:
@@ -88,7 +88,7 @@ def csv_export_timer(db_path, table_name):
 
             end = time.time()
             length = end - start 
-            # export_sql_to_csv(db_path, table_name)
+            # export_sql_to_csv(db_manager)
             print("It took", length, "seconds!")
 
     except Exception as e:

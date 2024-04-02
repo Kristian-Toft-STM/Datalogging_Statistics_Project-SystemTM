@@ -18,28 +18,61 @@
                     "column 1": "TimeStamp"
                 },
                 {
-                    "column 2": "TotalMeters"
+                    "column 2": "Press_MaterialLength_Total"
                 },
                 {
-                    "column 3": "CubicMeters"
+                    "column 3": "Press_MaterialVolume_Total"
                 },
                 {
-                    "column 4": "OperationTimeSeconds"
+                    "column 4": "Press_CycleCnt_Total"
                 },
                 {
-                    "column 5": "ProductionTimePressSeconds"
+                    "column 5": "Press_Time_Operation"
                 },
                 {
-                    "column 6": "PressWaitingForWoodSeconds"
+                    "column 6": "Press_Time_Production"
                 },
                 {
-                    "column 7": "PressPausedSeconds"
+                    "column 7": "Press_Time_WaitUpstream"
                 },
                 {
-                    "column 8": "TransfStPausedSeconds"
+                    "column 8": "Press_Time_WaitDownstream"
                 },
                 {
-                    "column 9": "ProductionTimeShaper1Seconds"
+                    "column 9": "LugChain_Time_WaitDownstream"
+                },
+                {
+                    "column 10": "LugChain_LugsCnt_WithItem"
+                },
+                {
+                    "column 11": "LugChain_LugsCnt_WithoutItem"
+                },
+                {
+                    "column 12": "LugChain_OutsortCnt_Total"
+                },
+                {
+                    "column 13": "LugChain_OutsortCnt_TwoBoardsInSlot"
+                },
+                {
+                    "column 14": "LugChain_OutsortCnt_Shaper1"
+                },
+                {
+                    "column 15": "LugChain_OutsortCnt_Shaper2"
+                },
+                {
+                    "column 16": "LugChain_OutsortCnt_GlueMissing"
+                },
+                {
+                    "column 17": "LugChain_OutsortCnt_GlueChainStopped"
+                },
+                {
+                    "column 18": "LugChain_OutsortCnt_GlueError"
+                },
+                {
+                    "column 19": "LugChain_OutsortCnt_TrimSaver1"
+                },
+                {
+                    "column 20": "LugChain_OutsortCnt_TrimSaver2"
                 }
             ]
         }

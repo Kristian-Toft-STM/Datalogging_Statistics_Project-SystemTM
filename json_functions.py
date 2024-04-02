@@ -1,6 +1,7 @@
 import json
 import logging
 
+# read a given setup file
 def read_setup_file(setup_file_name):
     try: 
 
@@ -13,7 +14,7 @@ def read_setup_file(setup_file_name):
         print(e)
         logging.error(f"Read setup file error: {e}", exc_info=True)   
 
-
+# get plc1 from setup file
 def get_plc_from_file(setup_file_name):
     try:
 
@@ -25,7 +26,7 @@ def get_plc_from_file(setup_file_name):
         print(e)
         logging.error(f"Get plc from file error: {e}", exc_info=True)            
 
-
+# get list of column names from setup file, for naming columns in sql database 
 def setup_get_sql_column_names_from_file(setup_file_name):
     try:
             
@@ -38,7 +39,7 @@ def setup_get_sql_column_names_from_file(setup_file_name):
         print(e)
         logging.error(f"Setup get sql column names from file error: {e}", exc_info=True)  
 
-
+# convert a dict to array
 def setup_file_column_names_dict_to_array(dict_columns):        
     try: 
 
@@ -52,7 +53,7 @@ def setup_file_column_names_dict_to_array(dict_columns):
         print(e)
         logging.error(f"Setup file column names dict to array error: {e}", exc_info=True)  
 
-
+# unused
 def map_node(key): #Start with mapping a single node, then expand to map all from file ""unfinished, continue later""
     try:
 
@@ -64,7 +65,7 @@ def map_node(key): #Start with mapping a single node, then expand to map all fro
         print(e)
         logging.error(f"Map node error: {e}", exc_info=True)    
 
-
+# unused
 def setup_file_keys_changed(setup_file_name, previous_setup_file): # not in use, possibly delete later
     try:
 
@@ -100,7 +101,7 @@ def setup_file_keys_changed(setup_file_name, previous_setup_file): # not in use,
         print(e)
         logging.error(f"Setup file keys changed error: {e}", exc_info=True)  
     
-
+# gets the number of data columns in the setup file
 def setup_file_get_number_of_data_columns(setup_file_name):
     try:
 
@@ -112,7 +113,7 @@ def setup_file_get_number_of_data_columns(setup_file_name):
         print(e)
         logging.error(f"Setup file get column names length error: {e}", exc_info=True)   
 
-
+# add a column to the setup file column names list
 def setup_file_add_column(setup_file_name, new_key, new_key_value, position):
     try:
         with open(setup_file_name, 'r') as setup_file:
@@ -130,7 +131,7 @@ def setup_file_add_column(setup_file_name, new_key, new_key_value, position):
         print(e)
         logging.error(f"Setup file add column error: {e}", exc_info=True)  
 
-
+# rename a column in the setup file column names list
 def setup_file_rename_column(setup_file_name, key, key_value):
     try:
 
@@ -155,7 +156,7 @@ def setup_file_rename_column(setup_file_name, key, key_value):
         print(e)
         logging.error(f"Setup file rename column error: {e}", exc_info=True)          
 
-
+# delete a column from the setup file column names list
 def setup_file_delete_column(setup_file_name, key):
     try:
 
@@ -180,7 +181,7 @@ def setup_file_delete_column(setup_file_name, key):
         print(e)
         logging.error(f"Setup file delete column error: {e}", exc_info=True)   
 
-
+# given a key from column names in the setup files, read wether to delete or rename it depending on an identifier '!'
 def setup_file_delete_or_rename(setup_file_name, key):
     try:    
         
@@ -198,7 +199,7 @@ def setup_file_delete_or_rename(setup_file_name, key):
             print(e)
             logging.error(f"Setup file delete column error: {e}", exc_info=True)
 
-
+# save previous setup file step7
 def save_previous_setup_step7(previous_setup_step7, filename='previous_setup_step7.json'):
     try: 
 
@@ -209,7 +210,7 @@ def save_previous_setup_step7(previous_setup_step7, filename='previous_setup_ste
             print(e)
             logging.error(f"Save previous setup step7 error: {e}", exc_info=True)   
 
-
+# load previous setup file step7
 def load_previous_setup_step7(filename='previous_setup_step7.json'):
     try:
 
@@ -221,7 +222,7 @@ def load_previous_setup_step7(filename='previous_setup_step7.json'):
             print(e)
             logging.error(f"Load previous setup step7 error: {e}", exc_info=True)
             
-
+# using a txt file containing a list of names, insert these names into the column names in the setup file
 def insert_list_of_column_names_from_txt_into_json(text_file, setup_file_path):
     try:
     
