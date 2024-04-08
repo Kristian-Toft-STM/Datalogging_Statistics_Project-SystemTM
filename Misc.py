@@ -1,5 +1,5 @@
-from json_functions import get_plc_from_file, setup_file_add_column, setup_file_rename_column, setup_file_delete_column
-from SQLiteWrite import sql_add_column, sql_rename_column, sql_drop_column
+from json_functions import *
+from SQLiteWrite import *
 
 import logging
 import csv

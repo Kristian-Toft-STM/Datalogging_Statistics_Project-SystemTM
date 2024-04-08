@@ -1,8 +1,9 @@
 # sub-script imports
-from OPCUA_Functions import connect_opcua_client, disconnect_opcua_client, read_node_value, monitor_and_get_data_on_trigger_opcua, monitor_and_insert_data_opcua
-from Snap7_Functions import connect_snap7_client, disconnect_snap7_client, get_data_from_plc_db, get_data_array_from_plc_db, monitor_and_get_data_on_trigger_snap7, monitor_and_insert_data_snap7, write_data_dbresult
-from json_functions import setup_get_sql_column_names_from_file, setup_file_column_names_dict_to_array, get_plc_from_file, setup_file_get_number_of_data_columns, read_setup_file, setup_file_keys_changed, setup_file_rename_column, setup_file_delete_column, setup_file_add_column, setup_file_delete_or_rename, save_previous_setup_step7, load_previous_setup_step7, insert_list_of_column_names_from_txt_into_json
-from Misc import csv_export_timer, export_sql_to_csv
+from OPCUA_Functions import *
+from Snap7_Functions import *
+from json_functions import *
+from Misc import *
+from test import *
 from SQLiteRead import SQLDatabaseManager
 
 # library imports
@@ -71,16 +72,18 @@ def start_init():
 def start_main():
     try:
 
-        while True:
-            main_script_process = Process(target=main_script)
-            #csv_export_timer_process = Process(target=csv_export_timer, args=(sql_db_path, table_name))
+        main_script_proc = Process(target=main_script)
+        #csv_export_timer_proce = Process(target=csv_export_timer, args=(sql_db_path, table_name))
+        write_data_dbresult_proc = Process(target=write_data_dbresult, args=(db_manager,))
 
-            main_script_process.start()
-            #csv_export_timer_process.start()
+        main_script_proc.start()
+        #csv_export_timer_proc.start()
+        write_data_dbresult_proc.start()
 
-            #main_script()
-            #csv_export_timer(sql_db_path, table_name)
-            return
+        #main_script()
+        #csv_export_timer(sql_db_path, table_name)
+
+        return
         
     except Exception as e:
         print(e)
@@ -114,7 +117,7 @@ def step7_or_opcua_switch(file_to_run):
 def main_script_opcua_start(plc_trigger_id, data_node_id, sql_db_path, setup_file_opcua):
     try:
         
-        table_name = get_plc_from_file(setup_file_opcua).get('table name')
+        table_name = db_manager.table_name
         db_manager.setup_sql_table_from_json()
         monitor_and_insert_data_opcua(sql_db_path, plc_trigger_id, table_name, data_node_id, setup_file_opcua)
 
@@ -127,12 +130,13 @@ def main_script_snap7_start(): # current standard for error handling
     try:
 
         monitor_count = 1
-        while monitor_count <= 50:
+        while monitor_count <= 200:
 
-            monitor_and_insert_data_snap7(db_manager, test_min_range, test_max_range)
+            monitor_and_insert_data_snap7(db_manager, test_max_range)
 
             print(f"Monitor count: {monitor_count}")
             monitor_count += 1
+            time.sleep(0.5)
 
     except Exception as e:
         print(e)
@@ -185,6 +189,7 @@ def initialization_step7():
         global previous_setup_file
         setup = read_setup_file(setup_file_step7)
         previous_setup_file = setup
+
         table_name = get_plc_from_file(setup_file_step7).get('table name')
 
         db_manager.sql_db_path = 'projekttestDB.db'
@@ -219,10 +224,10 @@ def reinitialize_setup():
 
 
 start_init()
-#if __name__ == '__main__':
-    #start_main()
+if __name__ == '__main__':
+    start_main()
 
-write_data_dbresult(db_manager, test_min_range)
+#write_data_dbresult(db_manager)
 
 #print(insert_list_of_column_names_from_txt_into_json('column_names.txt', setup_file_step7))
 

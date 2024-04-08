@@ -1,7 +1,7 @@
 import snap7
 import time
 from snap7 import util
-from json_functions import get_plc_from_file, setup_file_get_number_of_data_columns
+from json_functions import *
 import logging
 import datetime
 
@@ -40,10 +40,13 @@ def disconnect_snap7_client():
 # get single dint data from a given plc db and offset
 def get_data_from_plc_db(db_number, client, index):
     try:
-
-        data = client.db_read(db_number, index, index+4)
-        data_fixed = util.get_dint(data,0)
-
+        if (client != None):
+            data = client.db_read(db_number, index, index+4)
+            data_fixed = util.get_dint(data,0)
+        else:
+            print("uh oh")
+            time.sleep(5)
+            return
         return data_fixed
 
     except Exception as e: 
@@ -81,7 +84,12 @@ def monitor_and_get_data_on_trigger_snap7(client, setup_file_step7):
     # Set handshake trigger bit
     # int(2) = int value to convert to bytes - 4 is the length in bytes(int32 = 4 bytes) - byteorder is which direction you read the bytes
     bytearray_to_write = int(2).to_bytes(4, byteorder='big')
-    client.db_write(db_number, logging_trigger_index, bytearray_to_write)
+    if (client != None):
+        client.db_write(db_number, logging_trigger_index, bytearray_to_write)
+    else:
+        print("Uh oh")
+        time.sleep(5)
+        return    
     while trigger_value == 0:
         try:
 
@@ -101,17 +109,19 @@ def monitor_and_get_data_on_trigger_snap7(client, setup_file_step7):
             client = connect_snap7_client(setup_file_step7) #Re-establish connection  
 
 # bladibla
-def monitor_and_insert_data_snap7(db_manager, test_min_range, test_max_range):               
+def monitor_and_insert_data_snap7(db_manager, test_max_range):               
     try:    
 
             client = connect_snap7_client(db_manager.setup_file)
             data_array = monitor_and_get_data_on_trigger_snap7(client, db_manager.setup_file)
-
+            column_names = setup_get_sql_column_names_from_file(db_manager.setup_file)
+            
             if data_array is not None:  
                 db_manager.insert_data_into_table(data_array)  
-                
-            #write_data_dbresult(db_manager, test_min_range, test_max_range)  
 
+            combined_array = [f"{value}: {data_item}" for data_item, column_dict in zip(data_array, column_names[1:]) for value in column_dict.items()]
+            print("\n".join(combined_array))   
+            
     except Exception as e:
         print(e)
         logging.error(f"Monitor and insert data snap7 error: {e}", exc_info=True)    
@@ -120,54 +130,65 @@ def monitor_and_insert_data_snap7(db_manager, test_min_range, test_max_range):
 
 # bladibla
 # change how you get testtags_db_number and dtl_index
-def write_data_dbresult(db_manager, datetime_min_range, datetime_max_range=datetime.datetime.now()):
+def write_data_dbresult(db_manager, datetime_end=datetime.datetime.now()):
     try:
         client = connect_snap7_client(db_manager.setup_file)
-        trigger_value = 0 
-        plc = get_plc_from_file(db_manager.setup_file)
+        plc = get_plc_from_file(db_manager.setup_file)         
+            
         db_number = plc.get('dbresult db number')
         logging_trigger_index = plc.get('dbresult_logging_trigger index')
+        testtags_db_number = plc.get('testtags db number')
+        dtl_start_index = plc.get('dtl start index')
+        dtl_end_index = plc.get('dtl end index')
+
         bytearray_to_trigger = int(2).to_bytes(4, byteorder='big')
-        testtags_db_number = 1001
-        dtl_index = 950
 
-        
-        while trigger_value == 0:    
-            try:
-                trigger_value = get_data_from_plc_db(db_number, client, logging_trigger_index)
-                if trigger_value == 1: 
+        while True:
+            datetime_end=datetime.datetime.now()
+            trigger_value = 0
+            
+            while trigger_value == 0:    
+                try:
+                    trigger_value = get_data_from_plc_db(db_number, client, logging_trigger_index)
+                    if trigger_value == 1: 
+                        
+                        start_dtl_datetime = get_and_format_dtl_bytearray(testtags_db_number, dtl_start_index)
+                        end_dtl_datetime = get_and_format_dtl_bytearray(testtags_db_number, dtl_end_index)
+
+                        if end_dtl_datetime.year > 1971:  
+                            datetime_end = end_dtl_datetime  
+
+                        data = db_manager.get_log_data_within_range(start_dtl_datetime, datetime_end)
+                        print(data)    
+
+                        if len(data) < 1:
+                            print('No data found in supplied timestamp range')
+                            return   
+                                    
+                        if type(data) == int: 
+                            bytearray_to_data = data.to_bytes(4, byteorder='big')
+                        elif type(data) == list: 
+                            time_sec = db_manager.get_seconds_in_range(start_dtl_datetime, datetime_end)
+                            bytearray_to_data = bytearray()
+                            for num in data:
+                                bytearray_to_data += num.to_bytes(4, byteorder='big')
+                            bytearray_to_time_sec = time_sec.to_bytes(4, byteorder='big')
                     
-                    start_dtl_datetime = get_and_format_dtl_bytearray(testtags_db_number, dtl_index)
-                    print(start_dtl_datetime)
-                    print(datetime_max_range)
+                        else:
+                            print('write_data_dbresult: unsupported datatype')
+                            return     
 
-                    data = db_manager.get_log_data_within_range(start_dtl_datetime, datetime_max_range)
-                    print(data)
+                        print(time_sec)
+                        client.db_write(db_number, plc.get('dbresult time_sec index'), bytearray_to_time_sec)    
+                        client.db_write(db_number, plc.get('dbresult data index'), bytearray_to_data)
+                        client.db_write(db_number, logging_trigger_index, bytearray_to_trigger)           
 
-                    if type(data) == int: 
-                        bytearray_to_data = data.to_bytes(4, byteorder='big')
-                    elif type(data) == list: 
-                        time_sec = db_manager.get_seconds_in_range(datetime_min_range, datetime_max_range)
-                        bytearray_to_data = bytearray()
-                        for num in data:
-                            bytearray_to_data += num.to_bytes(4, byteorder='big')
-                        bytearray_to_time_sec = time_sec.to_bytes(4, byteorder='big')
-                
-                    else:
-                        print('write_data_dbresult: unsupported datatype')
-                        return     
-
-                    print(time_sec)
-                    client.db_write(db_number, plc.get('dbresult time_sec index'), bytearray_to_time_sec)    
-                    client.db_write(db_number, plc.get('dbresult data index'), bytearray_to_data)
-                    client.db_write(db_number, logging_trigger_index, bytearray_to_trigger)
-                    return bytearray_to_data            
-
-            except Exception as e:
-                print(e)
-                logging.error(f"Write data dbresult error: {e}", exc_info=True)         
+                except Exception as e:
+                    print(e)
+                    logging.error(f"Write data dbresult error: {e}", exc_info=True)         
+            time.sleep(0.5)
     finally:
-        disconnect_snap7_client()
+        disconnect_snap7_client()        
 
 # format dtl from plc to : yyyy-MM-dd-hh-mm-ss
 def get_and_format_dtl_bytearray(db_number, index):

@@ -2,7 +2,7 @@ import sqlite3
 import pytz
 from datetime import datetime, timezone
 from tzlocal import get_localzone
-from json_functions import get_plc_from_file, setup_file_column_names_dict_to_array, setup_get_sql_column_names_from_file
+from json_functions import *
 import SQLiteWrite
 import logging
 import os
@@ -146,8 +146,8 @@ class SQLDatabaseManager:
             #min_range_utc = min_range.astimezone(pytz.utc)
             max_range_utc = max_range.astimezone(pytz.utc)
 
-            print(min_range_utc)
-            print(max_range_utc)
+            print(f'From: {min_range_utc}')
+            print(f'To: {max_range_utc}')
 
             conn = sqlite3.connect(f'{self.sql_db_path}')
             cursor = conn.cursor()

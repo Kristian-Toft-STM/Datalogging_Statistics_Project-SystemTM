@@ -3,7 +3,7 @@ import datetime
 import tzlocal
 #from SQLiteRead import get_last_timestamp_from_table, table_exists, table_not_empty, any_table_exists, column_exists_in_table, get_db_size
 from SQLiteRead import SQLDatabaseManager
-from json_functions import setup_get_sql_column_names_from_file, setup_file_column_names_dict_to_array, get_plc_from_file
+from json_functions import *
 import logging
 
 # insert data into table
@@ -18,7 +18,7 @@ def insert_data_into_table(db_manager, data): # udvid til automatisk også at he
         #column_string = ",".join(map(str, column_array)) 
         column_string = ",".join(map(lambda column: f"[{column}]", column_array))
         value_placeholders = ",".join(["?" for _ in data])  # create a string of placeholders to protect from sql injections
-        print(data)
+
         insert_query = f"INSERT INTO {db_manager.table_name} ({column_string}) VALUES ({value_placeholders})"
 
         cursor.execute(insert_query, data)
@@ -35,7 +35,7 @@ def insert_data_into_table(db_manager, data): # udvid til automatisk også at he
              
         cursor.close()
         conn.close()
-
+        return data
     except Exception as e:
         print(e)
         logging.error(f"Insert data into table error: {e}", exc_info=True)           

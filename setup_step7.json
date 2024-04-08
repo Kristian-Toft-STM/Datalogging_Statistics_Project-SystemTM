@@ -12,6 +12,9 @@
             "dbresult_logging_trigger index": 0,
             "dbresult time_sec index": 4,
             "dbresult data index": 8,
+            "testtags db number": 1001,
+            "dtl start index": 942,
+            "dtl end index": 954,
             "table name": "Test_Table",
             "column names": [
                 {
