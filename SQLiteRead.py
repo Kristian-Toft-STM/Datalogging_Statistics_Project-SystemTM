@@ -128,6 +128,8 @@ class SQLDatabaseManager:
             data_array = untuple_first_item(data_tuple)
 
             # converts each timestamp from string to datetime, then utc to local time, then converts back to string according to date_format 
+            #data_array = [pytz.utc.localize(datetime.strptime(data, date_format)).astimezone(local_tz).strftime(date_format) for data in data_array]
+
             data_array = [pytz.utc.localize(datetime.strptime(data, date_format)).astimezone(local_tz).strftime(date_format) for data in data_array]
 
             cursor.close()
@@ -140,10 +142,10 @@ class SQLDatabaseManager:
             logging.error(f"Get logs within range error: {e}", exc_info=True)     
 
     # get all data within a range of timestamps
-    def get_log_data_within_range(self, min_range_utc, max_range=datetime.now(), column=None):
+    def get_log_data_within_range(self, min_range, max_range=datetime.now(), column=None):
         try:
 
-            #min_range_utc = min_range.astimezone(pytz.utc)
+            min_range_utc = min_range.astimezone(pytz.utc)
             max_range_utc = max_range.astimezone(pytz.utc)
 
             print(f'From: {min_range_utc}')
@@ -223,15 +225,16 @@ class SQLDatabaseManager:
     # get number of seconds within range of timestamps
     def get_seconds_in_range(self, min_range, max_range):
         try:
-
+            
             timestamp_array = self.get_log_timestamps_within_range(min_range, max_range)
-            first_timestamp = datetime.strptime(timestamp_array[0]  , "%Y-%m-%d %H:%M:%S")
-            last_timestamp = datetime.strptime(timestamp_array[-1]  , "%Y-%m-%d %H:%M:%S")  
-            time_delta = last_timestamp - first_timestamp
-            time_delta_seconds = time_delta.total_seconds()
+            if len(timestamp_array) > 0:
+                first_timestamp = datetime.strptime(timestamp_array[0]  , "%Y-%m-%d %H:%M:%S")
+                last_timestamp = datetime.strptime(timestamp_array[-1]  , "%Y-%m-%d %H:%M:%S")  
+                time_delta = last_timestamp - first_timestamp
+                time_delta_seconds = time_delta.total_seconds()
 
-            return int(time_delta_seconds)
-
+                return int(time_delta_seconds)
+            return 0
         except Exception as e:
             print(e)
             logging.error(f"Get seconds in range error: {e}", exc_info=True) 

@@ -44,7 +44,7 @@ def get_data_from_plc_db(db_number, client, index):
             data = client.db_read(db_number, index, index+4)
             data_fixed = util.get_dint(data,0)
         else:
-            print("uh oh")
+            print("Client not connected in: get_data_from_plc_db")
             time.sleep(5)
             return
         return data_fixed
@@ -87,21 +87,19 @@ def monitor_and_get_data_on_trigger_snap7(client, setup_file_step7):
     if (client != None):
         client.db_write(db_number, logging_trigger_index, bytearray_to_write)
     else:
-        print("Uh oh")
+        print("Client not connected in: monitor_and_get_data_on_trigger_snap7")
         time.sleep(5)
         return    
     while trigger_value == 0:
         try:
-
             trigger_value = get_data_from_plc_db(db_number, client, logging_trigger_index)
-            if trigger_value == 1: 
-                            
+            if trigger_value == 1:       
                 data_array = get_data_array_from_plc_db(db_number, client, setup_file_step7)
                 client.db_write(db_number, logging_trigger_index, bytearray_to_write)
                 print("Logging triggered from PLC")
 
                 return data_array  
-                        
+            time.sleep(0.5)                
         except Exception as e:
             print(e)
             logging.error(f"Monitor snap7 error: {e}", exc_info=True) 
@@ -111,7 +109,7 @@ def monitor_and_get_data_on_trigger_snap7(client, setup_file_step7):
 # bladibla
 def monitor_and_insert_data_snap7(db_manager, test_max_range):               
     try:    
-
+            
             client = connect_snap7_client(db_manager.setup_file)
             data_array = monitor_and_get_data_on_trigger_snap7(client, db_manager.setup_file)
             column_names = setup_get_sql_column_names_from_file(db_manager.setup_file)
@@ -120,7 +118,7 @@ def monitor_and_insert_data_snap7(db_manager, test_max_range):
                 db_manager.insert_data_into_table(data_array)  
 
             combined_array = [f"{value}: {data_item}" for data_item, column_dict in zip(data_array, column_names[1:]) for value in column_dict.items()]
-            print("\n".join(combined_array))   
+            #print("\n".join(combined_array))   
             
     except Exception as e:
         print(e)
@@ -142,6 +140,7 @@ def write_data_dbresult(db_manager, datetime_end=datetime.datetime.now()):
         dtl_end_index = plc.get('dtl end index')
 
         bytearray_to_trigger = int(2).to_bytes(4, byteorder='big')
+        time.sleep(0.5)
 
         while True:
             datetime_end=datetime.datetime.now()
@@ -153,17 +152,21 @@ def write_data_dbresult(db_manager, datetime_end=datetime.datetime.now()):
                     if trigger_value == 1: 
                         
                         start_dtl_datetime = get_and_format_dtl_bytearray(testtags_db_number, dtl_start_index)
+                        print(start_dtl_datetime)
                         end_dtl_datetime = get_and_format_dtl_bytearray(testtags_db_number, dtl_end_index)
+
+                        #print(f'Write start: {start_dtl_datetime}')
+                        #print(f'Write end: {end_dtl_datetime}')
 
                         if end_dtl_datetime.year > 1971:  
                             datetime_end = end_dtl_datetime  
 
                         data = db_manager.get_log_data_within_range(start_dtl_datetime, datetime_end)
-                        print(data)    
+                        print(f'Data: {data}')    
 
                         if len(data) < 1:
                             print('No data found in supplied timestamp range')
-                            return   
+                            client.db_write(db_number, logging_trigger_index, int(0).to_bytes(4, byteorder='big'))
                                     
                         if type(data) == int: 
                             bytearray_to_data = data.to_bytes(4, byteorder='big')
@@ -178,9 +181,10 @@ def write_data_dbresult(db_manager, datetime_end=datetime.datetime.now()):
                             print('write_data_dbresult: unsupported datatype')
                             return     
 
-                        print(time_sec)
-                        client.db_write(db_number, plc.get('dbresult time_sec index'), bytearray_to_time_sec)    
-                        client.db_write(db_number, plc.get('dbresult data index'), bytearray_to_data)
+                        print(f'Seconds for range: {time_sec}')
+                        client.db_write(db_number, plc.get('dbresult time_sec index'), bytearray_to_time_sec)  
+                        if bytearray_to_data != bytearray(b''):
+                            client.db_write(db_number, plc.get('dbresult data index'), bytearray_to_data)
                         client.db_write(db_number, logging_trigger_index, bytearray_to_trigger)           
 
                 except Exception as e:
@@ -193,6 +197,7 @@ def write_data_dbresult(db_manager, datetime_end=datetime.datetime.now()):
 # format dtl from plc to : yyyy-MM-dd-hh-mm-ss
 def get_and_format_dtl_bytearray(db_number, index):
     dtl_bytearray = client.db_read(db_number, index, 12)
+    print(dtl_bytearray)
     dtl_array = []              
     for I in range(0, len(dtl_bytearray), 1):
         if I + 4 <= len(dtl_bytearray):
@@ -207,6 +212,7 @@ def get_and_format_dtl_bytearray(db_number, index):
             dtl_array.append(data_fixed)     
         else:
             break  
+    print(dtl_array)    
     year, month, day, hour, minute, second = dtl_array[:6]
     dtl_datetime = datetime.datetime(year, month, day, hour, minute, second)
     return dtl_datetime

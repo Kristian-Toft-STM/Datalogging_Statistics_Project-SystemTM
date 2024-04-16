@@ -5,6 +5,7 @@ from json_functions import *
 from Snap7_Functions import *
 import logging
 import datetime
+import sqlite3
 
 client = snap7.client.Client()
 
@@ -115,3 +116,43 @@ def write_data_dbresult_old_new(db_manager, datetime_end=datetime.datetime.now()
                 logging.error(f"Write data dbresult error: {e}", exc_info=True)         
     finally:
         disconnect_snap7_client()        
+
+
+def setup_sql_table_from_json_old(db_manager):
+    try:
+
+        conn = sqlite3.connect(db_manager.sql_db_path)
+        cursor = conn.cursor()
+        
+        if not db_manager.table_exists():
+            if not db_manager.any_table_exists():
+                # If the table does not exist, create it
+                print(f"Table {db_manager.table_name} does not exist. Creating it...")
+                cursor.execute(f"CREATE TABLE {db_manager.table_name} (TimeStamp DATETIME DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (TimeStamp))")
+                print(f"Table {db_manager.table_name} created.")
+            else:
+                print('Table name has changed, renaming table...')
+                cursor.execute("SELECT name FROM sqlite_master WHERE type='table'")
+                tables = cursor.fetchall()
+                old_table_name = tables[0][0]
+                cursor.execute(f"ALTER TABLE {old_table_name} RENAME TO {db_manager.table_name};")
+                print(f'Table "{old_table_name}" renamed to "{db_manager.table_name}"')
+
+        if not db_manager.table_not_empty():
+            json_setup_column_names = setup_get_sql_column_names_from_file(db_manager.setup_file)
+            for I, column_dict in enumerate(json_setup_column_names):
+                if I == 0:
+                    continue
+                for column_key in column_dict:
+                    column_value = column_dict[column_key]
+                    if not db_manager.column_exists_in_table(column_value):                
+                        cursor.execute(f"ALTER TABLE {db_manager.table_name} ADD [{column_value}] INTEGER;")
+        else:
+            return
+
+        cursor.close()
+        conn.close()
+
+    except Exception as e:
+        print(e)
+        logging.error(f"Setup sql table from json error: {e}", exc_info=True)           

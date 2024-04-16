@@ -4,6 +4,7 @@ import tzlocal
 #from SQLiteRead import get_last_timestamp_from_table, table_exists, table_not_empty, any_table_exists, column_exists_in_table, get_db_size
 from SQLiteRead import SQLDatabaseManager
 from json_functions import *
+from Snap7_Functions import *
 import logging
 
 # insert data into table
@@ -14,12 +15,17 @@ def insert_data_into_table(db_manager, data): # udvid til automatisk også at he
         
         column_array = setup_file_column_names_dict_to_array(setup_get_sql_column_names_from_file(db_manager.setup_file)) 
         column_array = column_array[1:] # remove the first column (timestamp) from the array
+        plc = get_plc_from_file(db_manager.setup_file)  
+
+        testtags_db_number = plc.get('testtags db number')
+        current_dtl_index = plc.get('dtl current index')
+        current_dtl_datetime = get_and_format_dtl_bytearray(testtags_db_number, current_dtl_index)
         
         #column_string = ",".join(map(str, column_array)) 
         column_string = ",".join(map(lambda column: f"[{column}]", column_array))
         value_placeholders = ",".join(["?" for _ in data])  # create a string of placeholders to protect from sql injections
 
-        insert_query = f"INSERT INTO {db_manager.table_name} ({column_string}) VALUES ({value_placeholders})"
+        insert_query = f"INSERT INTO {db_manager.table_name} (TimeStamp, {column_string}) VALUES ('{current_dtl_datetime}',{value_placeholders})"
 
         cursor.execute(insert_query, data)
         conn.commit()
@@ -51,7 +57,7 @@ def setup_sql_table_from_json(db_manager):
             if not db_manager.any_table_exists():
                 # If the table does not exist, create it
                 print(f"Table {db_manager.table_name} does not exist. Creating it...")
-                cursor.execute(f"CREATE TABLE {db_manager.table_name} (TimeStamp DATETIME DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (TimeStamp))")
+                cursor.execute(f"CREATE TABLE {db_manager.table_name} (TimeStamp DATETIME, PRIMARY KEY (TimeStamp))")
                 print(f"Table {db_manager.table_name} created.")
             else:
                 print('Table name has changed, renaming table...')

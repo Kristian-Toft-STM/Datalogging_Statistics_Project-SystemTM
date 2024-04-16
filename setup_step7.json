@@ -13,8 +13,9 @@
             "dbresult time_sec index": 4,
             "dbresult data index": 8,
             "testtags db number": 1001,
-            "dtl start index": 942,
-            "dtl end index": 954,
+            "dtl start index": 930,
+            "dtl end index": 942,
+            "dtl current index": 984,
             "table name": "Test_Table",
             "column names": [
                 {

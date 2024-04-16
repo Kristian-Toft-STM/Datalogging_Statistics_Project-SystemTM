@@ -131,7 +131,6 @@ def main_script_snap7_start(): # current standard for error handling
 
         monitor_count = 1
         while monitor_count <= 200:
-
             monitor_and_insert_data_snap7(db_manager, test_max_range)
 
             print(f"Monitor count: {monitor_count}")
@@ -150,9 +149,11 @@ def main_script():
             case 0:
                 print('No setup file found')
             case 1:
+                print('Step 7 setup found, running it now...')
                 main_script_snap7_start()
             case 2:
                 pass
+                print('Opcua setup found, running it now...')
                 #main_script_opcua_start(plc_trigger_id, data_node_id, sql_db_path, setup_file_opcua)
             case 3:
                 print('Multiple setup files found and no file specified.')    
@@ -189,6 +190,7 @@ def initialization_step7():
         global previous_setup_file
         setup = read_setup_file(setup_file_step7)
         previous_setup_file = setup
+        global step7_client 
 
         table_name = get_plc_from_file(setup_file_step7).get('table name')
 
