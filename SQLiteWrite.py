@@ -20,25 +20,29 @@ def insert_data_into_table(db_manager, data): # udvid til automatisk også at he
         testtags_db_number = plc.get('testtags db number')
         current_dtl_index = plc.get('dtl current index')
         current_dtl_datetime = get_and_format_dtl_bytearray(testtags_db_number, current_dtl_index)
-        
-        #column_string = ",".join(map(str, column_array)) 
-        column_string = ",".join(map(lambda column: f"[{column}]", column_array))
-        value_placeholders = ",".join(["?" for _ in data])  # create a string of placeholders to protect from sql injections
 
-        insert_query = f"INSERT INTO {db_manager.table_name} (TimeStamp, {column_string}) VALUES ('{current_dtl_datetime}',{value_placeholders})"
+        if str(current_dtl_datetime) != db_manager.get_last_timestamp_from_table(): 
+            print(f"Current time: {current_dtl_datetime}")  
+            #column_string = ",".join(map(str, column_array)) 
+            column_string = ",".join(map(lambda column: f"[{column}]", column_array))
+            value_placeholders = ",".join(["?" for _ in data])  # create a string of placeholders to protect from sql injections
 
-        cursor.execute(insert_query, data)
-        conn.commit()
-        cursor. execute('VACUUM;')   
-        
-        if (db_manager.table_exists()):
-            if (db_manager.table_not_empty()):
-                print(f"Data succesfully logged to SQL ({db_manager.get_last_timestamp_from_table()})")
+            insert_query = f"INSERT INTO {db_manager.table_name} (TimeStamp, {column_string}) VALUES ('{current_dtl_datetime}',{value_placeholders})"
+
+            cursor.execute(insert_query, data)
+            conn.commit()
+            cursor. execute('VACUUM;') 
+
+            if (db_manager.table_exists()):
+                if (db_manager.table_not_empty()):
+                    print(f"Data succesfully logged to SQL ({db_manager.get_last_timestamp_from_table()})")
+                else:
+                    print("No data in table")
             else:
-                print("No data in table")
+                print("Table does not exist")        
         else:
-            print("Table does not exist")
-             
+            print("Error: Timestamp already exists in database. Skipping log...")      
+              
         cursor.close()
         conn.close()
         return data

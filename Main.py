@@ -1,3 +1,4 @@
+# ------------------------------------------------------ IMPORTS ------------------------------------------------------
 # sub-script imports
 from OPCUA_Functions import *
 from Snap7_Functions import *
@@ -17,7 +18,8 @@ import inspect
 import asyncio
 from multiprocessing import Process
 
-# classes
+# ------------------------------------------------------ CLASSES ------------------------------------------------------
+# for error handling
 class TableNotFoundError(Exception):
        def __init__(self, message="Table not found", *args):
         caller_frame = inspect.stack()[1]
@@ -25,42 +27,38 @@ class TableNotFoundError(Exception):
         line_number = caller_frame.lineno
         full_message = f"{caller_func_name} at line {line_number}: {message}"
         super().__init__(full_message, *args)
-        
-db_manager = SQLDatabaseManager('','','')
-
+  
+# ------------------------------------------------------ ERROR LOG ------------------------------------------------------
 # setup logging
 logging.basicConfig(level=logging.ERROR, filename='error.log', format='%(asctime)s - %(levelname)s - %(message)s')
     # bash command to open log file: 'tail -f /path/to/your/log/file/app.log'
 
-# test variables
+# ------------------------------------------------------ TEST VARIABLES ------------------------------------------------------
 plc_trigger_id = "ns=4;i=3"
 data_node_id = "ns=4;i=4" 
 #sql_db_path = "projekttestDB.db" 
 setup_file_opcua = "setup_opcua.json"
 setup_file_step7 = "setup_step7.json"
-
-previous_setup_file = None
-
-local_tz = get_localzone()
+local_tz = get_localzone() 
 test_min_range = datetime.datetime(2024,3,12,13,0,0).astimezone(local_tz)
 test_max_range = datetime.datetime(2024,3,30,23,0,0).astimezone(local_tz)
 test_tid = any
 #test_max_range = datetime.datetime.now()
-
-setup_file_to_run = ''
 #table_name = ''
 
+# ------------------------------------------------------ GLOBAL VARIABLES ------------------------------------------------------
+db_manager = SQLDatabaseManager('','','') # initialise SQL database manager object, for handling database operations  
+previous_setup_file = None # variable for storing the previous setup file
+setup_file_to_run = '' # global variable for storing target setup file
 
-
-# main functions
-
+# ------------------------------------------------------ MAIN FUNCTIONS ------------------------------------------------------
 # start initialization
 def start_init():
     try:
 
         global setup_file_to_run
-        setup_file_to_run = step7_or_opcua_switch(setup_file_step7)
-        init()
+        setup_file_to_run = step7_or_opcua_switch(setup_file_step7) # choose which setup file to run
+        init() # run initialisation depending on type of setup file
         
         return
     
@@ -68,17 +66,16 @@ def start_init():
         print(e)
         logging.error(f"start init error: {e}", exc_info=True)
 
-# start main loop
+# start main functionality procs, running asynchronously to eachother
 def start_main():
     try:
-
-        main_script_proc = Process(target=main_script)
-        #csv_export_timer_proce = Process(target=csv_export_timer, args=(sql_db_path, table_name))
-        write_data_dbresult_proc = Process(target=write_data_dbresult, args=(db_manager,))
+        main_script_proc = Process(target=main_script) # main functionality, including cyclically logging to sql database
+        write_data_dbresult_proc = Process(target=write_data_dbresult, args=(db_manager,)) # monitor requests for writing data to plc
+        #csv_export_timer_proce = Process(target=csv_export_timer, args=(sql_db_path, table_name)) # csv export timer
 
         main_script_proc.start()
-        #csv_export_timer_proc.start()
         write_data_dbresult_proc.start()
+        #csv_export_timer_proc.start()
 
         #main_script()
         #csv_export_timer(sql_db_path, table_name)
@@ -93,8 +90,10 @@ def start_main():
 def step7_or_opcua_switch(file_to_run):
     try:
 
-        script_directory = os.path.dirname(__file__)
-        directory_contents = os.listdir(script_directory)
+        script_directory = os.path.dirname(__file__) # get projekt directory path
+        directory_contents = os.listdir(script_directory) # get content of directory
+
+        # search for specific setup file names in directory, and return a corresponding number
         if 'setup_opcua.json' in directory_contents and 'setup_step7.json' in directory_contents:
             if file_to_run == 'setup_step7.json':
                 return 1
@@ -126,12 +125,13 @@ def main_script_opcua_start(plc_trigger_id, data_node_id, sql_db_path, setup_fil
         logging.error(f"Main opcua script error: {e}", exc_info=True)
 
 # main script for step7/snap7 communication
-def main_script_snap7_start(): # current standard for error handling
+def main_script_snap7_start():
     try:
 
+        # loop for continously monitor for logging requests, cycles limited by monitor_counter
         monitor_count = 1
         while monitor_count <= 200:
-            monitor_and_insert_data_snap7(db_manager, test_max_range)
+            monitor_and_insert_data_snap7(db_manager, test_max_range) # monitor for logging requests
 
             print(f"Monitor count: {monitor_count}")
             monitor_count += 1
@@ -164,7 +164,7 @@ def main_script():
         print(e)
         logging.error(f"Main script error: {e}", exc_info=True)
 
-# case for deciding which initialization script to run, depending on the setup file
+# case for deciding which initialization function to run, depending on the setup file
 def init():
     try:    
 
@@ -187,13 +187,14 @@ def init():
 # initialization for step7/snap7
 def initialization_step7():
     try:
+        # read the current setup file, and update previous_setup_file
         global previous_setup_file
         setup = read_setup_file(setup_file_step7)
         previous_setup_file = setup
-        global step7_client 
 
-        table_name = get_plc_from_file(setup_file_step7).get('table name')
+        table_name = get_plc_from_file(setup_file_step7).get('table name') # get table name from setup file
 
+        # set up sql database manager
         db_manager.sql_db_path = 'projekttestDB.db'
         db_manager.setup_file = setup_file_step7 
         db_manager.table_name = table_name
@@ -201,7 +202,7 @@ def initialization_step7():
         if table_name is None:
             raise TableNotFoundError(f"Table name not found in setup file: {db_manager.setup_file}")
 
-        db_manager.setup_sql_table_from_json()
+        db_manager.setup_sql_table_from_json() # set up the sql table with the manager
         return
 
     except TableNotFoundError as e:
@@ -214,21 +215,24 @@ def initialization_opcua():
 # reinitialization of sql database and settings from setup file
 def reinitialize_setup():
     try: 
-
-        db_manager.delete_table_data()
+        # delete table data, then delete the table
+        db_manager.delete_table_data() 
         db_manager.drop_table()
-        init()
+
+        init() # start initialization again
         return  
 
     except Exception as e:
         print(e)
         logging.error(f"Reinitialize setup error: {e}", exc_info=True)     
 
-
+# ------------------------------------------------------ INITIALIZATION AND MAIN FUNCTION CALLS ------------------------------------------------------
 start_init()
 if __name__ == '__main__':
     start_main()
 
+
+#------------------------------------------------------ FUNCTION CALLS FOR TESTING PURPOSES ------------------------------------------------------
 #write_data_dbresult(db_manager)
 
 #print(insert_list_of_column_names_from_txt_into_json('column_names.txt', setup_file_step7))
@@ -293,3 +297,5 @@ if __name__ == '__main__':
 #setup_file_rename_or_delete(setup_file_step7, 'column 5')   
         
 #setup_file_keys_changed(setup_file_step7, previous_setup_file)
+
+

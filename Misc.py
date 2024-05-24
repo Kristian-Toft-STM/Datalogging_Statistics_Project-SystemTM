@@ -79,16 +79,16 @@ def export_sql_to_csv(db_manager):
 def csv_export_timer(db_manager):
     try: 
 
-        while True:
+        while True: # loop for continous counting
             start = time.time()
             # change '5' to actual time (probably 24 hours)
-            while time.time() < start + 5:
+            while time.time() < start + 5: 
                 print("Time elapsed:", time.time() - start)  
                 time.sleep(1) 
 
             end = time.time()
             length = end - start 
-            # export_sql_to_csv(db_manager)
+            export_sql_to_csv(db_manager)
             print("It took", length, "seconds!")
 
     except Exception as e:
