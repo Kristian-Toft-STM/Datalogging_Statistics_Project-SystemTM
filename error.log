@@ -18909,3 +18909,978 @@ Traceback (most recent call last):
   File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
     raise RuntimeError(error)
 RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-03 11:55:58,503 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-03 11:55:58,505 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-04 11:00:00,177 - ERROR - b' TCP : Unreachable peer'
+2024-06-04 11:00:00,179 - ERROR - Connect snap7 client error: b' TCP : Unreachable peer'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' TCP : Unreachable peer'
+2024-06-04 11:00:52,420 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-04 11:00:52,420 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-04 11:03:02,420 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-04 11:03:02,422 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-04 11:05:24,942 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-04 11:05:24,943 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-04 11:14:02,178 - ERROR - b' TCP : Unreachable peer'
+2024-06-04 11:14:02,178 - ERROR - Connect snap7 client error: b' TCP : Unreachable peer'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' TCP : Unreachable peer'
+2024-06-04 11:14:39,823 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-04 11:14:39,824 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-04 11:16:30,323 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-04 11:16:30,323 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-04 11:17:18,126 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-04 11:17:18,126 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-04 11:18:30,650 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-04 11:18:30,650 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-04 11:19:48,677 - ERROR - b' TCP : Unreachable peer'
+2024-06-04 11:19:48,677 - ERROR - Connect snap7 client error: b' TCP : Unreachable peer'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' TCP : Unreachable peer'
+2024-06-10 15:17:12,562 - ERROR - b' TCP : Unreachable peer'
+2024-06-10 15:17:12,564 - ERROR - Connect snap7 client error: b' TCP : Unreachable peer'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' TCP : Unreachable peer'
+2024-06-10 15:17:12,994 - ERROR - Write data dbresult error: year 0 is out of range
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 162, in write_data_dbresult
+    start_dtl_datetime = get_and_format_dtl_bytearray(testtags_db_number, dtl_start_index)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 235, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: year 0 is out of range
+2024-06-10 15:17:19,236 - ERROR - b'CLI : Cannot change this param now'
+2024-06-10 15:17:19,236 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 162, in write_data_dbresult
+    start_dtl_datetime = get_and_format_dtl_bytearray(testtags_db_number, dtl_start_index)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 235, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: year 0 is out of range
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-06-10 15:17:48,818 - ERROR - Write data dbresult error: year 0 is out of range
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 164, in write_data_dbresult
+    end_dtl_datetime = get_and_format_dtl_bytearray(testtags_db_number, dtl_end_index)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 235, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: year 0 is out of range
+2024-06-10 15:17:53,207 - ERROR - b'CLI : Cannot change this param now'
+2024-06-10 15:17:53,207 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 164, in write_data_dbresult
+    end_dtl_datetime = get_and_format_dtl_bytearray(testtags_db_number, dtl_end_index)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 235, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: year 0 is out of range
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-06-10 15:19:24,113 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-10 15:19:24,114 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-10 15:19:46,808 - ERROR - Write data dbresult error: year 0 is out of range
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 164, in write_data_dbresult
+    end_dtl_datetime = get_and_format_dtl_bytearray(testtags_db_number, dtl_end_index)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 235, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: year 0 is out of range
+2024-06-10 15:19:52,134 - ERROR - b'CLI : Cannot change this param now'
+2024-06-10 15:19:52,134 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 164, in write_data_dbresult
+    end_dtl_datetime = get_and_format_dtl_bytearray(testtags_db_number, dtl_end_index)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 235, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: year 0 is out of range
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-06-10 15:20:13,761 - ERROR - Write data dbresult error: year 0 is out of range
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 164, in write_data_dbresult
+    end_dtl_datetime = get_and_format_dtl_bytearray(testtags_db_number, dtl_end_index)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 235, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: year 0 is out of range
+2024-06-10 15:20:15,792 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-10 15:20:15,793 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-10 15:20:17,762 - ERROR - b'CLI : Cannot change this param now'
+2024-06-10 15:20:17,762 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 164, in write_data_dbresult
+    end_dtl_datetime = get_and_format_dtl_bytearray(testtags_db_number, dtl_end_index)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 235, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: year 0 is out of range
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-06-10 15:21:23,782 - ERROR - Write data dbresult error: year 0 is out of range
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 164, in write_data_dbresult
+    end_dtl_datetime = get_and_format_dtl_bytearray(testtags_db_number, dtl_end_index)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 235, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: year 0 is out of range
+2024-06-10 15:21:29,897 - ERROR - b'CLI : Cannot change this param now'
+2024-06-10 15:21:29,898 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 164, in write_data_dbresult
+    end_dtl_datetime = get_and_format_dtl_bytearray(testtags_db_number, dtl_end_index)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 235, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: year 0 is out of range
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-06-10 15:23:07,121 - ERROR - Write data dbresult error: year 0 is out of range
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 164, in write_data_dbresult
+    end_dtl_datetime = get_and_format_dtl_bytearray(testtags_db_number, dtl_end_index)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 235, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: year 0 is out of range
+2024-06-10 15:23:09,011 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-10 15:23:09,012 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-10 15:23:11,087 - ERROR - b'CLI : Cannot change this param now'
+2024-06-10 15:23:11,088 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 164, in write_data_dbresult
+    end_dtl_datetime = get_and_format_dtl_bytearray(testtags_db_number, dtl_end_index)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 235, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: year 0 is out of range
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-06-10 15:24:37,242 - ERROR - Write data dbresult error: cannot access local variable 'year' where it is not associated with a value
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 162, in write_data_dbresult
+    start_dtl_datetime = get_and_format_dtl_bytearray(testtags_db_number, dtl_start_index)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 234, in get_and_format_dtl_bytearray
+    print(year);
+     ^^^^
+UnboundLocalError: cannot access local variable 'year' where it is not associated with a value
+2024-06-10 15:24:40,421 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-10 15:24:40,422 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-10 15:24:43,392 - ERROR - b'CLI : Cannot change this param now'
+2024-06-10 15:24:43,393 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 162, in write_data_dbresult
+    start_dtl_datetime = get_and_format_dtl_bytearray(testtags_db_number, dtl_start_index)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 234, in get_and_format_dtl_bytearray
+    print(year);
+     ^^^^
+UnboundLocalError: cannot access local variable 'year' where it is not associated with a value
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-06-10 15:24:58,304 - ERROR - Write data dbresult error: year 0 is out of range
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 164, in write_data_dbresult
+    end_dtl_datetime = get_and_format_dtl_bytearray(testtags_db_number, dtl_end_index)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 236, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: year 0 is out of range
+2024-06-10 15:25:39,894 - ERROR - Write data dbresult error: year 0 is out of range
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 164, in write_data_dbresult
+    end_dtl_datetime = get_and_format_dtl_bytearray(testtags_db_number, dtl_end_index)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 236, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: year 0 is out of range
+2024-06-10 15:25:41,457 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-10 15:25:41,458 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-10 15:25:43,199 - ERROR - b'CLI : Cannot change this param now'
+2024-06-10 15:25:43,200 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 164, in write_data_dbresult
+    end_dtl_datetime = get_and_format_dtl_bytearray(testtags_db_number, dtl_end_index)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 236, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: year 0 is out of range
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-06-10 15:26:22,316 - ERROR - Write data dbresult error: year 0 is out of range
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 164, in write_data_dbresult
+    end_dtl_datetime = get_and_format_dtl_bytearray(testtags_db_number, dtl_end_index)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 237, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: year 0 is out of range
+2024-06-10 15:27:27,864 - ERROR - Write data dbresult error: year 0 is out of range
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 164, in write_data_dbresult
+    end_dtl_datetime = get_and_format_dtl_bytearray(testtags_db_number, dtl_end_index)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 237, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: year 0 is out of range
+2024-06-10 15:27:30,877 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-10 15:27:30,878 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-10 15:30:07,102 - ERROR - Write data dbresult error: year 0 is out of range
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 164, in write_data_dbresult
+    end_dtl_datetime = get_and_format_dtl_bytearray(testtags_db_number, dtl_end_index)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 237, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: year 0 is out of range
+2024-06-10 15:30:10,456 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-10 15:30:10,457 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-10 15:30:13,854 - ERROR - b'CLI : Cannot change this param now'
+2024-06-10 15:30:13,855 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 164, in write_data_dbresult
+    end_dtl_datetime = get_and_format_dtl_bytearray(testtags_db_number, dtl_end_index)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 237, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: year 0 is out of range
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-06-10 15:30:40,240 - ERROR - b' TCP : Unreachable peer'
+2024-06-10 15:30:40,241 - ERROR - Connect snap7 client error: b' TCP : Unreachable peer'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' TCP : Unreachable peer'
+2024-06-10 15:31:00,714 - ERROR - b' TCP : Unreachable peer'
+2024-06-10 15:31:00,715 - ERROR - Connect snap7 client error: b' TCP : Unreachable peer'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' TCP : Unreachable peer'
+2024-06-10 15:32:13,132 - ERROR - Write data dbresult error: year 0 is out of range
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 164, in write_data_dbresult
+    if not (get_and_format_dtl_bytearray(testtags_db_number, dtl_end_index)):
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 238, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: year 0 is out of range
+2024-06-10 15:32:15,968 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-10 15:32:15,970 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-10 15:32:44,189 - ERROR - Write data dbresult error: year 0 is out of range
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 164, in write_data_dbresult
+    if not (get_and_format_dtl_bytearray(testtags_db_number, dtl_end_index)) == 0:
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 238, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: year 0 is out of range
+2024-06-10 15:35:44,957 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-10 15:35:44,958 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-10 15:36:20,783 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-10 15:36:20,785 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-10 15:36:48,678 - ERROR - Write data dbresult error: year 0 is out of range
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 164, in write_data_dbresult
+    if not get_and_format_dtl_bytearray(testtags_db_number, dtl_end_index) == 0:
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 239, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: year 0 is out of range
+2024-06-10 15:36:50,918 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-10 15:36:50,918 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-10 15:38:23,207 - ERROR - Write data dbresult error: year 0 is out of range
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 164, in write_data_dbresult
+    if not get_and_format_dtl_bytearray(testtags_db_number, dtl_end_index) == 0:
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 239, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: year 0 is out of range
+2024-06-10 15:40:10,953 - ERROR - Write data dbresult error: cannot access local variable 'dtl_datetime' where it is not associated with a value
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 164, in write_data_dbresult
+    if not get_and_format_dtl_bytearray(testtags_db_number, dtl_end_index) == 0:
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 242, in get_and_format_dtl_bytearray
+    return dtl_datetime
+           ^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'dtl_datetime' where it is not associated with a value
+2024-06-10 15:40:13,549 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-10 15:40:13,550 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-10 15:40:32,971 - ERROR - Write data dbresult error: cannot access local variable 'dtl_datetime' where it is not associated with a value
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 164, in write_data_dbresult
+    if not get_and_format_dtl_bytearray(testtags_db_number, dtl_end_index) == 0:
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 242, in get_and_format_dtl_bytearray
+    return dtl_datetime
+           ^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'dtl_datetime' where it is not associated with a value
+2024-06-10 15:40:38,643 - ERROR - b'CLI : Cannot change this param now'
+2024-06-10 15:40:38,644 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 164, in write_data_dbresult
+    if not get_and_format_dtl_bytearray(testtags_db_number, dtl_end_index) == 0:
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 242, in get_and_format_dtl_bytearray
+    return dtl_datetime
+           ^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'dtl_datetime' where it is not associated with a value
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-06-10 15:41:11,728 - ERROR - Write data dbresult error: cannot access local variable 'dtl_datetime' where it is not associated with a value
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 164, in write_data_dbresult
+    if not get_and_format_dtl_bytearray(testtags_db_number, dtl_end_index) == 0:
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 242, in get_and_format_dtl_bytearray
+    return dtl_datetime
+           ^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'dtl_datetime' where it is not associated with a value
+2024-06-10 15:41:13,790 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-10 15:41:13,791 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-10 15:43:14,327 - ERROR - b' TCP : Unreachable peer'
+2024-06-10 15:43:14,328 - ERROR - Connect snap7 client error: b' TCP : Unreachable peer'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' TCP : Unreachable peer'
+2024-06-11 13:54:56,729 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-11 13:54:56,731 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-11 13:55:11,938 - ERROR - Get last timestamp from table error: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 100, in get_last_timestamp_from_table
+    last_timestamp = last_timestamp_row[0]
+                     ~~~~~~~~~~~~~~~~~~^^^
+TypeError: 'NoneType' object is not subscriptable
+2024-06-11 13:59:43,408 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-11 13:59:43,408 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-11 13:59:48,952 - ERROR - Get last timestamp from table error: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 100, in get_last_timestamp_from_table
+    last_timestamp = last_timestamp_row[0]
+                     ~~~~~~~~~~~~~~~~~~^^^
+TypeError: 'NoneType' object is not subscriptable
+2024-06-11 14:00:35,821 - ERROR - Write data dbresult error: can't convert negative int to unsigned
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 193, in write_data_dbresult
+    bytearray_to_data += num.to_bytes(4, byteorder='big')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OverflowError: can't convert negative int to unsigned
+2024-06-11 14:00:40,824 - ERROR - b'CLI : Cannot change this param now'
+2024-06-11 14:00:40,825 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 193, in write_data_dbresult
+    bytearray_to_data += num.to_bytes(4, byteorder='big')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OverflowError: can't convert negative int to unsigned
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-06-11 14:04:17,918 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-11 14:04:17,919 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-11 14:04:23,467 - ERROR - Get last timestamp from table error: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 100, in get_last_timestamp_from_table
+    last_timestamp = last_timestamp_row[0]
+                     ~~~~~~~~~~~~~~~~~~^^^
+TypeError: 'NoneType' object is not subscriptable
+2024-06-11 14:05:15,733 - ERROR - Write data dbresult error: can't convert negative int to unsigned
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 193, in write_data_dbresult
+    bytearray_to_data += num.to_bytes(4, byteorder='big')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OverflowError: can't convert negative int to unsigned
+2024-06-11 14:05:20,734 - ERROR - b'CLI : Cannot change this param now'
+2024-06-11 14:05:20,735 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 193, in write_data_dbresult
+    bytearray_to_data += num.to_bytes(4, byteorder='big')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OverflowError: can't convert negative int to unsigned
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-06-11 14:07:35,589 - ERROR - Write data dbresult error: can't convert negative int to unsigned
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 193, in write_data_dbresult
+    bytearray_to_data += num.to_bytes(4, byteorder='big')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OverflowError: can't convert negative int to unsigned
+2024-06-11 14:07:40,590 - ERROR - b'CLI : Cannot change this param now'
+2024-06-11 14:07:40,591 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 193, in write_data_dbresult
+    bytearray_to_data += num.to_bytes(4, byteorder='big')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OverflowError: can't convert negative int to unsigned
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-06-11 14:09:12,850 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-11 14:09:12,851 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-11 14:09:23,746 - ERROR - Write data dbresult error: can't convert negative int to unsigned
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 193, in write_data_dbresult
+    bytearray_to_data += num.to_bytes(4, byteorder='big')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OverflowError: can't convert negative int to unsigned
+2024-06-11 14:09:26,218 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-11 14:09:26,219 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-11 14:09:28,748 - ERROR - b'CLI : Cannot change this param now'
+2024-06-11 14:09:28,749 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 193, in write_data_dbresult
+    bytearray_to_data += num.to_bytes(4, byteorder='big')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OverflowError: can't convert negative int to unsigned
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-06-11 14:10:32,805 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-11 14:10:32,806 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-11 14:10:38,356 - ERROR - Get last timestamp from table error: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 100, in get_last_timestamp_from_table
+    last_timestamp = last_timestamp_row[0]
+                     ~~~~~~~~~~~~~~~~~~^^^
+TypeError: 'NoneType' object is not subscriptable
+2024-06-11 14:15:17,333 - ERROR - Get last timestamp from table error: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 100, in get_last_timestamp_from_table
+    last_timestamp = last_timestamp_row[0]
+                     ~~~~~~~~~~~~~~~~~~^^^
+TypeError: 'NoneType' object is not subscriptable
+2024-06-11 14:15:20,311 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-11 14:15:20,312 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-11 14:15:52,393 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-11 14:15:52,393 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-11 14:16:08,354 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-11 14:16:08,355 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-11 14:23:57,489 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-11 14:23:57,489 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-11 14:24:03,034 - ERROR - Get last timestamp from table error: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 100, in get_last_timestamp_from_table
+    last_timestamp = last_timestamp_row[0]
+                     ~~~~~~~~~~~~~~~~~~^^^
+TypeError: 'NoneType' object is not subscriptable
+2024-06-11 14:31:58,043 - ERROR - Get last timestamp from table error: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 100, in get_last_timestamp_from_table
+    last_timestamp = last_timestamp_row[0]
+                     ~~~~~~~~~~~~~~~~~~^^^
+TypeError: 'NoneType' object is not subscriptable
+2024-06-11 14:43:17,292 - ERROR - Get last timestamp from table error: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 100, in get_last_timestamp_from_table
+    last_timestamp = last_timestamp_row[0]
+                     ~~~~~~~~~~~~~~~~~~^^^
+TypeError: 'NoneType' object is not subscriptable

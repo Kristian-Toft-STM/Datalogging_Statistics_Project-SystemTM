@@ -160,8 +160,13 @@ def write_data_dbresult(db_manager, datetime_end=datetime.datetime.now()):
                             
                             # get dtl range of logs 
                             start_dtl_datetime = get_and_format_dtl_bytearray(testtags_db_number, dtl_start_index)
-                            print(start_dtl_datetime)
+                            print(f'start: {start_dtl_datetime}')
+                            
+                            if get_and_format_dtl_bytearray(testtags_db_number, dtl_end_index) == 0:
+                                return 0
+
                             end_dtl_datetime = get_and_format_dtl_bytearray(testtags_db_number, dtl_end_index)
+                            print(f'end: {end_dtl_datetime}')
 
                             #print(f'Write start: {start_dtl_datetime}')
                             #print(f'Write end: {end_dtl_datetime}')
@@ -230,9 +235,11 @@ def get_and_format_dtl_bytearray(db_number, index):
                 data_fixed = util.get_sint(dtl_bytearray,I+1)    
             dtl_array.append(data_fixed)     
         else:
-            break    
+            break     
     year, month, day, hour, minute, second = dtl_array[:6] # map each element of the dtl array to a corresponding variable
-    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+    
+    if year == 0 : # fix
+        return 0  
+    
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables    
     return dtl_datetime
-
-client.db_write(4, 2, "data is cool")

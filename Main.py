@@ -71,7 +71,7 @@ def start_main():
     try:
         main_script_proc = Process(target=main_script) # main functionality, including cyclically logging to sql database
         write_data_dbresult_proc = Process(target=write_data_dbresult, args=(db_manager,)) # monitor requests for writing data to plc
-        #csv_export_timer_proce = Process(target=csv_export_timer, args=(sql_db_path, table_name)) # csv export timer
+        #csv_export_timer_proc = Process(target=csv_export_timer, args=(sql_db_path, table_name)) # csv export timer
 
         main_script_proc.start()
         write_data_dbresult_proc.start()
