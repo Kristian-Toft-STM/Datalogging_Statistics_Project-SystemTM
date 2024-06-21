@@ -130,7 +130,7 @@ def main_script_snap7_start():
 
         # loop for continously monitor for logging requests, cycles limited by monitor_counter
         monitor_count = 1
-        while monitor_count <= 200:
+        while monitor_count <= 200000000000:
             monitor_and_insert_data_snap7(db_manager, test_max_range) # monitor for logging requests
 
             print(f"Monitor count: {monitor_count}")

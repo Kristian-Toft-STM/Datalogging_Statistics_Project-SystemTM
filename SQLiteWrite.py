@@ -11,6 +11,7 @@ import logging
 def insert_data_into_table(db_manager, data): # udvid til automatisk også at hente table name?
     try:
         conn = sqlite3.connect(db_manager.sql_db_path)
+        conn.isolation_level = None # sets connection to auto-commit mode (changes to sqldb can be accessed instantly)
         cursor = conn.cursor()
         
         column_array = setup_file_column_names_dict_to_array(setup_get_sql_column_names_from_file(db_manager.setup_file)) 

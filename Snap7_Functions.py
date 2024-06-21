@@ -32,6 +32,7 @@ def disconnect_snap7_client():
     try:     
         
         client.disconnect()
+        print("Snap7 client disconnected from tcp server.")
         return
     
     except Exception as e:
