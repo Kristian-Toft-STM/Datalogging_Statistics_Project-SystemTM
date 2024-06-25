@@ -1,0 +1,46 @@
+2024-06-21 09:39:33,472 - ERROR - b' TCP : Unreachable peer'
+2024-06-21 09:39:33,475 - ERROR - Connect snap7 client error: b' TCP : Unreachable peer'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' TCP : Unreachable peer'
+2024-06-21 11:14:47,104 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-21 11:14:47,105 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-21 11:17:12,494 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-21 11:17:12,494 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-21 11:23:23,989 - ERROR - b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-21 11:23:23,990 - ERROR - Connect snap7 client error: b' ISO : An error occurred during recv TCP : Connection timed out'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' ISO : An error occurred during recv TCP : Connection timed out'
+2024-06-21 11:55:39,132 - ERROR - Get last timestamp from table error: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 100, in get_last_timestamp_from_table
+    last_timestamp = last_timestamp_row[0]
+                     ~~~~~~~~~~~~~~~~~~^^^
+TypeError: 'NoneType' object is not subscriptable

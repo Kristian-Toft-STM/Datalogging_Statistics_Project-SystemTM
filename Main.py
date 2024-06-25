@@ -9,13 +9,9 @@ from SQLiteRead import SQLDatabaseManager
 
 # library imports
 from opcua import ua
-from tzlocal import get_localzone
-import datetime
-import pytz
 import os
 import logging
 import inspect
-import asyncio
 from multiprocessing import Process
 
 # ------------------------------------------------------ CLASSES ------------------------------------------------------
@@ -31,20 +27,13 @@ class TableNotFoundError(Exception):
 # ------------------------------------------------------ ERROR LOG ------------------------------------------------------
 # setup logging
 logging.basicConfig(level=logging.ERROR, filename='error.log', format='%(asctime)s - %(levelname)s - %(message)s')
-    # bash command to open log file: 'tail -f /path/to/your/log/file/app.log'
 
 # ------------------------------------------------------ TEST VARIABLES ------------------------------------------------------
 plc_trigger_id = "ns=4;i=3"
 data_node_id = "ns=4;i=4" 
-#sql_db_path = "projekttestDB.db" 
+#sql_db_path = "projekttestDB.db" lav i json.setup fil?
 setup_file_opcua = "setup_opcua.json"
 setup_file_step7 = "setup_step7.json"
-local_tz = get_localzone() 
-test_min_range = datetime.datetime(2024,3,12,13,0,0).astimezone(local_tz)
-test_max_range = datetime.datetime(2024,3,30,23,0,0).astimezone(local_tz)
-test_tid = any
-#test_max_range = datetime.datetime.now()
-#table_name = ''
 
 # ------------------------------------------------------ GLOBAL VARIABLES ------------------------------------------------------
 db_manager = SQLDatabaseManager('','','') # initialise SQL database manager object, for handling database operations  
@@ -69,16 +58,14 @@ def start_init():
 # start main functionality procs, running asynchronously to eachother
 def start_main():
     try:
-        main_script_proc = Process(target=main_script) # main functionality, including cyclically logging to sql database
+        main_proc = Process(target=main) # main functionality, including cyclically logging to sql database
         write_data_dbresult_proc = Process(target=write_data_dbresult, args=(db_manager,)) # monitor requests for writing data to plc
         #csv_export_timer_proc = Process(target=csv_export_timer, args=(sql_db_path, table_name)) # csv export timer
 
-        main_script_proc.start()
+        main_proc.start()
+        time.sleep(1) # hopefully this will fix connection issues to the plc
         write_data_dbresult_proc.start()
         #csv_export_timer_proc.start()
-
-        #main_script()
-        #csv_export_timer(sql_db_path, table_name)
 
         return
         
@@ -113,7 +100,7 @@ def step7_or_opcua_switch(file_to_run):
         logging.error(f"Step7 or opcua switch error: {e}", exc_info=True)
 
 # main script for opcua communication
-def main_script_opcua_start(plc_trigger_id, data_node_id, sql_db_path, setup_file_opcua):
+def main_loop_opcua_start(plc_trigger_id, data_node_id, sql_db_path, setup_file_opcua):
     try:
         
         table_name = db_manager.table_name
@@ -125,15 +112,17 @@ def main_script_opcua_start(plc_trigger_id, data_node_id, sql_db_path, setup_fil
         logging.error(f"Main opcua script error: {e}", exc_info=True)
 
 # main script for step7/snap7 communication
-def main_script_snap7_start():
+def main_loop_snap7_start():
     try:
 
         # loop for continously monitor for logging requests, cycles limited by monitor_counter
         monitor_count = 1
-        while monitor_count <= 200000000000:
-            monitor_and_insert_data_snap7(db_manager, test_max_range) # monitor for logging requests
+        while True:
+            monitor_and_insert_data_snap7(db_manager) # monitor for logging requests
 
             print(f"Monitor count: {monitor_count}")
+            if monitor_count > 1000000:
+                monitor_count = 0
             monitor_count += 1
             time.sleep(0.5)
 
@@ -142,7 +131,7 @@ def main_script_snap7_start():
         logging.error(f"Main snap7 script error: {e}", exc_info=True)
 
 # case for deciding which main script to run, depending on the setup file
-def main_script():
+def main():
     try:    
 
         match setup_file_to_run:
@@ -150,11 +139,11 @@ def main_script():
                 print('No setup file found')
             case 1:
                 print('Step 7 setup found, running it now...')
-                main_script_snap7_start()
+                main_loop_snap7_start()
             case 2:
                 pass
-                print('Opcua setup found, running it now...')
-                #main_script_opcua_start(plc_trigger_id, data_node_id, sql_db_path, setup_file_opcua)
+                #print('Opcua setup found, running it now...')
+                #main_loop_opcua_start(plc_trigger_id, data_node_id, sql_db_path, setup_file_opcua)
             case 3:
                 print('Multiple setup files found and no file specified.')    
             case _:
@@ -233,69 +222,6 @@ if __name__ == '__main__':
 
 
 #------------------------------------------------------ FUNCTION CALLS FOR TESTING PURPOSES ------------------------------------------------------
-#write_data_dbresult(db_manager)
 
-#print(insert_list_of_column_names_from_txt_into_json('column_names.txt', setup_file_step7))
-
-#print(get_db_size(sql_db_path))
-
-#print(get_db_size(sql_db_path))
-
-#csv_export_timer(sql_db_path, table_name)
-
-#manage_db_size(sql_db_path)
-
-#main_script(setup_file_step7)
-
-#export_sql_to_csv(sql_db_path, 'Test_Table')
-
-#print(get_seconds_in_range(sql_db_path, 'Test_Table', test_min_range, test_max_range))
-
-#rename_datapoint(setup_file_step7, 'Column 3', 'rename_test', sql_db_path)
-#delete_datapoint(setup_file_step7, 'Column 3', sql_db_path)
-#add_datapoint(setup_file_step7, 'Column 3', 'add_test', sql_db_path, 2)
-
-#main_script_opcua_start(plc_trigger_id, data_node_id, sql_db_path, test_table, test_column_name, setup_file_opcua)
-#main_script_snap7_start(sql_db_path, dbinsert_number, test_table, test_column_name, setup_file_step7)
-
-#delete_table_data(sql_db_path, test_table) 
-#drop_table(sql_db_path, test_table)         
-#print(get_log_timestamps_within_range(sql_db_path, 'Test_Table', test_min_range, test_max_range))
-#print(get_log_data_within_range(sql_db_path, 'Test_Table', test_min_range, test_max_range, 'Test_Data_Column_1'))
-#print(get_log_data_within_range(sql_db_path, 'Test_Table', test_min_range, test_max_range))
-#print(get_all_data_from_table(sql_db_path, 'Test_Table'))        
-
-#print(read_setup_file())
-#print(map_node(0))
-
-#client = connect_snap7_client(setup_file_step7)
-#print(get_data_array_from_plc_db(1, client, setup_file_step7)) 
-#print(client.db_read(1, 0, 1008))
-
-#print(get_data_array_from_db(dbinsert_number, client))        
-#monitor_and_get_data_on_trigger_Snap7(dbinsert_number, client)
-
-#map_sql_columns_step7(setup_file_step7)
-#print(setup_get_sql_column_names_from_file(setup_file_step7))
-#print(setup_file_column_names_dict_to_array(setup_get_sql_column_names_from_file(setup_file_step7)))
-#columns_array = setup_file_column_names_dict_to_array(setup_get_sql_column_names_from_file(setup_file_step7)) 
-#print(tuple(columns_array))
-             
-#print(get_dbinsert_number_from_file(setup_file_step7))    
-#write_data_dbresult(setup_file_step7)
-#print(get_log_data_within_range_sql_sum(sql_db_path, 'Test_Table', test_min_range, test_max_range, setup_file_step7))
-
-#print(get_log_data_within_range(sql_db_path, 'Test_Table', test_min_range, test_max_range))    
-
-#setup_sql_table_from_json(sql_db_path, 'Test_Table', setup_file_step7)
-        
-#print(setup_file_get_number_of_data_columns(setup_file_step7))
-#print(read_setup_file(setup_file_step7))
-#print(any_table_exists(sql_db_path))
-        
-#setup_file_rename_or_delete(setup_file_step7, 'column 4')        
-#setup_file_rename_or_delete(setup_file_step7, 'column 5')   
-        
-#setup_file_keys_changed(setup_file_step7, previous_setup_file)
 
 

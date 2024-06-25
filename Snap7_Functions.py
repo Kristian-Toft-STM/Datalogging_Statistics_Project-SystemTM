@@ -79,7 +79,7 @@ def get_data_array_from_plc_db(db_number, client, setup_file_step7):
         logging.error(f"Get data array from db error: {e}", exc_info=True)                
 
 # monitor insert trigger and log data from plc on request
-def monitor_and_insert_data_snap7(db_manager, test_max_range):               
+def monitor_and_insert_data_snap7(db_manager):               
     try:    
             
             client = connect_snap7_client(db_manager.setup_file) # connect the snap 7 client
@@ -91,6 +91,7 @@ def monitor_and_insert_data_snap7(db_manager, test_max_range):
             else:
                 time.sleep(5)
                 client = connect_snap7_client(db_manager.setup_file) #Re-establish connection 
+
             #column_names = setup_get_sql_column_names_from_file(db_manager.setup_file) # get list of columns names from setup file, for terminal print purposes
             #combined_array = [f"{value}: {data_item}" for data_item, column_dict in zip(data_array, column_names[1:]) for value in column_dict.items()] # create array of data and their respective column names
             #print("\n".join(combined_array))   
@@ -168,9 +169,6 @@ def write_data_dbresult(db_manager, datetime_end=datetime.datetime.now()):
 
                             end_dtl_datetime = get_and_format_dtl_bytearray(testtags_db_number, dtl_end_index)
                             print(f'end: {end_dtl_datetime}')
-
-                            #print(f'Write start: {start_dtl_datetime}')
-                            #print(f'Write end: {end_dtl_datetime}')
                             
                             # check if end dtl is defined, and if it has, use it to get logs. Below 1971 means it has the default value, and therefore has not been defined
                             if end_dtl_datetime.year > 1971:  
@@ -185,9 +183,9 @@ def write_data_dbresult(db_manager, datetime_end=datetime.datetime.now()):
                                 client.db_write(db_number, logging_trigger_index, int(0).to_bytes(4, byteorder='big'))
 
                             # check wether data is a single datapoint, or an array of data. convert to bytearray accordingly and add timespan in seconds if array of data             
-                            if type(data) == int:
-                                bytearray_to_data = data.to_bytes(4, byteorder='big')
-                            elif type(data) == list: 
+                            #if type(data) == int:
+                                #bytearray_to_data = data.to_bytes(4, byteorder='big')
+                            if type(data) == list: 
                                 time_sec = db_manager.get_seconds_in_range(start_dtl_datetime, datetime_end)
                                 bytearray_to_data = bytearray()
                                 for num in data:

@@ -4,58 +4,6 @@ from SQLiteWrite import *
 import logging
 import csv
 import time
-import asyncio
-
-# add a datapoint in the given setup file and in the sql database
-def add_datapoint(setup_file_name, datapoint_key, datapoint_key_value, sql_db_path, position):
-    try:
-        
-        table = get_plc_from_file(setup_file_name).get('table name')
-
-        setup_file_add_column(setup_file_name, datapoint_key, datapoint_key_value, position)
-        sql_add_column(sql_db_path, table, datapoint_key_value)
-        return
-
-    except Exception as e:
-        print(e)
-        logging.error(f"Add datapoint error: {e}", exc_info=True)
-
-# rename a datapoint in the given setup file and in the sql database
-def rename_datapoint(setup_file_name, datapoint_key, datapoint_key_value, sql_db_path):
-    try:
-        
-        table = get_plc_from_file(setup_file_name).get('table name')
-        columns = get_plc_from_file(setup_file_name).get('column names')
-
-        for column_dict in columns:
-            if datapoint_key in column_dict:
-                column = column_dict[datapoint_key]
-
-        setup_file_rename_column(setup_file_name, datapoint_key, datapoint_key_value)
-        sql_rename_column(sql_db_path, table, column, datapoint_key_value)
-        return
-
-    except Exception as e:
-        print(e)
-        logging.error(f"Rename datapoint error: {e}", exc_info=True)
-
-# delete a datapoint in the given setup file and in the sql database
-def delete_datapoint(setup_file_name, datapoint_key, sql_db_path): 
-    try:
-        table = get_plc_from_file(setup_file_name).get('table name')
-        columns = get_plc_from_file(setup_file_name).get('column names')
-
-        for column_dict in columns:
-            if datapoint_key in column_dict:
-                column = column_dict[datapoint_key]
-
-        setup_file_delete_column(setup_file_name, datapoint_key)
-        sql_drop_column(sql_db_path, table, column)    
-        return 
-      
-    except Exception as e:
-        print(e)
-        logging.error(f"Delete datapoint error: {e}", exc_info=True)
 
 # export table data from sql to csv file
 def export_sql_to_csv(db_manager):

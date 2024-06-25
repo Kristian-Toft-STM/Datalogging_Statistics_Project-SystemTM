@@ -1,6 +1,6 @@
 import sqlite3
 import pytz
-from datetime import datetime, timezone
+from datetime import datetime
 from tzlocal import get_localzone
 from json_functions import *
 import SQLiteWrite
@@ -127,9 +127,7 @@ class SQLDatabaseManager:
 
             data_array = untuple_first_item(data_tuple)
 
-            # converts each timestamp from string to datetime, then utc to local time, then converts back to string according to date_format 
-            #data_array = [pytz.utc.localize(datetime.strptime(data, date_format)).astimezone(local_tz).strftime(date_format) for data in data_array]
-
+            # converts each timestamp from string to datetime, then utc to local time, then converts back to string according to date_format
             data_array = [pytz.utc.localize(datetime.strptime(data, date_format)).astimezone(local_tz).strftime(date_format) for data in data_array]
 
             cursor.close()

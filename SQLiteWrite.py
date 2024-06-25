@@ -1,8 +1,4 @@
 import sqlite3
-import datetime
-import tzlocal
-#from SQLiteRead import get_last_timestamp_from_table, table_exists, table_not_empty, any_table_exists, column_exists_in_table, get_db_size
-from SQLiteRead import SQLDatabaseManager
 from json_functions import *
 from Snap7_Functions import *
 import logging
@@ -24,7 +20,7 @@ def insert_data_into_table(db_manager, data): # udvid til automatisk også at he
 
         if str(current_dtl_datetime) != db_manager.get_last_timestamp_from_table(): 
             print(f"Current time: {current_dtl_datetime}")  
-            #column_string = ",".join(map(str, column_array)) 
+
             column_string = ",".join(map(lambda column: f"[{column}]", column_array))
             value_placeholders = ",".join(["?" for _ in data])  # create a string of placeholders to protect from sql injections
 
@@ -62,7 +58,7 @@ def setup_sql_table_from_json(db_manager):
             if not db_manager.any_table_exists():
                 # If the table does not exist, create it
                 print(f"Table {db_manager.table_name} does not exist. Creating it...")
-                cursor.execute(f"CREATE TABLE {db_manager.table_name} (TimeStamp DATETIME, PRIMARY KEY (TimeStamp))")
+                cursor.execute(f"CREATE TABLE {db_manager.table_name} (TimeStamp DATETIME NOT NULL, PRIMARY KEY (TimeStamp))")
                 print(f"Table {db_manager.table_name} created.")
             else:
                 print('Table name has changed, renaming table...')
@@ -80,7 +76,7 @@ def setup_sql_table_from_json(db_manager):
                 for column_key in column_dict:
                     column_value = column_dict[column_key]
                     if not db_manager.column_exists_in_table(column_value):                
-                        cursor.execute(f"ALTER TABLE {db_manager.table_name} ADD [{column_value}] INTEGER;")
+                        cursor.execute(f"ALTER TABLE {db_manager.table_name} ADD [{column_value}] INTEGER NOT NULL;")
         else:
             return
 
