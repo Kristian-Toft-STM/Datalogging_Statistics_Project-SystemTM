@@ -14,7 +14,7 @@ def write_data_dbresult_old(db_manager, datetime_min_range, datetime_max_range=d
         client = connect_snap7_client(db_manager.setup_file)
         trigger_value = 0 
         plc = get_plc_from_file(db_manager.setup_file)
-        db_number = plc.get('dbresult db number')
+        db_number = plc.get('statistics_request_db number')
         logging_trigger_index = plc.get('dbresult_logging_trigger index')
         bytearray_to_trigger = int(2).to_bytes(4, byteorder='big')
         testtags_db_number = 1001
@@ -47,8 +47,8 @@ def write_data_dbresult_old(db_manager, datetime_min_range, datetime_max_range=d
                         return     
 
                     print(time_sec)
-                    client.db_write(db_number, plc.get('dbresult time_sec index'), bytearray_to_time_sec)    
-                    client.db_write(db_number, plc.get('dbresult data index'), bytearray_to_data)
+                    client.db_write(db_number, plc.get('timespan_result'), bytearray_to_time_sec)    
+                    client.db_write(db_number, plc.get('statistics_request_db data index'), bytearray_to_data)
                     client.db_write(db_number, logging_trigger_index, bytearray_to_trigger)
                     return bytearray_to_data            
 
@@ -63,12 +63,12 @@ def write_data_dbresult_old_new(db_manager, datetime_end=datetime.datetime.now()
         plc = get_plc_from_file(db_manager.setup_file)
         client = connect_snap7_client(db_manager.setup_file)
         
-        db_number = plc.get('dbresult db number')
+        db_number = plc.get('statistics_request_db number')
         logging_trigger_index = plc.get('dbresult_logging_trigger index')
 
         testtags_db_number = plc.get('testtags db number')
-        dtl_start_index = plc.get('dtl start index')
-        dtl_end_index = plc.get('dtl end index')
+        dtl_start_index = plc.get('time_start index"')
+        dtl_end_index = plc.get('time_end index"')
 
         bytearray_to_trigger = int(2).to_bytes(4, byteorder='big')
 
@@ -106,8 +106,8 @@ def write_data_dbresult_old_new(db_manager, datetime_end=datetime.datetime.now()
                         return     
 
                     print(time_sec)
-                    client.db_write(db_number, plc.get('dbresult time_sec index'), bytearray_to_time_sec)    
-                    client.db_write(db_number, plc.get('dbresult data index'), bytearray_to_data)
+                    client.db_write(db_number, plc.get('timespan_result'), bytearray_to_time_sec)    
+                    client.db_write(db_number, plc.get('statistics_request_db data index'), bytearray_to_data)
                     client.db_write(db_number, logging_trigger_index, bytearray_to_trigger)
                     return bytearray_to_data            
 

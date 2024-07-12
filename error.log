@@ -44,3 +44,133 @@ Traceback (most recent call last):
     last_timestamp = last_timestamp_row[0]
                      ~~~~~~~~~~~~~~~~~~^^^
 TypeError: 'NoneType' object is not subscriptable
+2024-06-27 10:26:44,692 - ERROR - Read setup file error: [Errno 2] No such file or directory: ''
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\json_functions.py", line 8, in read_setup_file
+    setup_file = open(f'{setup_file_name}')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: ''
+2024-06-27 10:26:44,693 - ERROR - Get plc from file error: 'NoneType' object has no attribute 'get'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\json_functions.py", line 22, in get_plc_from_file
+    plc1 = setup.get('PLC_1')
+           ^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+2024-06-27 10:26:44,693 - ERROR - Connect snap7 client error: 'NoneType' object has no attribute 'get'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 16, in connect_snap7_client
+    ip_address = plc.get('ip address')
+                 ^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+2024-06-27 10:26:44,693 - ERROR - Read setup file error: [Errno 2] No such file or directory: ''
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\json_functions.py", line 8, in read_setup_file
+    setup_file = open(f'{setup_file_name}')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: ''
+2024-06-27 10:26:44,694 - ERROR - Get plc from file error: 'NoneType' object has no attribute 'get'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\json_functions.py", line 22, in get_plc_from_file
+    plc1 = setup.get('PLC_1')
+           ^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+2024-07-12 12:51:21,850 - ERROR - b' TCP : Unreachable peer'
+2024-07-12 12:51:21,852 - ERROR - Connect snap7 client error: b' TCP : Unreachable peer'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' TCP : Unreachable peer'
+2024-07-12 12:51:22,852 - ERROR - b' TCP : Unreachable peer'
+2024-07-12 12:51:22,852 - ERROR - Connect snap7 client error: b' TCP : Unreachable peer'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' TCP : Unreachable peer'
+2024-07-12 12:51:27,351 - ERROR - b' TCP : Unreachable peer'
+2024-07-12 12:51:27,352 - ERROR - Connect snap7 client error: b' TCP : Unreachable peer'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' TCP : Unreachable peer'
+2024-07-12 12:51:28,351 - ERROR - b' TCP : Unreachable peer'
+2024-07-12 12:51:28,351 - ERROR - Connect snap7 client error: b' TCP : Unreachable peer'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' TCP : Unreachable peer'
+2024-07-12 12:51:33,850 - ERROR - b' TCP : Unreachable peer'
+2024-07-12 12:51:33,850 - ERROR - Connect snap7 client error: b' TCP : Unreachable peer'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' TCP : Unreachable peer'
+2024-07-12 12:51:34,850 - ERROR - b' TCP : Unreachable peer'
+2024-07-12 12:51:34,850 - ERROR - Connect snap7 client error: b' TCP : Unreachable peer'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' TCP : Unreachable peer'
+2024-07-12 12:51:40,351 - ERROR - b' TCP : Unreachable peer'
+2024-07-12 12:51:40,352 - ERROR - Connect snap7 client error: b' TCP : Unreachable peer'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' TCP : Unreachable peer'
+2024-07-12 12:51:41,351 - ERROR - b' TCP : Unreachable peer'
+2024-07-12 12:51:41,351 - ERROR - Connect snap7 client error: b' TCP : Unreachable peer'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' TCP : Unreachable peer'
+2024-07-12 12:51:46,850 - ERROR - b' TCP : Unreachable peer'
+2024-07-12 12:51:46,850 - ERROR - Connect snap7 client error: b' TCP : Unreachable peer'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' TCP : Unreachable peer'
+2024-07-12 12:51:47,850 - ERROR - b' TCP : Unreachable peer'
+2024-07-12 12:51:47,850 - ERROR - Connect snap7 client error: b' TCP : Unreachable peer'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' TCP : Unreachable peer'

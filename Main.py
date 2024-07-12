@@ -1,6 +1,6 @@
 # ------------------------------------------------------ IMPORTS ------------------------------------------------------
 # sub-script imports
-from OPCUA_Functions import *
+#from OPCUA_Functions import *
 from Snap7_Functions import *
 from json_functions import *
 from Misc import *
@@ -8,11 +8,11 @@ from test import *
 from SQLiteRead import SQLDatabaseManager
 
 # library imports
-from opcua import ua
+#from opcua import ua
 import os
 import logging
 import inspect
-from multiprocessing import Process
+from multiprocessing import *
 
 # ------------------------------------------------------ CLASSES ------------------------------------------------------
 # for error handling
@@ -49,11 +49,13 @@ def start_init():
         setup_file_to_run = step7_or_opcua_switch(setup_file_step7) # choose which setup file to run
         init() # run initialisation depending on type of setup file
         
+        print("Initialization complete.")
+        logging.info("Initialization complete.")
         return
     
     except Exception as e:
-        print(e)
-        logging.error(f"start init error: {e}", exc_info=True)
+        print(f"Initialization error: {e}")
+        logging.error(f"Initialization error: {e}", exc_info=True)
 
 # start main functionality procs, running asynchronously to eachother
 def start_main():
@@ -76,7 +78,6 @@ def start_main():
 # check setup file/s in projekt folder, and set setup file variable accordingly 
 def step7_or_opcua_switch(file_to_run):
     try:
-
         script_directory = os.path.dirname(__file__) # get projekt directory path
         directory_contents = os.listdir(script_directory) # get content of directory
 
@@ -105,7 +106,7 @@ def main_loop_opcua_start(plc_trigger_id, data_node_id, sql_db_path, setup_file_
         
         table_name = db_manager.table_name
         db_manager.setup_sql_table_from_json()
-        monitor_and_insert_data_opcua(sql_db_path, plc_trigger_id, table_name, data_node_id, setup_file_opcua)
+        #monitor_and_insert_data_opcua(sql_db_path, plc_trigger_id, table_name, data_node_id, setup_file_opcua)
 
     except Exception as e:
         print(e)
@@ -114,7 +115,6 @@ def main_loop_opcua_start(plc_trigger_id, data_node_id, sql_db_path, setup_file_
 # main script for step7/snap7 communication
 def main_loop_snap7_start():
     try:
-
         # loop for continously monitor for logging requests, cycles limited by monitor_counter
         monitor_count = 1
         while True:
@@ -132,8 +132,7 @@ def main_loop_snap7_start():
 
 # case for deciding which main script to run, depending on the setup file
 def main():
-    try:    
-
+    try: 
         match setup_file_to_run:
             case 0:
                 print('No setup file found')
@@ -156,7 +155,6 @@ def main():
 # case for deciding which initialization function to run, depending on the setup file
 def init():
     try:    
-
         match setup_file_to_run:
             case 0:
                 print('No setup file found')
@@ -184,7 +182,7 @@ def initialization_step7():
         table_name = get_plc_from_file(setup_file_step7).get('table name') # get table name from setup file
 
         # set up sql database manager
-        db_manager.sql_db_path = 'projekttestDB.db'
+        db_manager.sql_db_path = 'opti-track.db'
         db_manager.setup_file = setup_file_step7 
         db_manager.table_name = table_name
 
@@ -218,8 +216,11 @@ def reinitialize_setup():
 # ------------------------------------------------------ INITIALIZATION AND MAIN FUNCTION CALLS ------------------------------------------------------
 start_init()
 if __name__ == '__main__':
-    start_main()
-
+    try:
+        freeze_support()
+        start_main()
+    except Exception as e:
+        print(f"Unhandled error: {e}")
 
 #------------------------------------------------------ FUNCTION CALLS FOR TESTING PURPOSES ------------------------------------------------------
 
