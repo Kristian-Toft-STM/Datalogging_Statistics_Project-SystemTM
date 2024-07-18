@@ -1,0 +1,83 @@
+{
+    "PLC_1": [
+        {
+            "ip address": "172.31.1.60",
+            "rack": 0,
+            "slot": 1,
+            "tcpport": 102,
+            "statistics_insert_db number": 10000,
+            "trigger_write index": 0,
+            "statistics_insert_db data index": 16,
+            "statistics_request_db number": 10100,
+            "trigger_read index": 0,
+            "timespan_result index": 134,
+            "statistics_request_db data index": 138,
+            "time_start index": 58,
+            "time_end index": 122,
+            "time_current index": 16,
+            "table name": "H200 + press",
+            "column names": [
+                {
+                    "column 1": "TimeStamp"
+                },
+                {
+                    "column 2": "Press_MaterialLength_Total"
+                },
+                {
+                    "column 3": "Press_MaterialVolume_Total"
+                },
+                {
+                    "column 4": "Press_CycleCnt_Total"
+                },
+                {
+                    "column 5": "Press_Time_Operation"
+                },
+                {
+                    "column 6": "Press_Time_Production"
+                },
+                {
+                    "column 7": "Press_Time_WaitUpstream"
+                },
+                {
+                    "column 8": "Press_Time_WaitDownstream"
+                },
+                {
+                    "column 9": "LugChain_Time_WaitDownstream"
+                },
+                {
+                    "column 10": "LugChain_LugsCnt_WithItem"
+                },
+                {
+                    "column 11": "LugChain_LugsCnt_WithoutItem"
+                },
+                {
+                    "column 12": "LugChain_OutsortCnt_Total"
+                },
+                {
+                    "column 13": "LugChain_OutsortCnt_TwoBoardsInSlot"
+                },
+                {
+                    "column 14": "LugChain_OutsortCnt_Shaper1"
+                },
+                {
+                    "column 15": "LugChain_OutsortCnt_Shaper2"
+                },
+                {
+                    "column 16": "LugChain_OutsortCnt_GlueMissing"
+                },
+                {
+                    "column 17": "LugChain_OutsortCnt_GlueChainStopped"
+                },
+                {
+                    "column 18": "LugChain_OutsortCnt_GlueError"
+                },
+                {
+                    "column 19": "LugChain_OutsortCnt_TrimSaver1"
+                },
+                {
+                    "column 20": "LugChain_OutsortCnt_TrimSaver2"
+                }
+            ]
+        }
+    ]
+}

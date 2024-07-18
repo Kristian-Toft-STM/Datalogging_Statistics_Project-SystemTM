@@ -174,3 +174,611 @@ Traceback (most recent call last):
   File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
     raise RuntimeError(error)
 RuntimeError: b' TCP : Unreachable peer'
+2024-07-17 10:19:31,977 - ERROR - Setup sql table from json error: near "+": syntax error
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 64, in setup_sql_table_from_json
+    cursor.execute(f"CREATE TABLE {db_manager.table_name} (TimeStamp DATETIME NOT NULL, PRIMARY KEY (TimeStamp))")
+sqlite3.OperationalError: near "+": syntax error
+2024-07-17 10:19:32,219 - ERROR - Setup sql table from json error: near "+": syntax error
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 64, in setup_sql_table_from_json
+    cursor.execute(f"CREATE TABLE {db_manager.table_name} (TimeStamp DATETIME NOT NULL, PRIMARY KEY (TimeStamp))")
+sqlite3.OperationalError: near "+": syntax error
+2024-07-17 10:19:32,252 - ERROR - Get last timestamp from table error: near "+": syntax error
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 98, in get_last_timestamp_from_table
+    cursor.execute(f"SELECT * FROM {self.table_name} ORDER BY TimeStamp DESC LIMIT 1;")
+sqlite3.OperationalError: near "+": syntax error
+2024-07-17 10:19:32,253 - ERROR - Insert data into table error: near "+": syntax error
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 32, in insert_data_into_table
+    cursor.execute(insert_query, data)
+sqlite3.OperationalError: near "+": syntax error
+2024-07-17 10:19:33,186 - ERROR - Setup sql table from json error: near "+": syntax error
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 64, in setup_sql_table_from_json
+    cursor.execute(f"CREATE TABLE {db_manager.table_name} (TimeStamp DATETIME NOT NULL, PRIMARY KEY (TimeStamp))")
+sqlite3.OperationalError: near "+": syntax error
+2024-07-17 10:20:32,339 - ERROR - Get last timestamp from table error: near "+": syntax error
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 98, in get_last_timestamp_from_table
+    cursor.execute(f"SELECT * FROM {self.table_name} ORDER BY TimeStamp DESC LIMIT 1;")
+sqlite3.OperationalError: near "+": syntax error
+2024-07-17 10:20:32,340 - ERROR - Insert data into table error: near "+": syntax error
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 32, in insert_data_into_table
+    cursor.execute(insert_query, data)
+sqlite3.OperationalError: near "+": syntax error
+2024-07-17 10:21:32,386 - ERROR - Get last timestamp from table error: near "+": syntax error
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 98, in get_last_timestamp_from_table
+    cursor.execute(f"SELECT * FROM {self.table_name} ORDER BY TimeStamp DESC LIMIT 1;")
+sqlite3.OperationalError: near "+": syntax error
+2024-07-17 10:21:32,386 - ERROR - Insert data into table error: near "+": syntax error
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 32, in insert_data_into_table
+    cursor.execute(insert_query, data)
+sqlite3.OperationalError: near "+": syntax error
+2024-07-17 10:37:09,087 - ERROR - Get last timestamp from table error: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 100, in get_last_timestamp_from_table
+    last_timestamp = last_timestamp_row[0]
+                     ~~~~~~~~~~~~~~~~~~^^^
+TypeError: 'NoneType' object is not subscriptable
+2024-07-17 10:38:39,295 - ERROR - Insert data into table error: month must be in 1..12
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 20, in insert_data_into_table
+    current_dtl_datetime = get_and_format_dtl_bytearray(statistics_insert_db_number, time_current_index)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 242, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: month must be in 1..12
+2024-07-17 10:38:39,838 - ERROR - Insert data into table error: UNIQUE constraint failed: H200_and_press.TimeStamp
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 32, in insert_data_into_table
+    cursor.execute(insert_query, data)
+sqlite3.IntegrityError: UNIQUE constraint failed: H200_and_press.TimeStamp
+2024-07-17 10:39:40,251 - ERROR - Get last timestamp from table error: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 100, in get_last_timestamp_from_table
+    last_timestamp = last_timestamp_row[0]
+                     ~~~~~~~~~~~~~~~~~~^^^
+TypeError: 'NoneType' object is not subscriptable
+2024-07-17 10:45:24,955 - ERROR - Get last timestamp from table error: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 100, in get_last_timestamp_from_table
+    last_timestamp = last_timestamp_row[0]
+                     ~~~~~~~~~~~~~~~~~~^^^
+TypeError: 'NoneType' object is not subscriptable
+2024-07-17 10:46:25,584 - ERROR - Insert data into table error: UNIQUE constraint failed: H200_and_press.TimeStamp
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 32, in insert_data_into_table
+    cursor.execute(insert_query, data)
+sqlite3.IntegrityError: UNIQUE constraint failed: H200_and_press.TimeStamp
+2024-07-17 10:47:25,629 - ERROR - Insert data into table error: UNIQUE constraint failed: H200_and_press.TimeStamp
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 32, in insert_data_into_table
+    cursor.execute(insert_query, data)
+sqlite3.IntegrityError: UNIQUE constraint failed: H200_and_press.TimeStamp
+2024-07-17 10:48:34,540 - ERROR - Insert data into table error: UNIQUE constraint failed: H200_and_press.TimeStamp
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 32, in insert_data_into_table
+    cursor.execute(insert_query, data)
+sqlite3.IntegrityError: UNIQUE constraint failed: H200_and_press.TimeStamp
+2024-07-17 10:49:34,595 - ERROR - Insert data into table error: UNIQUE constraint failed: H200_and_press.TimeStamp
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 32, in insert_data_into_table
+    cursor.execute(insert_query, data)
+sqlite3.IntegrityError: UNIQUE constraint failed: H200_and_press.TimeStamp
+2024-07-17 10:50:34,671 - ERROR - Insert data into table error: UNIQUE constraint failed: H200_and_press.TimeStamp
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 32, in insert_data_into_table
+    cursor.execute(insert_query, data)
+sqlite3.IntegrityError: UNIQUE constraint failed: H200_and_press.TimeStamp
+2024-07-17 11:15:43,937 - ERROR - Insert data into table error: UNIQUE constraint failed: H200_and_press.TimeStamp
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 32, in insert_data_into_table
+    cursor.execute(insert_query, data)
+sqlite3.IntegrityError: UNIQUE constraint failed: H200_and_press.TimeStamp
+2024-07-17 11:16:43,984 - ERROR - Insert data into table error: UNIQUE constraint failed: H200_and_press.TimeStamp
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteWrite.py", line 32, in insert_data_into_table
+    cursor.execute(insert_query, data)
+sqlite3.IntegrityError: UNIQUE constraint failed: H200_and_press.TimeStamp
+2024-07-17 11:35:23,648 - ERROR - Get last timestamp from table error: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 100, in get_last_timestamp_from_table
+    last_timestamp = last_timestamp_row[0]
+                     ~~~~~~~~~~~~~~~~~~^^^
+TypeError: 'NoneType' object is not subscriptable
+2024-07-17 11:39:31,725 - ERROR - Get last timestamp from table error: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 100, in get_last_timestamp_from_table
+    if last_timestamp_row[0]:
+       ~~~~~~~~~~~~~~~~~~^^^
+TypeError: 'NoneType' object is not subscriptable
+2024-07-17 11:41:22,786 - ERROR - Get last timestamp from table error: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 100, in get_last_timestamp_from_table
+    if not last_timestamp_row[0] is None:
+           ~~~~~~~~~~~~~~~~~~^^^
+TypeError: 'NoneType' object is not subscriptable
+2024-07-17 11:42:22,927 - ERROR - Get last timestamp from table error: cannot access local variable 'last_timestamp' where it is not associated with a value
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 106, in get_last_timestamp_from_table
+    return last_timestamp
+           ^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'last_timestamp' where it is not associated with a value
+2024-07-17 11:44:24,055 - ERROR - Get last timestamp from table error: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 100, in get_last_timestamp_from_table
+    last_timestamp = last_timestamp_row[0]
+                     ~~~~~~~~~~~~~~~~~~^^^
+TypeError: 'NoneType' object is not subscriptable
+2024-07-17 11:48:29,237 - ERROR - Get last timestamp from table error: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 100, in get_last_timestamp_from_table
+    last_timestamp = last_timestamp_row[0]
+                     ~~~~~~~~~~~~~~~~~~^^^
+TypeError: 'NoneType' object is not subscriptable
+2024-07-17 11:50:35,300 - ERROR - Get last timestamp from table error: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 100, in get_last_timestamp_from_table
+    last_timestamp = last_timestamp_row[0]
+                     ~~~~~~~~~~~~~~~~~~^^^
+TypeError: 'NoneType' object is not subscriptable
+2024-07-17 12:30:55,665 - ERROR - Get last timestamp from table error: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 100, in get_last_timestamp_from_table
+    last_timestamp = last_timestamp_row[0]
+                     ~~~~~~~~~~~~~~~~~~^^^
+TypeError: 'NoneType' object is not subscriptable
+2024-07-18 10:28:42,095 - ERROR - Write data dbresult error: 'int' object has no attribute 'year'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+2024-07-18 10:28:47,098 - ERROR - b'CLI : Cannot change this param now'
+2024-07-18 10:28:47,099 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-07-18 10:32:50,451 - ERROR - Write data dbresult error: 'int' object has no attribute 'year'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+2024-07-18 10:34:14,688 - ERROR - Write data dbresult error: 'int' object has no attribute 'year'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+2024-07-18 10:35:10,896 - ERROR - Write data dbresult error: 'int' object has no attribute 'year'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+2024-07-18 10:42:20,050 - ERROR - Write data dbresult error: 'int' object has no attribute 'year'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+2024-07-18 10:42:25,051 - ERROR - b'CLI : Cannot change this param now'
+2024-07-18 10:42:25,052 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-07-18 10:42:31,586 - ERROR - Write data dbresult error: 'int' object has no attribute 'year'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+2024-07-18 10:42:46,078 - ERROR - Write data dbresult error: 'int' object has no attribute 'year'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+2024-07-18 10:42:51,081 - ERROR - b'CLI : Cannot change this param now'
+2024-07-18 10:42:51,081 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-07-18 10:44:03,901 - ERROR - Write data dbresult error: 'int' object has no attribute 'year'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+2024-07-18 10:44:08,902 - ERROR - b'CLI : Cannot change this param now'
+2024-07-18 10:44:08,903 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-07-18 10:44:20,464 - ERROR - Write data dbresult error: 'int' object has no attribute 'year'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+2024-07-18 10:44:25,468 - ERROR - b'CLI : Cannot change this param now'
+2024-07-18 10:44:25,469 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-07-18 10:44:44,800 - ERROR - Write data dbresult error: 'int' object has no attribute 'year'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+2024-07-18 10:44:49,802 - ERROR - b'CLI : Cannot change this param now'
+2024-07-18 10:44:49,803 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-07-18 10:45:03,652 - ERROR - Write data dbresult error: 'int' object has no attribute 'year'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+2024-07-18 10:45:08,657 - ERROR - b'CLI : Cannot change this param now'
+2024-07-18 10:45:08,657 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-07-18 10:45:32,433 - ERROR - Write data dbresult error: 'int' object has no attribute 'year'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+2024-07-18 10:45:37,435 - ERROR - b'CLI : Cannot change this param now'
+2024-07-18 10:45:37,436 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-07-18 10:46:05,417 - ERROR - Write data dbresult error: 'int' object has no attribute 'year'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+2024-07-18 10:47:42,175 - ERROR - Write data dbresult error: 'int' object has no attribute 'year'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+2024-07-18 10:47:47,177 - ERROR - b'CLI : Cannot change this param now'
+2024-07-18 10:47:47,177 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-07-18 10:49:06,964 - ERROR - Write data dbresult error: 'int' object has no attribute 'year'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+2024-07-18 10:49:11,966 - ERROR - b'CLI : Cannot change this param now'
+2024-07-18 10:49:11,967 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-07-18 10:51:08,703 - ERROR - Write data dbresult error: 'int' object has no attribute 'year'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+2024-07-18 10:51:13,705 - ERROR - b'CLI : Cannot change this param now'
+2024-07-18 10:51:13,706 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-07-18 10:53:39,825 - ERROR - Write data dbresult error: 'int' object has no attribute 'year'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+2024-07-18 10:53:44,827 - ERROR - b'CLI : Cannot change this param now'
+2024-07-18 10:53:44,828 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-07-18 10:53:54,174 - ERROR - Write data dbresult error: 'int' object has no attribute 'year'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+2024-07-18 10:56:17,271 - ERROR - Write data dbresult error: 'int' object has no attribute 'year'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+2024-07-18 10:57:43,223 - ERROR - Write data dbresult error: 'int' object has no attribute 'year'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+2024-07-18 10:57:48,226 - ERROR - b'CLI : Cannot change this param now'
+2024-07-18 10:57:48,226 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-07-18 10:58:09,778 - ERROR - Write data dbresult error: 'int' object has no attribute 'year'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+2024-07-18 10:58:14,780 - ERROR - b'CLI : Cannot change this param now'
+2024-07-18 10:58:14,781 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 166, in write_data_dbresult
+    if end_dtl_datetime.year > 1971:
+     ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'year'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
