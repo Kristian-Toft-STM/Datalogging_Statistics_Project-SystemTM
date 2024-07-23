@@ -43,8 +43,10 @@ def disconnect_snap7_client():
 def get_data_from_plc_db(db_number, client, index):
     try:
         if (client != None): # check if client is connected
-            data = client.db_read(db_number, index, index+4) # get data bytearray from plc
+            
+            data = client.db_read(db_number, index, 4) # get data bytearray from plc
             data_fixed = util.get_dint(data,0) # convert bytearray to dint
+
         else:
             print("Client not connected in: get_data_from_plc_db")
             time.sleep(5)
