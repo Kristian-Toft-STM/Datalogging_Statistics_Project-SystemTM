@@ -62,7 +62,7 @@ def get_data_from_plc_db(db_number, client, index):
 def get_data_array_from_plc_db(db_number, client, setup_file_step7): 
     try:
 
-        statistics_insert_db_data_index = get_plc_from_file(setup_file_step7).get('statistics_insert_db data index') # get start index of data in dbinsert 
+        statistics_insert_db_data_index = get_plc_from_file(setup_file_step7).get('statistics_db insert data index') # get start index of data in dbinsert 
         data = client.db_read(db_number, statistics_insert_db_data_index, setup_file_get_number_of_data_columns(setup_file_step7)*4) # get data bytearray from plc, assuming all data is 4 bytes long
         array = [] # empty array for holding data
         
@@ -89,7 +89,7 @@ def monitor_and_insert_data_snap7(db_manager):
             trigger_value = 0 # initialise trigger value variable
             setup_file_step7 = db_manager.setup_file
             plc = get_plc_from_file(setup_file_step7)
-            statistics_insert_db_number = plc.get('statistics_insert_db number')
+            statistics_insert_db_number = plc.get('statistics_db number')
             trigger_write_index = plc.get('trigger_write index')
 
             # int(2) = int value to convert to bytes - 4 is the length in bytes(int32 = 4 bytes) - byteorder is which direction you read the bytes
@@ -99,7 +99,7 @@ def monitor_and_insert_data_snap7(db_manager):
                 try:
                     print(".")
                     trigger_value = get_data_from_plc_db(statistics_insert_db_number, client, trigger_write_index) # get trigger state from plc
-                    if trigger_value == 1: # check if trigger ready from plc       
+                    if trigger_value == 1: # check if trigger ready from plc   
                         data_array = get_data_array_from_plc_db(statistics_insert_db_number, client, setup_file_step7) # get dbinsert data 
                         if data_array is not None: # check if data_array has data  
                             db_manager.insert_data_into_table(data_array) # insert data from dbinsert into the sql database table  
@@ -135,70 +135,73 @@ def write_data_dbresult(db_manager, datetime_end=datetime.datetime.now()):
         plc = get_plc_from_file(db_manager.setup_file)         
             
         # get db numbers and indexes from setup file    
-        statistics_request_db_number = plc.get('statistics_request_db number')
+        statistics_request_db_number = plc.get('statistics_db number')
         trigger_read_index = plc.get('trigger_read index')
         time_start_index = plc.get('time_start index')
         time_end_index = plc.get('time_end index')
 
+        # initialise trigger variables
         bytearray_to_trigger = int(2).to_bytes(4, byteorder='big') 
-        time.sleep(0.5)
+        trigger_value = 0
 
-        while True: # start loop to check for trigger
+        time.sleep(0.2)
+
+        while True: # start loop to check for trigger (main loop)
             try:
                 datetime_end=datetime.datetime.now()
-                trigger_value = 0
-                while trigger_value == 0: # start loop to check for trigger cont    
-                    try:
-                        trigger_value = get_data_from_plc_db(statistics_request_db_number, client, trigger_read_index)
-                        if trigger_value == 1: # check for plc requesting data
-                            
-                            # get dtl range of logs 
-                            start_dtl_datetime = get_and_format_dtl_bytearray(statistics_request_db_number, time_start_index)
-                            print(f'start: {start_dtl_datetime}')
-                            
-                            if get_and_format_dtl_bytearray(statistics_request_db_number, time_end_index) == 0:
-                                trigger_value = 0
-
-                            end_dtl_datetime = get_and_format_dtl_bytearray(statistics_request_db_number, time_end_index)
-                            print(f'end: {end_dtl_datetime}')
-                            
-                            # check if end dtl is defined, and if it has, use it to get logs. Below 1971 means it has the default value, and therefore has not been defined
-                            if end_dtl_datetime.year > 1971:  
-                                datetime_end = end_dtl_datetime  
-
-                            data = db_manager.get_log_data_within_range(start_dtl_datetime, datetime_end) # get log data within start and end dtl
-                            print(f'Data: {data}')    
-
-                            # check if any data was found within range, and if not, reset loop
-                            if len(data) < 1:
-                                print('No data found in supplied timestamp range')
-                                client.db_write(statistics_request_db_number, trigger_read_index, int(0).to_bytes(4, byteorder='big'))
-
-                            # check wether data is a single datapoint, or an array of data. convert to bytearray accordingly and add timespan in seconds if array of data             
-                            #if type(data) == int:
-                                #bytearray_to_data = data.to_bytes(4, byteorder='big')
-                            if type(data) == list: 
-                                time_sec = db_manager.get_seconds_in_range(start_dtl_datetime, datetime_end)
-                                bytearray_to_data = bytearray()
-                                for num in data:
-                                    bytearray_to_data += num.to_bytes(4, byteorder='big')
-                                bytearray_to_time_sec = time_sec.to_bytes(4, byteorder='big')
-                            else:
-                                print('write_data_dbresult: unsupported datatype')
-                                return     
-
-                            print(f'Seconds for range: {time_sec}')
-                            client.db_write(statistics_request_db_number, plc.get('timespan_result index'), bytearray_to_time_sec) # write timespan to plc 
-                            if bytearray_to_data != bytearray(b''): # check if bytearray is empty
-                                client.db_write(statistics_request_db_number, plc.get('statistics_request_db data index'), bytearray_to_data) # write data to plc if bytearray not empty
-                            client.db_write(statistics_request_db_number, trigger_read_index, bytearray_to_trigger) # update logging triger to signal python script done writing             
+                trigger_value = get_data_from_plc_db(statistics_request_db_number, client, trigger_read_index) 
+                if trigger_value == 1: # check for plc requesting data
                     
-                    except Exception as e:
-                        print(e)
-                        logging.error(f"Write data dbresult error: {e}", exc_info=True)
-                        time.sleep(5)  # Wait before attempting to reconnect
-                        client = connect_snap7_client(db_manager.setup_file) #Re-establish connection           
-                time.sleep(0.5)    
+                    # check if time_start is 0 - proper error handling pls
+                    if get_and_format_dtl_bytearray(statistics_request_db_number, time_start_index) == 0:
+                        print('time_start = zero, where do i even begin?...')
+                        client.db_write(statistics_request_db_number, trigger_read_index, bytearray_to_trigger)
+                        continue
+
+                    # get dtl range of logs 
+                    start_dtl_datetime = get_and_format_dtl_bytearray(statistics_request_db_number, time_start_index)
+                    print(f'start: {start_dtl_datetime}')
+                    
+                    # check if time_end is 0 - proper error handling pls
+                    if get_and_format_dtl_bytearray(statistics_request_db_number, time_end_index) == 0:
+                        print('time_end = zero, no end in sight...')
+                        client.db_write(statistics_request_db_number, trigger_read_index, bytearray_to_trigger)
+                        continue
+
+                    end_dtl_datetime = get_and_format_dtl_bytearray(statistics_request_db_number, time_end_index)
+                    print(f'end: {end_dtl_datetime}')
+                    
+                    # check if end dtl is defined, and if it is, use it to get logs. Below 1971 means it has the default value, and therefore has not been defined
+                    if end_dtl_datetime.year > 1971:  
+                        datetime_end = end_dtl_datetime  
+
+                    data = db_manager.get_log_data_within_range(start_dtl_datetime, datetime_end) # get log data within start and end dtl
+                    print(f'Data: {data}')    
+
+                    # check if any data was found within range, and if not, reset loop
+                    if len(data) < 1:
+                        print('No data found in supplied timestamp range') # proper error handling pls
+                        client.db_write(statistics_request_db_number, trigger_read_index, bytearray_to_trigger)
+                        continue
+
+                    if type(data) == list: 
+                        time_sec = db_manager.get_seconds_in_range(start_dtl_datetime, datetime_end)
+                        bytearray_to_data = bytearray()
+                        for num in data:
+                            bytearray_to_data += num.to_bytes(4, byteorder='big')
+                        bytearray_to_time_sec = time_sec.to_bytes(4, byteorder='big')
+                    else:
+                        print('write_data_dbresult: unsupported datatype') # proper error handling pls
+                        client.db_write(statistics_request_db_number, trigger_read_index, bytearray_to_trigger)
+                        continue
+
+                    print(f'Seconds for range: {time_sec}')
+                    client.db_write(statistics_request_db_number, plc.get('timespan_result index'), bytearray_to_time_sec) # write timespan to plc 
+                    if bytearray_to_data != bytearray(b''): # check if bytearray is empty - proper error handling pls
+                        client.db_write(statistics_request_db_number, plc.get('statistics_db request data index'), bytearray_to_data) # write data to plc if bytearray not empty
+                    client.db_write(statistics_request_db_number, trigger_read_index, bytearray_to_trigger) # update logging triger to signal python script done writing             
+                       
+                time.sleep(0.1)    
             except Exception as e:
                     print(e)
                     logging.error(f"Write data dbresult error: {e}", exc_info=True)
@@ -230,7 +233,7 @@ def get_and_format_dtl_bytearray(db_number, index):
    
     year, month, day, hour, minute, second = dtl_array[:6] # map each element of the dtl array to a corresponding variable
     
-    if year == 0 : # fix
+    if year == 0 : # proper error handling pls
         return 0  
     
     dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables    

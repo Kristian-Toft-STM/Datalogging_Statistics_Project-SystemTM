@@ -42213,3 +42213,1820 @@ Traceback (most recent call last):
   File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
     raise RuntimeError(error)
 RuntimeError: b'CLI : Cannot change this param now'
+2024-07-24 08:27:36,432 - ERROR - Get log data within range error: 'int' object has no attribute 'astimezone'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 146, in get_log_data_within_range
+    min_range_utc = min_range.astimezone(pytz.utc)
+                    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'astimezone'
+2024-07-24 08:27:36,439 - ERROR - Write data dbresult error: object of type 'NoneType' has no len()
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 173, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+2024-07-24 08:27:41,441 - ERROR - b'CLI : Cannot change this param now'
+2024-07-24 08:27:41,441 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 173, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-07-25 10:26:00,127 - ERROR - b' TCP : Unreachable peer'
+2024-07-25 10:26:00,128 - ERROR - Connect snap7 client error: b' TCP : Unreachable peer'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' TCP : Unreachable peer'
+2024-07-25 17:14:51,845 - ERROR - b' TCP : Unreachable peer'
+2024-07-25 17:14:51,849 - ERROR - Connect snap7 client error: b' TCP : Unreachable peer'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' TCP : Unreachable peer'
+2024-07-25 17:14:52,845 - ERROR - b' TCP : Unreachable peer'
+2024-07-25 17:14:52,845 - ERROR - Connect snap7 client error: b' TCP : Unreachable peer'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' TCP : Unreachable peer'
+2024-07-26 09:44:05,985 - ERROR - b' TCP : Unreachable peer'
+2024-07-26 09:44:05,988 - ERROR - Connect snap7 client error: b' TCP : Unreachable peer'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' TCP : Unreachable peer'
+2024-07-26 09:44:06,988 - ERROR - b' TCP : Unreachable peer'
+2024-07-26 09:44:06,988 - ERROR - Connect snap7 client error: b' TCP : Unreachable peer'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b' TCP : Unreachable peer'
+2024-08-08 13:12:32,460 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:32,461 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:32,693 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:32,693 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:32,799 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:32,799 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:32,904 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:32,904 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:33,016 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:33,017 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:33,123 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:33,124 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:33,231 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:33,231 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:33,337 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:33,337 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:33,441 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:33,442 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:33,548 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:33,548 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:33,652 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:33,653 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:33,759 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:33,759 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:33,867 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:33,867 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:33,972 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:33,972 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:34,076 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:34,076 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:34,181 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:34,181 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:34,287 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:34,287 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:34,393 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:34,393 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:34,493 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:34,493 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:34,502 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:34,502 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:34,607 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:34,607 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:34,714 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:34,715 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:34,822 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:34,823 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:34,928 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:34,928 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:35,036 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:35,036 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:35,143 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:35,143 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:35,248 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:35,248 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:35,352 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:35,353 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:35,458 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:35,458 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:35,566 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:35,567 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:35,672 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:35,672 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:35,777 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:35,777 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:35,883 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:35,883 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:35,988 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:35,988 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:36,092 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:36,093 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:36,198 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:36,199 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:36,304 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:36,304 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:36,409 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:36,410 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:36,516 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:36,516 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:36,517 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:36,517 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:36,622 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:36,623 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:36,728 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:36,728 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:36,834 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:36,834 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:36,939 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:36,939 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:37,045 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:37,045 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:37,152 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:37,152 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:37,259 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:37,259 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:37,364 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:37,364 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:37,469 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:37,470 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:37,574 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:37,575 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:37,678 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:37,681 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:37,789 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:37,789 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:37,894 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:37,894 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:38,000 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:38,000 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:38,105 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:38,105 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:38,211 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:38,211 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:38,318 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:38,318 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:38,423 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:38,424 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:38,528 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:38,528 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:38,541 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:38,541 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:38,635 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:38,635 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:38,741 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:38,741 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:38,848 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:38,848 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:38,955 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:38,955 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:39,060 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:39,060 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:39,167 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:39,167 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:39,273 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:39,273 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:39,379 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:39,379 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:39,484 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:39,484 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:39,590 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:39,590 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:39,698 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:39,698 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:39,804 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:39,804 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:39,909 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:39,909 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:40,014 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:40,015 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:40,119 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:40,120 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:40,226 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:40,226 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:12:40,330 - ERROR - b'CPU : Address out of range'
+2024-08-08 13:12:40,330 - ERROR - Get data from plc db error: b'CPU : Address out of range'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 47, in get_data_from_plc_db
+    data = client.db_read(db_number, index, 4) # get data bytearray from plc
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 226, in db_read
+    check_error(result, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CPU : Address out of range'
+2024-08-08 13:14:19,434 - ERROR - Get log data within range error: 'int' object has no attribute 'astimezone'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 146, in get_log_data_within_range
+    min_range_utc = min_range.astimezone(pytz.utc)
+                    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'astimezone'
+2024-08-08 13:14:19,437 - ERROR - Write data dbresult error: object of type 'NoneType' has no len()
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 176, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+2024-08-08 13:14:24,439 - ERROR - b'CLI : Cannot change this param now'
+2024-08-08 13:14:24,439 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 176, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-08-08 13:15:11,243 - ERROR - Get log data within range error: 'int' object has no attribute 'astimezone'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 146, in get_log_data_within_range
+    min_range_utc = min_range.astimezone(pytz.utc)
+                    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'astimezone'
+2024-08-08 13:15:11,249 - ERROR - Write data dbresult error: object of type 'NoneType' has no len()
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 176, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+2024-08-08 13:15:16,251 - ERROR - b'CLI : Cannot change this param now'
+2024-08-08 13:15:16,252 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 176, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-08-08 13:15:25,220 - ERROR - Get log data within range error: 'int' object has no attribute 'astimezone'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 146, in get_log_data_within_range
+    min_range_utc = min_range.astimezone(pytz.utc)
+                    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'astimezone'
+2024-08-08 13:15:25,221 - ERROR - Write data dbresult error: object of type 'NoneType' has no len()
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 176, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+2024-08-08 13:15:30,223 - ERROR - b'CLI : Cannot change this param now'
+2024-08-08 13:15:30,223 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 176, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-08-08 13:15:34,658 - ERROR - Get log data within range error: 'int' object has no attribute 'astimezone'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 146, in get_log_data_within_range
+    min_range_utc = min_range.astimezone(pytz.utc)
+                    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'astimezone'
+2024-08-08 13:15:34,660 - ERROR - Write data dbresult error: object of type 'NoneType' has no len()
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 176, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+2024-08-08 13:15:39,661 - ERROR - b'CLI : Cannot change this param now'
+2024-08-08 13:15:39,661 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 176, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-08-08 13:15:46,286 - ERROR - Get log data within range error: 'int' object has no attribute 'astimezone'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 146, in get_log_data_within_range
+    min_range_utc = min_range.astimezone(pytz.utc)
+                    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'astimezone'
+2024-08-08 13:15:46,290 - ERROR - Write data dbresult error: object of type 'NoneType' has no len()
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 176, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+2024-08-08 13:15:51,291 - ERROR - b'CLI : Cannot change this param now'
+2024-08-08 13:15:51,291 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 176, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-08-08 13:17:00,351 - ERROR - Get log data within range error: 'int' object has no attribute 'astimezone'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 146, in get_log_data_within_range
+    min_range_utc = min_range.astimezone(pytz.utc)
+                    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'astimezone'
+2024-08-08 13:17:00,353 - ERROR - Write data dbresult error: object of type 'NoneType' has no len()
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 176, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+2024-08-08 13:17:05,355 - ERROR - b'CLI : Cannot change this param now'
+2024-08-08 13:17:05,356 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 176, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-08-08 13:18:42,094 - ERROR - Get log data within range error: 'int' object has no attribute 'astimezone'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 146, in get_log_data_within_range
+    min_range_utc = min_range.astimezone(pytz.utc)
+                    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'astimezone'
+2024-08-08 13:18:42,097 - ERROR - Write data dbresult error: object of type 'NoneType' has no len()
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 176, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+2024-08-08 13:18:47,100 - ERROR - b'CLI : Cannot change this param now'
+2024-08-08 13:18:47,100 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 176, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-08-08 13:21:50,804 - ERROR - Get log data within range error: 'int' object has no attribute 'astimezone'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 146, in get_log_data_within_range
+    min_range_utc = min_range.astimezone(pytz.utc)
+                    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'astimezone'
+2024-08-08 13:21:50,807 - ERROR - Write data dbresult error: object of type 'NoneType' has no len()
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 176, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+2024-08-08 13:21:55,808 - ERROR - b'CLI : Cannot change this param now'
+2024-08-08 13:21:55,809 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 176, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-08-08 13:22:14,556 - ERROR - Get log data within range error: 'int' object has no attribute 'astimezone'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 146, in get_log_data_within_range
+    min_range_utc = min_range.astimezone(pytz.utc)
+                    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'astimezone'
+2024-08-08 13:22:14,557 - ERROR - Write data dbresult error: object of type 'NoneType' has no len()
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 176, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+2024-08-08 13:22:19,560 - ERROR - b'CLI : Cannot change this param now'
+2024-08-08 13:22:19,561 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 176, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-08-08 13:23:35,615 - ERROR - Get log data within range error: 'int' object has no attribute 'astimezone'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 146, in get_log_data_within_range
+    min_range_utc = min_range.astimezone(pytz.utc)
+                    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'astimezone'
+2024-08-08 13:23:35,616 - ERROR - Write data dbresult error: object of type 'NoneType' has no len()
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 176, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+2024-08-08 13:23:40,618 - ERROR - b'CLI : Cannot change this param now'
+2024-08-08 13:23:40,618 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 176, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-08-08 13:25:16,208 - ERROR - Get log data within range error: 'int' object has no attribute 'astimezone'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 146, in get_log_data_within_range
+    min_range_utc = min_range.astimezone(pytz.utc)
+                    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'astimezone'
+2024-08-08 13:25:16,210 - ERROR - Write data dbresult error: object of type 'NoneType' has no len()
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 176, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+2024-08-08 13:25:59,181 - ERROR - Get log data within range error: 'int' object has no attribute 'astimezone'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 146, in get_log_data_within_range
+    min_range_utc = min_range.astimezone(pytz.utc)
+                    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'astimezone'
+2024-08-08 13:25:59,183 - ERROR - Write data dbresult error: object of type 'NoneType' has no len()
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 176, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+2024-08-08 13:26:04,185 - ERROR - b'CLI : Cannot change this param now'
+2024-08-08 13:26:04,185 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 176, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-08-08 13:28:10,954 - ERROR - Get log data within range error: 'int' object has no attribute 'astimezone'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 146, in get_log_data_within_range
+    min_range_utc = min_range.astimezone(pytz.utc)
+                    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'astimezone'
+2024-08-08 13:28:10,956 - ERROR - Write data dbresult error: object of type 'NoneType' has no len()
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 177, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+2024-08-08 13:28:15,958 - ERROR - b'CLI : Cannot change this param now'
+2024-08-08 13:28:15,958 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 177, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-08-08 13:29:29,982 - ERROR - Get log data within range error: 'int' object has no attribute 'astimezone'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 146, in get_log_data_within_range
+    min_range_utc = min_range.astimezone(pytz.utc)
+                    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'astimezone'
+2024-08-08 13:29:29,984 - ERROR - Write data dbresult error: object of type 'NoneType' has no len()
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 177, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+2024-08-08 13:40:00,125 - ERROR - Get log data within range error: 'int' object has no attribute 'astimezone'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 146, in get_log_data_within_range
+    min_range_utc = min_range.astimezone(pytz.utc)
+                    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'astimezone'
+2024-08-08 13:40:00,127 - ERROR - Write data dbresult error: object of type 'NoneType' has no len()
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 177, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+2024-08-08 13:40:05,132 - ERROR - b'CLI : Cannot change this param now'
+2024-08-08 13:40:05,132 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 177, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-08-08 13:40:45,842 - ERROR - Get log data within range error: 'int' object has no attribute 'astimezone'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 146, in get_log_data_within_range
+    min_range_utc = min_range.astimezone(pytz.utc)
+                    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'astimezone'
+2024-08-08 13:40:45,844 - ERROR - Write data dbresult error: object of type 'NoneType' has no len()
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 178, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+2024-08-08 13:42:00,438 - ERROR - Get log data within range error: 'int' object has no attribute 'astimezone'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 146, in get_log_data_within_range
+    min_range_utc = min_range.astimezone(pytz.utc)
+                    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'astimezone'
+2024-08-08 13:42:00,440 - ERROR - Write data dbresult error: object of type 'NoneType' has no len()
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 178, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+2024-08-08 13:42:05,443 - ERROR - b'CLI : Cannot change this param now'
+2024-08-08 13:42:05,443 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 178, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-08-08 13:43:50,472 - ERROR - Get log data within range error: 'int' object has no attribute 'astimezone'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 146, in get_log_data_within_range
+    min_range_utc = min_range.astimezone(pytz.utc)
+                    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'astimezone'
+2024-08-08 13:43:50,474 - ERROR - Write data dbresult error: object of type 'NoneType' has no len()
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 178, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+2024-08-08 13:43:55,476 - ERROR - b'CLI : Cannot change this param now'
+2024-08-08 13:43:55,476 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 178, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-08-08 14:20:50,529 - ERROR - Get log data within range error: 'int' object has no attribute 'astimezone'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 146, in get_log_data_within_range
+    min_range_utc = min_range.astimezone(pytz.utc)
+                    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'astimezone'
+2024-08-08 14:20:50,532 - ERROR - Write data dbresult error: object of type 'NoneType' has no len()
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 176, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+2024-08-08 14:20:55,538 - ERROR - b'CLI : Cannot change this param now'
+2024-08-08 14:20:55,538 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 176, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-08-08 14:50:19,410 - ERROR - Write data dbresult error: hour must be in 0..23
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 156, in write_data_dbresult
+    if get_and_format_dtl_bytearray(statistics_request_db_number, time_start_index) == 0:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 239, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: hour must be in 0..23
+2024-08-08 14:50:24,411 - ERROR - b'CLI : Cannot change this param now'
+2024-08-08 14:50:24,412 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 156, in write_data_dbresult
+    if get_and_format_dtl_bytearray(statistics_request_db_number, time_start_index) == 0:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 239, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: hour must be in 0..23
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-08-08 14:50:44,759 - ERROR - Write data dbresult error: hour must be in 0..23
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 156, in write_data_dbresult
+    if get_and_format_dtl_bytearray(statistics_request_db_number, time_start_index) == 0:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 239, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: hour must be in 0..23
+2024-08-08 14:50:49,762 - ERROR - b'CLI : Cannot change this param now'
+2024-08-08 14:50:49,762 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 156, in write_data_dbresult
+    if get_and_format_dtl_bytearray(statistics_request_db_number, time_start_index) == 0:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 239, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: hour must be in 0..23
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-08-08 14:50:55,696 - ERROR - Write data dbresult error: hour must be in 0..23
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 156, in write_data_dbresult
+    if get_and_format_dtl_bytearray(statistics_request_db_number, time_start_index) == 0:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 239, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: hour must be in 0..23
+2024-08-08 14:51:00,700 - ERROR - b'CLI : Cannot change this param now'
+2024-08-08 14:51:00,700 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 156, in write_data_dbresult
+    if get_and_format_dtl_bytearray(statistics_request_db_number, time_start_index) == 0:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 239, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: hour must be in 0..23
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-08-08 14:51:05,468 - ERROR - Write data dbresult error: hour must be in 0..23
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 156, in write_data_dbresult
+    if get_and_format_dtl_bytearray(statistics_request_db_number, time_start_index) == 0:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 239, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: hour must be in 0..23
+2024-08-08 14:51:10,470 - ERROR - b'CLI : Cannot change this param now'
+2024-08-08 14:51:10,470 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 156, in write_data_dbresult
+    if get_and_format_dtl_bytearray(statistics_request_db_number, time_start_index) == 0:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 239, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: hour must be in 0..23
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-08-08 14:51:35,642 - ERROR - Write data dbresult error: hour must be in 0..23
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 156, in write_data_dbresult
+    if get_and_format_dtl_bytearray(statistics_request_db_number, time_start_index) == 0:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 239, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: hour must be in 0..23
+2024-08-08 14:53:04,654 - ERROR - Get log data within range error: [Errno 22] Invalid argument
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 146, in get_log_data_within_range
+    min_range_utc = min_range.astimezone(pytz.utc)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 22] Invalid argument
+2024-08-08 14:53:04,656 - ERROR - Write data dbresult error: object of type 'NoneType' has no len()
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 182, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+2024-08-08 14:53:09,658 - ERROR - b'CLI : Cannot change this param now'
+2024-08-08 14:53:09,659 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 182, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-08-08 14:53:15,820 - ERROR - Get log data within range error: [Errno 22] Invalid argument
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 146, in get_log_data_within_range
+    min_range_utc = min_range.astimezone(pytz.utc)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 22] Invalid argument
+2024-08-08 14:53:15,821 - ERROR - Write data dbresult error: object of type 'NoneType' has no len()
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 182, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+2024-08-08 14:53:20,824 - ERROR - b'CLI : Cannot change this param now'
+2024-08-08 14:53:20,824 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 182, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-08-08 14:53:38,499 - ERROR - Get log data within range error: [Errno 22] Invalid argument
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\SQLiteRead.py", line 146, in get_log_data_within_range
+    min_range_utc = min_range.astimezone(pytz.utc)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 22] Invalid argument
+2024-08-08 14:53:38,500 - ERROR - Write data dbresult error: object of type 'NoneType' has no len()
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 182, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+2024-08-08 14:53:43,503 - ERROR - b'CLI : Cannot change this param now'
+2024-08-08 14:53:43,503 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 182, in write_data_dbresult
+    if len(data) < 1:
+       ^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'
+2024-08-08 14:56:00,402 - ERROR - Write data dbresult error: hour must be in 0..23
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 156, in write_data_dbresult
+    if get_and_format_dtl_bytearray(statistics_request_db_number, time_start_index) == 0:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 239, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: hour must be in 0..23
+2024-08-08 14:56:05,404 - ERROR - b'CLI : Cannot change this param now'
+2024-08-08 14:56:05,404 - ERROR - Connect snap7 client error: b'CLI : Cannot change this param now'
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 156, in write_data_dbresult
+    if get_and_format_dtl_bytearray(statistics_request_db_number, time_start_index) == 0:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 239, in get_and_format_dtl_bytearray
+    dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: hour must be in 0..23
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\STM\Desktop\Praktik_Eksamensprojekt\Datalogging_Statistics_Project-SystemTM\Snap7_Functions.py", line 21, in connect_snap7_client
+    client.connect(ip_address, rack, slot, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 23, in f
+    code = func(*args, **kw)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 192, in connect
+    self.set_param(RemotePort, tcpport)
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\client\__init__.py", line 24, in f
+    check_error(code, context="client")
+  File "C:\Users\STM\AppData\Local\Programs\Python\Python312\Lib\site-packages\snap7\common.py", line 89, in check_error
+    raise RuntimeError(error)
+RuntimeError: b'CLI : Cannot change this param now'

@@ -15,7 +15,7 @@ def insert_data_into_table(db_manager, data): # udvid til automatisk også at he
         column_array = column_array[1:] # remove the first column (timestamp) from the array
         plc = get_plc_from_file(db_manager.setup_file)  
 
-        statistics_insert_db_number = plc.get('statistics_insert_db number')
+        statistics_insert_db_number = plc.get('statistics_db number')
         time_current_index = plc.get('time_current index')
         current_dtl_datetime = get_and_format_dtl_bytearray(statistics_insert_db_number, time_current_index)
 

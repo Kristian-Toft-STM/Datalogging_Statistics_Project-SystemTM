@@ -228,6 +228,8 @@ class SQLDatabaseManager:
             if len(timestamp_array) > 0:
                 first_timestamp = datetime.strptime(timestamp_array[0]  , "%Y-%m-%d %H:%M:%S")
                 last_timestamp = datetime.strptime(timestamp_array[-1]  , "%Y-%m-%d %H:%M:%S")  
+                print(first_timestamp)
+                print(last_timestamp)
                 time_delta = last_timestamp - first_timestamp
                 time_delta_seconds = time_delta.total_seconds()
 

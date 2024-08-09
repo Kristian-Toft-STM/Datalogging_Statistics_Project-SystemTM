@@ -54,7 +54,7 @@ def start_init():
         return
     
     except Exception as e:
-        print(f"Initialization error: {e}")
+        print(e)
         logging.error(f"Initialization error: {e}", exc_info=True)
 
 # start main functionality procs, running asynchronously to eachother
