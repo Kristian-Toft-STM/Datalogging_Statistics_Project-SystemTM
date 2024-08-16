@@ -1,7 +1,7 @@
 import sqlite3
-import shutil
 from json_functions import *
 from Snap7_Functions import *
+from Misc import manage_db_size
 import logging
 
 # insert data into table
@@ -15,9 +15,9 @@ def insert_data_into_table(db_manager, data): # udvid til automatisk også at he
         column_array = column_array[1:] # remove the first column (timestamp) from the array
         plc = get_plc_from_file(db_manager.setup_file)  
 
-        statistics_insert_db_number = plc.get('statistics_db number')
+        hs_statistics_db_number = plc.get('hs_statistics_db number')
         time_current_index = plc.get('time_current index')
-        current_dtl_datetime = get_and_format_dtl_bytearray(statistics_insert_db_number, time_current_index)
+        current_dtl_datetime = get_and_format_dtl_bytearray(hs_statistics_db_number, time_current_index)
 
         manage_db_size(db_manager)
 
@@ -184,25 +184,3 @@ def sql_drop_column(db_manager, column):
     except Exception as e:
         print(e)
         logging.error(f"SQL drop column error: {e}", exc_info=True)    
-
-# delete earlier rown in sql database if database file size is above a certain threshold 
-def manage_db_size(db_manager):
-    try:       
-        total, used, free = shutil.disk_usage("/")
-        print("Total: %d GiB" % (total // (2**30)))
-        print("Used: %d GiB" % (used // (2**30)))
-        print("Free: %d GiB" % (free // (2**30)))
-        if db_manager.get_db_size() >= total-40000000000: # true if sql db file size is above total disk space -40gb
-            conn = sqlite3.connect(f'{db_manager.sql_db_path}')
-            cursor = conn.cursor()
-
-            cursor.execute(f"DELETE FROM {db_manager.table_name} WHERE TimeStamp IN (SELECT TimeStamp FROM {db_manager.table_name} ORDER BY TimeStamp ASC LIMIT 10)")
-
-            conn.commit()
-            cursor.close()
-            conn.close()    
-        return  
-
-    except Exception as e:
-        print(e)
-        logging.error(f"Manage database size error: {e}", exc_info=True)  

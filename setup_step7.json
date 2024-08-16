@@ -1,16 +1,16 @@
 {
     "PLC_1": [
         {
-            "ip address": "172.31.1.60",
+            "ip address": "172.31.1.45",
             "rack": 0,
             "slot": 1,
             "tcpport": 102,
-            "statistics_db number": 10000,
+            "hs_statistics_db number": 10000,
             "trigger_write index": 2000,
-            "statistics_db insert data index": 2016,
+            "insert_data_struct index": 2016,
             "trigger_read index": 3000,
             "timespan_result index": 3028,
-            "statistics_db request data index": 3032,
+            "request_data_struct index": 3032,
             "time_start index": 3004,
             "time_end index": 3016,
             "time_current index": 2004,
