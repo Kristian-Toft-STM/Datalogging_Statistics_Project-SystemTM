@@ -18,7 +18,45 @@ def export_sql_to_csv(db_manager):
 
         files = 0
         file_limit = 3
-        file_size_limit = 100000
+
+        directory_path = "C:\\Users\\Admin-STM\\logs\\csv"
+
+        # Ensure directory exists
+        os.makedirs(directory_path, exist_ok=True)
+
+        csv_files = glob.glob(os.path.join(directory_path, "*.csv"))
+        files = len(csv_files)
+
+        print(f"Number of CSV files in the folder: {files}")
+
+        if (files < file_limit):
+            table_data = db_manager.get_all_data_from_table()
+            temp_timestamp = datetime.now().strftime("%m%d%Y%H%M%S")
+
+            print(f'{str(temp_timestamp)}')
+
+            filename = f'raw_data{temp_timestamp.replace(" ", "")}.csv'
+            file_path = os.path.join(directory_path, filename)
+
+            # Writing to the CSV file
+            with open(file_path, 'w', newline='') as csvfile:
+                writer = csv.writer(csvfile)
+                for row in table_data:
+                    writer.writerow(row)
+
+        return
+
+    except Exception as e:
+        print(e)
+        logging.error(f"Export sql to csv error: {e}", exc_info=True)  
+
+
+# export table data from sql to csv file
+def export_sql_to_csv_development(db_manager):
+    try:    
+
+        files = 0
+        file_limit = 3
 
         directory_path = os.path.dirname(os.path.abspath(__file__))
         csv_files = glob.glob(os.path.join(directory_path, "*.csv"))
@@ -45,24 +83,6 @@ def export_sql_to_csv(db_manager):
     except Exception as e:
         print(e)
         logging.error(f"Export sql to csv error: {e}", exc_info=True)  
-
-
-# export table data from sql to csv file
-def export_sql_to_csv_development(db_manager):
-    try: 
-        table_data = db_manager.get_all_data_from_table()
-        filename = 'raw_data.csv'
-            
-        # Writing to the CSV file
-        with open(filename, 'w', newline='') as csvfile:
-                writer = csv.writer(csvfile)
-                for row in table_data:
-                    writer.writerow(row)
-        return
-    
-    except Exception as e:
-        print(e)
-        logging.error(f"Export sql to csv error: {e}", exc_info=True)    
 
 
 # timer for executing export_sql_to_csv()   
@@ -114,3 +134,33 @@ def manage_db_size(db_manager):
     except Exception as e:
         print(e)
         logging.error(f"Manage database size error: {e}", exc_info=True)          
+
+
+def get_folder_size(folder_path):
+    try: 
+        total_size = 0
+        file_size_limit = 100000
+        oldest_file = None
+        oldest_time = float('inf')
+        
+        # Walk through all the directories and files
+        for dirpath, dirnames, filenames in os.walk(folder_path):
+            for filename in filenames:
+
+                file_path = os.path.join(dirpath, filename)
+                total_size += os.path.getsize(file_path)
+
+                file_creation_time = os.path.getctime(file_path)
+
+                if file_creation_time < oldest_time:
+                    oldest_time = file_creation_time
+                    oldest_file = file_path
+
+        if total_size > file_size_limit and oldest_file:
+            os.remove(oldest_file)
+
+        return total_size
+    
+    except Exception as e:
+        print(e)
+        logging.error(f"Get folder size error: {e}", exc_info=True)        

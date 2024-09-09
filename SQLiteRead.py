@@ -164,9 +164,14 @@ class SQLDatabaseManager:
             if column is not None:
                 data_array = untuple_first_item(data_tuple) 
                 data_array_summed = add_together_single_array_data(data_array)  
+
             else:
                 data_array = untuple_all_excluding_first_item(data_tuple)
                 data_array_summed = add_together_array_data(data_array)
+                for i, data_point in enumerate(data_array_summed):
+                    if data_point > 2147483647:
+                        data_array_summed[i] = 2
+                        logging.error(f"Get log data within range error: summed data exceeded dint value limit. Data set to 2 \n {data_point}", exc_info=True)
 
             return data_array_summed
         
@@ -338,7 +343,13 @@ def add_together_array_data(array_of_arrays_of_data):
     try:
 
         # Use zip to group each ith element of the subarrays together and sum them
-        data_array_summed = [sum(group) for group in zip(*array_of_arrays_of_data)]    
+        data_array_summed = [sum(group) for group in zip(*array_of_arrays_of_data)] 
+
+        # Exclude the non-sum columns
+        print(F'{array_of_arrays_of_data[:1][0][:1]} \n {array_of_arrays_of_data[:1][0][:2]} \n {array_of_arrays_of_data[:1][0][:3]}')
+        data_array_summed[:1] = array_of_arrays_of_data[:1][0][:1] 
+        data_array_summed[:2] = array_of_arrays_of_data[:1][0][:2]     
+        data_array_summed[:3] = array_of_arrays_of_data[:1][0][:3]    
 
         return data_array_summed  
      

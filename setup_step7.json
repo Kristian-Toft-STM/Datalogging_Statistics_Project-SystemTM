@@ -14,7 +14,7 @@
             "time_start index": 3004,
             "time_end index": 3016,
             "time_current index": 2004,
-            "table name": "H200_and_press",
+            "table name": "V8_and_press",
             "column names": [
                 {
                     "column 1": "TimeStamp"
@@ -41,40 +41,28 @@
                     "column 8": "Press_Time_WaitDownstream"
                 },
                 {
-                    "column 9": "LugChain_Time_WaitDownstream"
+                    "column 9": "Transfer_Time_WaitDownstream"
                 },
                 {
-                    "column 10": "LugChain_LugsCnt_WithItem"
+                    "column 10": "Shaper2_BatchCnt_Total"
                 },
                 {
-                    "column 11": "LugChain_LugsCnt_WithoutItem"
+                    "column 11": "Shaper1_Time_Production"
                 },
                 {
-                    "column 12": "LugChain_OutsortCnt_Total"
+                    "column 12": "Shaper1_Time_WaitUpstream"
                 },
                 {
-                    "column 13": "LugChain_OutsortCnt_TwoBoardsInSlot"
+                    "column 13": "Shook_Count"
                 },
                 {
-                    "column 14": "LugChain_OutsortCnt_Shaper1"
+                    "column 14": "Grade"
                 },
                 {
-                    "column 15": "LugChain_OutsortCnt_Shaper2"
+                    "column 15": "Dimension_Width"
                 },
                 {
-                    "column 16": "LugChain_OutsortCnt_GlueMissing"
-                },
-                {
-                    "column 17": "LugChain_OutsortCnt_GlueChainStopped"
-                },
-                {
-                    "column 18": "LugChain_OutsortCnt_GlueError"
-                },
-                {
-                    "column 19": "LugChain_OutsortCnt_TrimSaver1"
-                },
-                {
-                    "column 20": "LugChain_OutsortCnt_TrimSaver2"
+                    "column 16": "Dimension_Thickness"
                 }
             ]
         }
