@@ -264,7 +264,30 @@ class SQLDatabaseManager:
         
         except Exception as e:
             print(e)
-            logging.error(f"Column exists in table error: {e}", exc_info=True)     
+            logging.error(f"Column exists in table error: {e}", exc_info=True)    
+
+    # check if column exists in table
+    def get_column_names(self):
+        try:
+
+            column_names_array = []
+
+            conn = sqlite3.connect(f'{self.sql_db_path}')
+            cursor = conn.cursor()
+
+            cursor.execute(f'SELECT * FROM {self.table_name} LIMIT 0')
+            columns = [description[0] for description in cursor.description]
+
+            for column in columns:
+                column_names_array.append(column)
+                
+            cursor.close()
+
+            return column_names_array
+        
+        except Exception as e:
+            print(e)
+            logging.error(f"Get column names error: {e}", exc_info=True)            
     
     # get the file size of the sql database 
     def get_db_size(self):
@@ -346,10 +369,10 @@ def add_together_array_data(array_of_arrays_of_data):
         data_array_summed = [sum(group) for group in zip(*array_of_arrays_of_data)] 
 
         # Exclude the non-sum columns
-        print(F'{array_of_arrays_of_data[:1][0][:1]} \n {array_of_arrays_of_data[:1][0][:2]} \n {array_of_arrays_of_data[:1][0][:3]}')
-        data_array_summed[:1] = array_of_arrays_of_data[:1][0][:1] 
-        data_array_summed[:2] = array_of_arrays_of_data[:1][0][:2]     
-        data_array_summed[:3] = array_of_arrays_of_data[:1][0][:3]    
+        # print(F'{array_of_arrays_of_data[:1][0][:1]} \n {array_of_arrays_of_data[:1][0][:2]} \n {array_of_arrays_of_data[:1][0][:3]}')
+        # data_array_summed[:1] = array_of_arrays_of_data[:1][0][:1] 
+        # data_array_summed[:2] = array_of_arrays_of_data[:1][0][:2]     
+        # data_array_summed[:3] = array_of_arrays_of_data[:1][0][:3]    
 
         return data_array_summed  
      

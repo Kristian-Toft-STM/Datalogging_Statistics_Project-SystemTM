@@ -10,16 +10,20 @@ import shutil
 import os
 import glob
 
-from datetime import datetime
+from datetime import datetime, timedelta
 
 # export table data from sql to csv file
 def export_sql_to_csv(db_manager):
     try:    
 
         files = 0
-        file_limit = 3
-
+        file_limit = 100
+        header = db_manager.get_column_names()
         directory_path = "C:\\Users\\Admin-STM\\logs\\csv"
+
+        script_directory = os.path.dirname(os.path.abspath(__file__))
+        error_log_path = os.path.join(script_directory, 'error.log')
+        manage_file_size(error_log_path)
 
         # Ensure directory exists
         os.makedirs(directory_path, exist_ok=True)
@@ -41,8 +45,12 @@ def export_sql_to_csv(db_manager):
             # Writing to the CSV file
             with open(file_path, 'w', newline='') as csvfile:
                 writer = csv.writer(csvfile)
+                writer.writerow(header)
                 for row in table_data:
                     writer.writerow(row)
+
+        manage_folder_size(directory_path)
+        manage_file_size()
 
         return
 
@@ -89,7 +97,34 @@ def export_sql_to_csv_development(db_manager):
 def csv_export_timer(db_manager):
     try: 
 
-        export_interval = 30 # seconds
+        while True: # loop for continous counting
+            now = datetime.now()
+            next_midnight = (now + timedelta(days=1)).replace(hour=0, minute=0, second=0, microsecond=0)
+
+            # Check if we missed midnight (i.e., it's after midnight and the task hasn't run)
+            if now.hour >= 0 and now.minute >= 0 and now.second >= 0:
+                print(f"It's after midnight ({now}). Executing task now.")
+                export_sql_to_csv(db_manager)
+
+            # Calculate how much time is left until the next midnight
+            time_until_next_midnight = (next_midnight - now).total_seconds()
+
+            print(f"Next execution at midnight: {next_midnight} (in {time_until_next_midnight} seconds)")    
+
+            # Sleep until midnight
+            time.sleep(time_until_next_midnight)
+
+            export_sql_to_csv(db_manager)
+
+    except Exception as e:
+        print(e)
+        logging.error(f"CSV export timer error: {e}", exc_info=True)   
+
+# timer for executing export_sql_to_csv()   
+def csv_export_timer_old(db_manager):
+    try: 
+
+        export_interval = 5 # seconds
 
         while True: # loop for continous counting
 
@@ -136,7 +171,7 @@ def manage_db_size(db_manager):
         logging.error(f"Manage database size error: {e}", exc_info=True)          
 
 
-def get_folder_size(folder_path):
+def manage_folder_size(folder_path):
     try: 
         total_size = 0
         file_size_limit = 100000
@@ -144,7 +179,7 @@ def get_folder_size(folder_path):
         oldest_time = float('inf')
         
         # Walk through all the directories and files
-        for dirpath, dirnames, filenames in os.walk(folder_path):
+        for dirpath, dirname, filenames in os.walk(folder_path):
             for filename in filenames:
 
                 file_path = os.path.join(dirpath, filename)
@@ -164,3 +199,23 @@ def get_folder_size(folder_path):
     except Exception as e:
         print(e)
         logging.error(f"Get folder size error: {e}", exc_info=True)        
+
+
+def manage_file_size(file_path):
+    try: 
+
+        file_size_limit = 1000000
+        
+        file_size = os.path.getsize(file_path)  # Get size in bytes
+        
+        if(file_size > file_size_limit):
+            with open(file_path, 'w'):
+                pass
+
+        return file_size
+    
+    except Exception as e:
+        print(e)
+        logging.error(f"Get folder size error: {e}", exc_info=True)          
+
+

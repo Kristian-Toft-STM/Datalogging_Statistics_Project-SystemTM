@@ -26,12 +26,11 @@ class TableNotFoundError(Exception):
   
 # ------------------------------------------------------ ERROR LOG ------------------------------------------------------
 # setup logging
-logging.basicConfig(level=logging.ERROR, filename='error.log', format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.ERROR, filename='C:\\Users\\Admin-STM\\logs\\error\\error.log', format='%(asctime)s - %(levelname)s - %(message)s')
 
 # ------------------------------------------------------ TEST VARIABLES ------------------------------------------------------
 plc_trigger_id = "ns=4;i=3"
 data_node_id = "ns=4;i=4" 
-#sql_db_path = "projekttestDB.db" lav i json.setup fil?
 setup_file_opcua = "setup_opcua.json"
 setup_file_step7 = "setup_step7.json"
 
@@ -203,8 +202,8 @@ def initialization_opcua():
 def reinitialize_setup():
     try: 
         # delete table data, then delete the table
-        db_manager.delete_table_data() 
-        db_manager.drop_table()
+        # db_manager.delete_table_data() 
+        # db_manager.drop_table()
 
         init() # start initialization again
         return  

@@ -56,13 +56,13 @@
                     "column 13": "Shook_Count"
                 },
                 {
-                    "column 14": "Grade"
+                    "column 14": "ItemGrade"
                 },
                 {
-                    "column 15": "Dimension_Width"
+                    "column 15": "ItemWidth"
                 },
                 {
-                    "column 16": "Dimension_Thickness"
+                    "column 16": "ItemThickness"
                 }
             ]
         }
