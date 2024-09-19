@@ -1,5 +1,6 @@
 import json
 import logging
+from logger import logger
 
 # read a given setup file
 def read_setup_file(setup_file_name):
@@ -12,7 +13,7 @@ def read_setup_file(setup_file_name):
 
     except Exception as e:
         print(e)
-        logging.error(f"Read setup file error: {e}", exc_info=True)   
+        logger.error(f"Read setup file error: {e}", exc_info=True)   
 
 # get plc1 from setup file
 def get_plc_from_file(setup_file_name):
@@ -24,7 +25,7 @@ def get_plc_from_file(setup_file_name):
 
     except Exception as e:
         print(e)
-        logging.error(f"Get plc from file error: {e}", exc_info=True)            
+        logger.error(f"Get plc from file error: {e}", exc_info=True)            
 
 # get list of column names from setup file, for naming columns in sql database 
 def setup_get_sql_column_names_from_file(setup_file_name):
@@ -37,7 +38,7 @@ def setup_get_sql_column_names_from_file(setup_file_name):
 
     except Exception as e:
         print(e)
-        logging.error(f"Setup get sql column names from file error: {e}", exc_info=True)  
+        logger.error(f"Setup get sql column names from file error: {e}", exc_info=True)  
 
 # convert a dict to array
 def setup_file_column_names_dict_to_array(dict_columns):        
@@ -51,7 +52,7 @@ def setup_file_column_names_dict_to_array(dict_columns):
     
     except Exception as e:
         print(e)
-        logging.error(f"Setup file column names dict to array error: {e}", exc_info=True)  
+        logger.error(f"Setup file column names dict to array error: {e}", exc_info=True)  
 
 # unused
 def map_node(key): #Start with mapping a single node, then expand to map all from file ""unfinished, continue later""
@@ -63,7 +64,7 @@ def map_node(key): #Start with mapping a single node, then expand to map all fro
 
     except Exception as e:
         print(e)
-        logging.error(f"Map node error: {e}", exc_info=True)    
+        logger.error(f"Map node error: {e}", exc_info=True)    
     
 # gets the number of data columns in the setup file
 def setup_file_get_number_of_data_columns(setup_file_name):
@@ -75,7 +76,7 @@ def setup_file_get_number_of_data_columns(setup_file_name):
         
     except Exception as e:
         print(e)
-        logging.error(f"Setup file get column names length error: {e}", exc_info=True)   
+        logger.error(f"Setup file get column names length error: {e}", exc_info=True)   
 
 # given a key from column names in the setup files, read wether to delete or rename it depending on an identifier '!'
 def setup_file_delete_or_rename(setup_file_name, key):
@@ -93,7 +94,7 @@ def setup_file_delete_or_rename(setup_file_name, key):
 
     except Exception as e:
             print(e)
-            logging.error(f"Setup file delete column error: {e}", exc_info=True)
+            logger.error(f"Setup file delete column error: {e}", exc_info=True)
 
 # save previous setup file step7
 def save_previous_setup_step7(previous_setup_step7, filename='previous_setup_step7.json'):
@@ -104,7 +105,7 @@ def save_previous_setup_step7(previous_setup_step7, filename='previous_setup_ste
 
     except Exception as e:
             print(e)
-            logging.error(f"Save previous setup step7 error: {e}", exc_info=True)   
+            logger.error(f"Save previous setup step7 error: {e}", exc_info=True)   
 
 # load previous setup file step7
 def load_previous_setup_step7(filename='previous_setup_step7.json'):
@@ -116,7 +117,7 @@ def load_previous_setup_step7(filename='previous_setup_step7.json'):
     
     except Exception as e:
             print(e)
-            logging.error(f"Load previous setup step7 error: {e}", exc_info=True)
+            logger.error(f"Load previous setup step7 error: {e}", exc_info=True)
             
 # using a txt file containing a list of names, insert these names into the column names in the setup file
 def insert_list_of_column_names_from_txt_into_json(text_file, setup_file_path):
@@ -144,4 +145,4 @@ def insert_list_of_column_names_from_txt_into_json(text_file, setup_file_path):
            
     except Exception as e:
             print(e)
-            logging.error(f"insert list of column names from txt into json error: {e}", exc_info=True)
+            logger.error(f"insert list of column names from txt into json error: {e}", exc_info=True)

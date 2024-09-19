@@ -5,6 +5,7 @@ from Snap7_Functions import *
 from json_functions import *
 from Misc import *
 from test import *
+from logger import logger
 from SQLiteRead import SQLDatabaseManager
 
 # library imports
@@ -24,9 +25,8 @@ class TableNotFoundError(Exception):
         full_message = f"{caller_func_name} at line {line_number}: {message}"
         super().__init__(full_message, *args)
   
-# ------------------------------------------------------ ERROR LOG ------------------------------------------------------
+# ------------------------------------------------------ LOGGING ------------------------------------------------------
 # setup logging
-logging.basicConfig(level=logging.ERROR, filename='C:\\Users\\Admin-STM\\logs\\error\\error.log', format='%(asctime)s - %(levelname)s - %(message)s')
 
 # ------------------------------------------------------ TEST VARIABLES ------------------------------------------------------
 plc_trigger_id = "ns=4;i=3"
@@ -49,12 +49,12 @@ def start_init():
         init() # run initialisation depending on type of setup file
         
         print("Initialization complete.")
-        logging.info("Initialization complete.")
+        logger.info("Initialization complete.")
         return
     
     except Exception as e:
         print(e)
-        logging.error(f"Initialization error: {e}", exc_info=True)
+        logger.error(f"Initialization error: {e}", exc_info=True)
 
 # start main functionality procs, running asynchronously to eachother
 def start_main():
@@ -72,7 +72,7 @@ def start_main():
         
     except Exception as e:
         print(e)
-        logging.error(f"start main error: {e}", exc_info=True)
+        logger.error(f"start main error: {e}", exc_info=True)
 
 # check setup file/s in projekt folder, and set setup file variable accordingly 
 def step7_or_opcua_switch(file_to_run):
@@ -97,7 +97,7 @@ def step7_or_opcua_switch(file_to_run):
         
     except Exception as e:
         print(e)
-        logging.error(f"Step7 or opcua switch error: {e}", exc_info=True)
+        logger.error(f"Step7 or opcua switch error: {e}", exc_info=True)
 
 # main script for opcua communication
 def main_loop_opcua_start(plc_trigger_id, data_node_id, sql_db_path, setup_file_opcua):
@@ -109,7 +109,7 @@ def main_loop_opcua_start(plc_trigger_id, data_node_id, sql_db_path, setup_file_
 
     except Exception as e:
         print(e)
-        logging.error(f"Main opcua script error: {e}", exc_info=True)
+        logger.error(f"Main opcua script error: {e}", exc_info=True)
 
 # main script for step7/snap7 communication
 def main_loop_snap7_start():
@@ -127,7 +127,7 @@ def main_loop_snap7_start():
 
     except Exception as e:
         print(e)
-        logging.error(f"Main snap7 script error: {e}", exc_info=True)
+        logger.error(f"Main snap7 script error: {e}", exc_info=True)
 
 # case for deciding which main script to run, depending on the setup file
 def main():
@@ -149,7 +149,7 @@ def main():
 
     except Exception as e:
         print(e)
-        logging.error(f"Main script error: {e}", exc_info=True)
+        logger.error(f"Main script error: {e}", exc_info=True)
 
 # case for deciding which initialization function to run, depending on the setup file
 def init():
@@ -168,7 +168,7 @@ def init():
 
     except Exception as e:
         print(e)
-        logging.error(f"Initialization error: {e}", exc_info=True)   
+        logger.error(f"Initialization error: {e}", exc_info=True)   
 
 # initialization for step7/snap7
 def initialization_step7():
@@ -192,7 +192,7 @@ def initialization_step7():
         return
 
     except TableNotFoundError as e:
-        logging.error(e)
+        logger.error(e)
 
 # initialization for opcua
 def initialization_opcua():
@@ -210,7 +210,7 @@ def reinitialize_setup():
 
     except Exception as e:
         print(e)
-        logging.error(f"Reinitialize setup error: {e}", exc_info=True)     
+        logger.error(f"Reinitialize setup error: {e}", exc_info=True)     
 
 # ------------------------------------------------------ INITIALIZATION AND MAIN FUNCTION CALLS ------------------------------------------------------
 start_init()

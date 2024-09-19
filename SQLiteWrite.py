@@ -3,6 +3,7 @@ from json_functions import *
 from Snap7_Functions import *
 from Misc import manage_db_size
 import logging
+from logger import logger
 
 # insert data into table
 def insert_data_into_table(db_manager, data): # udvid til automatisk også at hente table name?
@@ -48,7 +49,7 @@ def insert_data_into_table(db_manager, data): # udvid til automatisk også at he
         return data
     except Exception as e:
         print(e)
-        logging.error(f"Insert data into table error: {e}", exc_info=True)           
+        logger.error(f"Insert data into table error: {e}", exc_info=True)           
 
 # setup the sql database table according to the json setup file
 def setup_sql_table_from_json(db_manager):
@@ -88,7 +89,7 @@ def setup_sql_table_from_json(db_manager):
 
     except Exception as e:
         print(e)
-        logging.error(f"Setup sql table from json error: {e}", exc_info=True)               
+        logger.error(f"Setup sql table from json error: {e}", exc_info=True)               
 
 # delete all data in table
 def delete_table_data(db_manager):
@@ -107,7 +108,7 @@ def delete_table_data(db_manager):
     
     except Exception as e:
         print(e)
-        logging.error(f"Delete table data error: {e}", exc_info=True)      
+        logger.error(f"Delete table data error: {e}", exc_info=True)      
 
 # delete table
 def drop_table(db_manager):
@@ -126,7 +127,7 @@ def drop_table(db_manager):
     
     except Exception as e:
         print(e)
-        logging.error(f"Drop table error: {e}", exc_info=True)    
+        logger.error(f"Drop table error: {e}", exc_info=True)    
 
 # add column to sql database table
 def sql_add_column(db_manager, column_name):
@@ -145,7 +146,7 @@ def sql_add_column(db_manager, column_name):
 
     except Exception as e:
         print(e)
-        logging.error(f"SQL add column error: {e}", exc_info=True)  
+        logger.error(f"SQL add column error: {e}", exc_info=True)  
 
 # rename column in sql database table
 def sql_rename_column(db_manager, column, column_name):
@@ -164,7 +165,7 @@ def sql_rename_column(db_manager, column, column_name):
 
     except Exception as e:
         print(e)
-        logging.error(f"SQL rename column error: {e}", exc_info=True)    
+        logger.error(f"SQL rename column error: {e}", exc_info=True)    
 
 # delete column in sql database table
 def sql_drop_column(db_manager, column):
@@ -183,4 +184,4 @@ def sql_drop_column(db_manager, column):
 
     except Exception as e:
         print(e)
-        logging.error(f"SQL drop column error: {e}", exc_info=True)    
+        logger.error(f"SQL drop column error: {e}", exc_info=True)    

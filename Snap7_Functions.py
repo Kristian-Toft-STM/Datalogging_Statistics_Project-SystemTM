@@ -2,6 +2,8 @@ import snap7
 import time
 from snap7 import util
 from json_functions import *
+from logger import logger
+
 import logging
 import datetime
 
@@ -31,7 +33,7 @@ def connect_snap7_client(setup_file_step7):
 
     except Exception as e:
         print(e)
-        logging.error(f"Connect snap7 client error: {e}", exc_info=True)
+        logger.error(f"Connect snap7 client error: {e}", exc_info=True)
 
 # disconnect snap7 client
 def disconnect_snap7_client():
@@ -43,7 +45,7 @@ def disconnect_snap7_client():
     
     except Exception as e:
         print(e)
-        logging.error(f"Disconnect snap7 client error: {e}", exc_info=True)
+        logger.error(f"Disconnect snap7 client error: {e}", exc_info=True)
 
 # get single dint data from a given plc db and offset
 def get_data_from_plc_db(db_number, client, index):
@@ -62,7 +64,7 @@ def get_data_from_plc_db(db_number, client, index):
 
     except Exception as e: 
         print(e)
-        logging.error(f"Get data from plc db error: {e}", exc_info=True)
+        logger.error(f"Get data from plc db error: {e}", exc_info=True)
 
 # get array of dint data from a given plc db and offset
 def get_data_array_from_plc_db(db_number, client, setup_file_step7): 
@@ -84,7 +86,7 @@ def get_data_array_from_plc_db(db_number, client, setup_file_step7):
 
     except Exception as e:
         print(e)
-        logging.error(f"Get data array from db error: {e}", exc_info=True)                
+        logger.error(f"Get data array from db error: {e}", exc_info=True)                
 
 # monitor insert trigger and log data from plc on request
 def monitor_and_insert_data_snap7(db_manager):               
@@ -125,7 +127,7 @@ def monitor_and_insert_data_snap7(db_manager):
                     time.sleep(0.5)                
                 except Exception as e:
                     print(e)
-                    logging.error(f"Monitor and insert data snap7 error: {e}", exc_info=True) 
+                    logger.error(f"Monitor and insert data snap7 error: {e}", exc_info=True) 
                     time.sleep(2)  # Wait before attempting to reconnect
                     client = connect_snap7_client(setup_file_step7) #Re-establish connection  
             
@@ -139,7 +141,7 @@ def monitor_and_insert_data_snap7(db_manager):
             
     except Exception as e:
         print(e)
-        logging.error(f"Monitor and insert data snap7 error: {e}", exc_info=True)    
+        logger.error(f"Monitor and insert data snap7 error: {e}", exc_info=True)    
     finally:
         disconnect_snap7_client()
 
@@ -177,6 +179,7 @@ def write_data_dbresult(db_manager, datetime_end=datetime.datetime.now()):
                         # get dtl range of logs 
                         start_dtl_datetime = get_and_format_dtl_bytearray(statistics_request_db_number, time_start_index)
                         print(f'start: {start_dtl_datetime}')
+                        logger.info(f'start: {start_dtl_datetime}')
                         
                         # check if time_end is 0 - proper error handling pls
                         if get_and_format_dtl_bytearray(statistics_request_db_number, time_end_index) == 0:
@@ -186,17 +189,20 @@ def write_data_dbresult(db_manager, datetime_end=datetime.datetime.now()):
 
                         end_dtl_datetime = get_and_format_dtl_bytearray(statistics_request_db_number, time_end_index)
                         print(f'end: {end_dtl_datetime}')
+                        logger.info(f'end: {end_dtl_datetime}')
                         
                         # check if end dtl is defined, and if it is, use it to get logs. Below 1971 means it has the default value, and therefore has not been defined
                         if end_dtl_datetime.year > 1971:  
                             datetime_end = end_dtl_datetime  
 
                         data = db_manager.get_log_data_within_range(start_dtl_datetime, datetime_end) # get log data within start and end dtl
-                        print(f'Data: {data}')    
+                        print(f'Data: {data}')
+                        logger.info(f'Data: {data}')    
 
                         # check if any data was found within range, and if not, reset loop
                         if len(data) < 1:
                             print('No data found in supplied timestamp range') # proper error handling pls
+                            logger.info('No data found in supplied timestamp range')
                             client.db_write(statistics_request_db_number, trigger_read_index, bytearray_to_trigger)
                             continue
 
@@ -208,10 +214,12 @@ def write_data_dbresult(db_manager, datetime_end=datetime.datetime.now()):
                             bytearray_to_time_sec = time_sec.to_bytes(4, byteorder='big')
                         else:
                             print('write_data_dbresult: unsupported datatype') # proper error handling pls
+                            logger.info('write_data_dbresult: unsupported datatype')
                             client.db_write(statistics_request_db_number, trigger_read_index, bytearray_to_trigger)
                             continue
 
                         print(f'Seconds for range: {time_sec}')
+                        logger.info(f'Seconds for range: {time_sec}')
                         client.db_write(statistics_request_db_number, plc.get('timespan_result index'), bytearray_to_time_sec) # write timespan to plc 
                         if bytearray_to_data != bytearray(b''): # check if bytearray is empty - proper error handling pls
                             client.db_write(statistics_request_db_number, plc.get('request_data_struct index'), bytearray_to_data) # write data to plc if bytearray not empty
@@ -226,7 +234,7 @@ def write_data_dbresult(db_manager, datetime_end=datetime.datetime.now()):
 
             except Exception as e:
                     print(e)
-                    logging.error(f"Write data dbresult error: {e}", exc_info=True)
+                    logger.error(f'Write data dbresult error: {e}', exc_info=True)
                     time.sleep(2)  # Wait before attempting to reconnect
                     client = connect_snap7_client(db_manager.setup_file) #Re-establish connection        
                 

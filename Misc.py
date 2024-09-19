@@ -1,6 +1,7 @@
 from json_functions import *
 #from SQLiteWrite import *
 from Snap7_Functions import *
+from logger import logger
 
 import logging
 import csv
@@ -20,10 +21,11 @@ def export_sql_to_csv(db_manager):
         file_limit = 100
         header = db_manager.get_column_names()
         directory_path = "C:\\Users\\Admin-STM\\logs\\csv"
+        error_log_path = "C:\\Users\\Admin-STM\\logs\\error\\error.log"
+        data_log_path = "C:\\Users\\Admin-STM\\logs\\data-logs\\data-log.log"
 
-        script_directory = os.path.dirname(os.path.abspath(__file__))
-        error_log_path = os.path.join(script_directory, 'error.log')
         manage_file_size(error_log_path)
+        manage_file_size(data_log_path)
 
         # Ensure directory exists
         os.makedirs(directory_path, exist_ok=True)
@@ -50,13 +52,13 @@ def export_sql_to_csv(db_manager):
                     writer.writerow(row)
 
         manage_folder_size(directory_path)
-        manage_file_size()
+        #manage_file_size()
 
         return
 
     except Exception as e:
         print(e)
-        logging.error(f"Export sql to csv error: {e}", exc_info=True)  
+        logger.error(f"Export sql to csv error: {e}", exc_info=True)  
 
 
 # export table data from sql to csv file
@@ -90,7 +92,7 @@ def export_sql_to_csv_development(db_manager):
 
     except Exception as e:
         print(e)
-        logging.error(f"Export sql to csv error: {e}", exc_info=True)  
+        logger.error(f"Export sql to csv error: {e}", exc_info=True)  
 
 
 # timer for executing export_sql_to_csv()   
@@ -118,7 +120,7 @@ def csv_export_timer(db_manager):
 
     except Exception as e:
         print(e)
-        logging.error(f"CSV export timer error: {e}", exc_info=True)   
+        logger.error(f"CSV export timer error: {e}", exc_info=True)   
 
 # timer for executing export_sql_to_csv()   
 def csv_export_timer_old(db_manager):
@@ -142,7 +144,7 @@ def csv_export_timer_old(db_manager):
 
     except Exception as e:
         print(e)
-        logging.error(f"CSV export timer error: {e}", exc_info=True)    
+        logger.error(f"CSV export timer error: {e}", exc_info=True)    
 
 
 # delete earlier rown in sql database if database file size is above a certain threshold 
@@ -168,7 +170,7 @@ def manage_db_size(db_manager):
 
     except Exception as e:
         print(e)
-        logging.error(f"Manage database size error: {e}", exc_info=True)          
+        logger.error(f"Manage database size error: {e}", exc_info=True)          
 
 
 def manage_folder_size(folder_path):
@@ -198,7 +200,7 @@ def manage_folder_size(folder_path):
     
     except Exception as e:
         print(e)
-        logging.error(f"Get folder size error: {e}", exc_info=True)        
+        logger.error(f"Get folder size error: {e}", exc_info=True)        
 
 
 def manage_file_size(file_path):
@@ -216,6 +218,6 @@ def manage_file_size(file_path):
     
     except Exception as e:
         print(e)
-        logging.error(f"Get folder size error: {e}", exc_info=True)          
+        logger.error(f"Get folder size error: {e}", exc_info=True)          
 
 

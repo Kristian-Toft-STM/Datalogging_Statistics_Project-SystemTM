@@ -5,6 +5,7 @@ from tzlocal import get_localzone
 from json_functions import *
 import SQLiteWrite
 import logging
+from logger import logger
 import os
 
 class SQLDatabaseManager:
@@ -31,7 +32,7 @@ class SQLDatabaseManager:
 
         except Exception as e:
             print(e)
-            logging.error(f"Table exists error: {e}", exc_info=True)
+            logger.error(f"Table exists error: {e}", exc_info=True)
 
     # check wether any table exists in the sql database
     def any_table_exists(self):
@@ -50,7 +51,7 @@ class SQLDatabaseManager:
         
         except Exception as e:
             print(e)
-            logging.error(f"Any table exists error: {e}", exc_info=True)
+            logger.error(f"Any table exists error: {e}", exc_info=True)
 
     # check if a table is not empty / contains a row
     def table_not_empty(self):
@@ -65,7 +66,7 @@ class SQLDatabaseManager:
         
         except Exception as e:
             print(e)
-            logging.error(f"Table not empty error: {e}", exc_info=True)
+            logger.error(f"Table not empty error: {e}", exc_info=True)
 
     # get all rows from a specific table
     def get_all_data_from_table(self):
@@ -86,7 +87,7 @@ class SQLDatabaseManager:
 
         except Exception as e:
             print(e)
-            logging.error(f"Get data from table error: {e}", exc_info=True)
+            logger.error(f"Get data from table error: {e}", exc_info=True)
 
     # get the earliest timestamp from the sql database table
     def get_last_timestamp_from_table(self):
@@ -106,7 +107,7 @@ class SQLDatabaseManager:
 
         except Exception as e:
             print(e)
-            logging.error(f"Get last timestamp from table error: {e}", exc_info=True)
+            logger.error(f"Get last timestamp from table error: {e}", exc_info=True)
 
     # get all timestamp within a range of timestamp
     def get_log_timestamps_within_range(self, min_range, max_range):
@@ -137,7 +138,7 @@ class SQLDatabaseManager:
         
         except Exception as e:
             print(e)
-            logging.error(f"Get logs within range error: {e}", exc_info=True)     
+            logger.error(f"Get logs within range error: {e}", exc_info=True)     
 
     # get all data within a range of timestamps
     def get_log_data_within_range(self, min_range, max_range=datetime.now(), column=None):
@@ -171,13 +172,13 @@ class SQLDatabaseManager:
                 for i, data_point in enumerate(data_array_summed):
                     if data_point > 2147483647:
                         data_array_summed[i] = 2
-                        logging.error(f"Get log data within range error: summed data exceeded dint value limit. Data set to 2 \n {data_point}", exc_info=True)
+                        logger.error(f"Get log data within range error: summed data exceeded dint value limit. Data set to 2 \n {data_point}", exc_info=True)
 
             return data_array_summed
         
         except Exception as e:
             print(e)
-            logging.error(f"Get log data within range error: {e}", exc_info=True)     
+            logger.error(f"Get log data within range error: {e}", exc_info=True)     
 
     # get all data within a range of timestamps, and sum the data in the sql
     def get_log_data_within_range_sql_sum(self, min_range, max_range, column=None):
@@ -211,7 +212,7 @@ class SQLDatabaseManager:
         
         except Exception as e:
             print(e)
-            logging.error(f"Get logs within range sql sum error: {e}", exc_info=True)      
+            logger.error(f"Get logs within range sql sum error: {e}", exc_info=True)      
 
     # get number if rown within a range of timestamps
     def get_number_of_rows_in_range(self, min_range, max_range):
@@ -223,7 +224,7 @@ class SQLDatabaseManager:
 
         except Exception as e:
             print(e)
-            logging.error(f"Get number of rows in range error: {e}", exc_info=True) 
+            logger.error(f"Get number of rows in range error: {e}", exc_info=True) 
 
     # get number of seconds within range of timestamps
     def get_seconds_in_range(self, min_range, max_range):
@@ -242,7 +243,7 @@ class SQLDatabaseManager:
             return 0
         except Exception as e:
             print(e)
-            logging.error(f"Get seconds in range error: {e}", exc_info=True) 
+            logger.error(f"Get seconds in range error: {e}", exc_info=True) 
 
     # check if column exists in table
     def column_exists_in_table(self, target_column):
@@ -264,7 +265,7 @@ class SQLDatabaseManager:
         
         except Exception as e:
             print(e)
-            logging.error(f"Column exists in table error: {e}", exc_info=True)    
+            logger.error(f"Column exists in table error: {e}", exc_info=True)    
 
     # check if column exists in table
     def get_column_names(self):
@@ -287,7 +288,7 @@ class SQLDatabaseManager:
         
         except Exception as e:
             print(e)
-            logging.error(f"Get column names error: {e}", exc_info=True)            
+            logger.error(f"Get column names error: {e}", exc_info=True)            
     
     # get the file size of the sql database 
     def get_db_size(self):
@@ -327,7 +328,7 @@ def untuple_first_item(tuples):
     
     except Exception as e:
         print(e)
-        logging.error(f"Untuple first item error: {e}", exc_info=True)
+        logger.error(f"Untuple first item error: {e}", exc_info=True)
 
 # get all items in tuple as an array
 def untuple_all_items(tuples):
@@ -337,7 +338,7 @@ def untuple_all_items(tuples):
     
     except Exception as e:
         print(e)
-        logging.error(f"Untuple all error: {e}", exc_info=True)
+        logger.error(f"Untuple all error: {e}", exc_info=True)
 
 # get all items in tuple as an array, except first item of tuple
 def untuple_all_excluding_first_item(tuples):
@@ -347,7 +348,7 @@ def untuple_all_excluding_first_item(tuples):
     
     except Exception as e:
         print(e)
-        logging.error(f"Untuple data error: {e}", exc_info=True)
+        logger.error(f"Untuple data error: {e}", exc_info=True)
 
 # sum an array into a single variable
 def add_together_single_array_data(array_of_data):
@@ -359,7 +360,7 @@ def add_together_single_array_data(array_of_data):
      
     except Exception as e:
         print(e)
-        logging.error(f"Add together single array data error: {e}", exc_info=True)    
+        logger.error(f"Add together single array data error: {e}", exc_info=True)    
 
 # sum each item of multiple rows into an array
 def add_together_array_data(array_of_arrays_of_data):
@@ -378,4 +379,4 @@ def add_together_array_data(array_of_arrays_of_data):
      
     except Exception as e:
         print(e)
-        logging.error(f"Add together array data error: {e}", exc_info=True)  
+        logger.error(f"Add together array data error: {e}", exc_info=True)  
