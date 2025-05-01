@@ -34,12 +34,14 @@ def export_sql_to_csv(db_manager):
         files = len(csv_files)
 
         print(f"Number of CSV files in the folder: {files}")
+        logger.info(f"Number of CSV files in the folder: {files}")
 
         if (files < file_limit):
-            table_data = db_manager.get_all_data_from_table()
+            table_data = db_manager.get_last_24_hours_data_from_table()
             temp_timestamp = datetime.now().strftime("%m%d%Y%H%M%S")
 
             print(f'{str(temp_timestamp)}')
+            logger.info(f'{str(temp_timestamp)}')
 
             filename = f'raw_data{temp_timestamp.replace(" ", "")}.csv'
             file_path = os.path.join(directory_path, filename)
@@ -66,28 +68,44 @@ def export_sql_to_csv_development(db_manager):
     try:    
 
         files = 0
-        file_limit = 3
+        file_limit = 100
+        header = db_manager.get_column_names()
+        directory_path = "C:\\Users\\Admin-STM\\logs\\csv"
+        error_log_path = "C:\\Users\\Admin-STM\\logs\\error\\error.log"
+        data_log_path = "C:\\Users\\Admin-STM\\logs\\data-logs\\data-log.log"
 
-        directory_path = os.path.dirname(os.path.abspath(__file__))
+        manage_file_size(error_log_path)
+        manage_file_size(data_log_path)
+
+        # Ensure directory exists
+        os.makedirs(directory_path, exist_ok=True)
+
         csv_files = glob.glob(os.path.join(directory_path, "*.csv"))
         files = len(csv_files)
 
         print(f"Number of CSV files in the folder: {files}")
+        logger.info(f"Number of CSV files in the folder: {files}")
 
         if (files < file_limit):
             table_data = db_manager.get_all_data_from_table()
             temp_timestamp = datetime.now().strftime("%m%d%Y%H%M%S")
 
             print(f'{str(temp_timestamp)}')
+            logger.info(f'{str(temp_timestamp)}')
 
             filename = f'raw_data{temp_timestamp.replace(" ", "")}.csv'
+            file_path = os.path.join(directory_path, filename)
 
             # Writing to the CSV file
-            with open(filename, 'w', newline='') as csvfile:
+            with open(file_path, 'w', newline='') as csvfile:
                 writer = csv.writer(csvfile)
+                writer.writerow(header)
                 for row in table_data:
                     writer.writerow(row)
-      
+
+        manage_folder_size(directory_path)
+        #manage_file_size()
+
         return
 
     except Exception as e:
@@ -106,12 +124,14 @@ def csv_export_timer(db_manager):
             # Check if we missed midnight (i.e., it's after midnight and the task hasn't run)
             if now.hour >= 0 and now.minute >= 0 and now.second >= 0:
                 print(f"It's after midnight ({now}). Executing task now.")
+                logger.info(f"It's after midnight ({now}). Executing task now.")
                 export_sql_to_csv(db_manager)
 
             # Calculate how much time is left until the next midnight
             time_until_next_midnight = (next_midnight - now).total_seconds()
 
-            print(f"Next execution at midnight: {next_midnight} (in {time_until_next_midnight} seconds)")    
+            print(f"Next execution at midnight: {next_midnight} (in {time_until_next_midnight} seconds)")
+            logger.info(f"Next execution at midnight: {next_midnight} (in {time_until_next_midnight} seconds)")     
 
             # Sleep until midnight
             time.sleep(time_until_next_midnight)
@@ -176,7 +196,7 @@ def manage_db_size(db_manager):
 def manage_folder_size(folder_path):
     try: 
         total_size = 0
-        file_size_limit = 100000
+        file_size_limit = 100000000
         oldest_file = None
         oldest_time = float('inf')
         
@@ -185,6 +205,7 @@ def manage_folder_size(folder_path):
             for filename in filenames:
 
                 file_path = os.path.join(dirpath, filename)
+                logger.info(f'File size: {os.path.getsize(file_path)}')
                 total_size += os.path.getsize(file_path)
 
                 file_creation_time = os.path.getctime(file_path)
@@ -195,6 +216,8 @@ def manage_folder_size(folder_path):
 
         if total_size > file_size_limit and oldest_file:
             os.remove(oldest_file)
+            logger.info(f'File {oldest_file} removed')
+            logger.info(f'Folder size: {total_size}')
 
         return total_size
     
@@ -206,7 +229,7 @@ def manage_folder_size(folder_path):
 def manage_file_size(file_path):
     try: 
 
-        file_size_limit = 1000000
+        file_size_limit = 10000000
         
         file_size = os.path.getsize(file_path)  # Get size in bytes
         

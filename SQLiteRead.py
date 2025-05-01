@@ -1,6 +1,6 @@
 import sqlite3
 import pytz
-from datetime import datetime
+from datetime import datetime, timedelta
 from tzlocal import get_localzone
 from json_functions import *
 import SQLiteWrite
@@ -85,6 +85,28 @@ class SQLDatabaseManager:
     
             return rowsUnTupled
 
+        except Exception as e:
+            print(e)
+            logger.error(f"Get data from table error: {e}", exc_info=True)
+
+    def get_last_24_hours_data_from_table(self):
+        try:
+            end_dt = datetime.now()
+            start_dt = (end_dt - timedelta(hours=24))
+
+            conn = sqlite3.connect(f'{self.sql_db_path}')
+            cursor = conn.cursor()
+
+            cursor.execute(f"SELECT * FROM {self.table_name} WHERE TimeStamp BETWEEN '{start_dt}' AND '{end_dt}';")
+
+            rows = cursor.fetchall()
+            rowsUnTupled = untuple_all_items(rows)
+
+            cursor.close()
+            conn.close()
+    
+            return rowsUnTupled
+        
         except Exception as e:
             print(e)
             logger.error(f"Get data from table error: {e}", exc_info=True)
