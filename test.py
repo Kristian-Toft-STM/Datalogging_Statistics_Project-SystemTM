@@ -121,8 +121,7 @@ def write_data_dbresult_old_new(db_manager, datetime_end=datetime.datetime.now()
 def setup_sql_table_from_json_old(db_manager):
     try:
 
-        conn = sqlite3.connect(db_manager.sql_db_path)
-        cursor = conn.cursor()
+        conn, cursor = db_manager.sqlite3_connection()
         
         if not db_manager.table_exists():
             if not db_manager.any_table_exists():

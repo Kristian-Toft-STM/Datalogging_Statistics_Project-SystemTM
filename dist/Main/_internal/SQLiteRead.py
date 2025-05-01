@@ -13,6 +13,20 @@ class SQLDatabaseManager:
         self.setup_file = setup_file
         self.sql_db_path = sql_db_path
     
+    def sqlite3_connection(self, isolation_level_none=False):
+        try:
+            conn = sqlite3.connect(self.sql_db_path)
+            if (isolation_level_none):
+                conn.isolation_level = None
+            conn.execute("PRAGMA busy_timeout = 5000")
+            conn.execute("PRAGMA read_uncommitted = true")
+            cursor = conn.cursor()
+
+            return conn, cursor
+
+        except Exception as e:
+            print(e)
+            logging.error(f"sqlite connection error: {e}", exc_info=True)
 
     # check wether a specific table exists in the sql database    
     def table_exists(self):

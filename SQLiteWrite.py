@@ -8,9 +8,7 @@ from logger import logger
 # insert data into table
 def insert_data_into_table(db_manager, data): # udvid til automatisk også at hente table name?
     try:
-        conn = sqlite3.connect(db_manager.sql_db_path)
-        conn.isolation_level = None # sets connection to auto-commit mode (changes to sqldb can be accessed instantly)
-        cursor = conn.cursor()
+        conn, cursor = db_manager.sqlite3_connection(True)
         
         column_array = setup_file_column_names_dict_to_array(setup_get_sql_column_names_from_file(db_manager.setup_file)) 
         column_array = column_array[1:] # remove the first column (timestamp) from the array
@@ -55,8 +53,7 @@ def insert_data_into_table(db_manager, data): # udvid til automatisk også at he
 def setup_sql_table_from_json(db_manager):
     try:
 
-        conn = sqlite3.connect(db_manager.sql_db_path)
-        cursor = conn.cursor()
+        conn, cursor = db_manager.sqlite3_connection()
         
         if not db_manager.table_exists():
             if not db_manager.any_table_exists():
@@ -95,8 +92,7 @@ def setup_sql_table_from_json(db_manager):
 def delete_table_data(db_manager):
     try:
         
-        conn = sqlite3.connect(f'{db_manager.sql_db_path}')
-        cursor = conn.cursor()
+        conn, cursor = db_manager.sqlite3_connection()
 
         cursor.execute(f"DELETE FROM {db_manager.table_name}")
 
@@ -114,8 +110,7 @@ def delete_table_data(db_manager):
 def drop_table(db_manager):
     try:
 
-        conn = sqlite3.connect(f'{db_manager.sql_db_path}')
-        cursor = conn.cursor()
+        conn, cursor = db_manager.sqlite3_connection()
 
         cursor.execute(f"DROP TABLE {db_manager.table_name}")
 
@@ -133,8 +128,7 @@ def drop_table(db_manager):
 def sql_add_column(db_manager, column_name):
     try:
 
-        conn = sqlite3.connect(f'{db_manager.sql_db_path}')
-        cursor = conn.cursor()
+        conn, cursor = db_manager.sqlite3_connection()
         
         cursor.execute(f"ALTER TABLE {db_manager.table_name} ADD [{column_name}] INTEGER;")
 
@@ -152,8 +146,7 @@ def sql_add_column(db_manager, column_name):
 def sql_rename_column(db_manager, column, column_name):
     try:
 
-        conn = sqlite3.connect(f'{db_manager.sql_db_path}')
-        cursor = conn.cursor()
+        conn, cursor = db_manager.sqlite3_connection()
         
         cursor.execute(f"ALTER TABLE {db_manager.table_name} RENAME COLUMN {column} TO {column_name} ;")
 
@@ -171,8 +164,7 @@ def sql_rename_column(db_manager, column, column_name):
 def sql_drop_column(db_manager, column):
     try:
 
-        conn = sqlite3.connect(f'{db_manager.sql_db_path}')
-        cursor = conn.cursor()
+        conn, cursor = db_manager.sqlite3_connection()
         
         cursor.execute(f"ALTER TABLE {db_manager.table_name} DROP COLUMN {column};")
 

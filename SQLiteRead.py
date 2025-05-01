@@ -15,12 +15,26 @@ class SQLDatabaseManager:
         self.sql_db_path = sql_db_path
     
 
+    def sqlite3_connection(self, isolation_level_none=False):
+        try:
+            conn = sqlite3.connect(self.sql_db_path)
+            if (isolation_level_none):
+                conn.isolation_level = None # sets connection to auto-commit mode (changes to sqldb can be accessed instantly)
+            conn.execute("PRAGMA busy_timeout = 5000")
+            conn.execute("PRAGMA read_uncommitted = true")
+            cursor = conn.cursor()
+
+            return conn, cursor
+
+        except Exception as e:
+            print(e)
+            logging.error(f"sqlite connection error: {e}", exc_info=True)
+
     # check wether a specific table exists in the sql database    
     def table_exists(self):
         try:
 
-            conn = sqlite3.connect(self.sql_db_path)
-            cursor = conn.cursor()
+            conn, cursor = self.sqlite3_connection()
 
             cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name=?",(self.table_name,))
             result = cursor.fetchone()
@@ -38,8 +52,7 @@ class SQLDatabaseManager:
     def any_table_exists(self):
         try:
 
-            conn = sqlite3.connect(self.sql_db_path)
-            cursor = conn.cursor()
+            conn, cursor = self.sqlite3_connection()
 
             cursor.execute("SELECT name FROM sqlite_master WHERE type='table'")
             result = cursor.fetchone()
@@ -57,8 +70,7 @@ class SQLDatabaseManager:
     def table_not_empty(self):
         try:
 
-            conn = sqlite3.connect(self.sql_db_path)
-            cursor = conn.cursor()
+            conn, cursor = self.sqlite3_connection()
             cursor.execute(f"SELECT EXISTS(SELECT 1 FROM {self.table_name});") 
             result, = cursor.fetchone()   
             
@@ -72,8 +84,7 @@ class SQLDatabaseManager:
     def get_all_data_from_table(self):
         try:
 
-            conn = sqlite3.connect(f'{self.sql_db_path}')
-            cursor = conn.cursor()
+            conn, cursor = self.sqlite3_connection()
 
             cursor.execute(f"SELECT * FROM {self.table_name}")
 
@@ -98,8 +109,7 @@ class SQLDatabaseManager:
             logger.info(f'CSV start dt: {start_dt}')
             logger.info(f'CSV end dt: {end_dt}')
 
-            conn = sqlite3.connect(f'{self.sql_db_path}')
-            cursor = conn.cursor()
+            conn, cursor = self.sqlite3_connection()
 
             cursor.execute(f"SELECT * FROM {self.table_name} WHERE TimeStamp BETWEEN '{start_dt}' AND '{end_dt}';")
 
@@ -125,8 +135,7 @@ class SQLDatabaseManager:
     def get_last_timestamp_from_table(self):
         try:
 
-            conn = sqlite3.connect(f'{self.sql_db_path}')
-            cursor = conn.cursor()
+            conn, cursor = self.sqlite3_connection()
 
             cursor.execute(f"SELECT * FROM {self.table_name} ORDER BY TimeStamp DESC LIMIT 1;")
             last_timestamp_row = cursor.fetchone()
@@ -145,8 +154,7 @@ class SQLDatabaseManager:
     def get_first_timestamp_from_table(self):
         try:
 
-            conn = sqlite3.connect(f'{self.sql_db_path}')
-            cursor = conn.cursor()
+            conn, cursor = self.sqlite3_connection()
 
             cursor.execute(f"SELECT * FROM {self.table_name} ORDER BY TimeStamp ASC LIMIT 1;")
             last_timestamp_row = cursor.fetchone()
@@ -170,8 +178,7 @@ class SQLDatabaseManager:
             min_range_utc = min_range.astimezone(pytz.utc)
             max_range_utc = max_range.astimezone(pytz.utc)
 
-            conn = sqlite3.connect(f'{self.sql_db_path}')
-            cursor = conn.cursor()
+            conn, cursor = self.sqlite3_connection()
 
             cursor.execute(f"SELECT * FROM {self.table_name} WHERE TimeStamp BETWEEN '{min_range_utc}' AND '{max_range_utc}';")
             data_tuple = cursor.fetchall()
@@ -202,8 +209,7 @@ class SQLDatabaseManager:
             print(f'From: {min_range_utc}')
             print(f'To: {max_range_utc}')
 
-            conn = sqlite3.connect(f'{self.sql_db_path}')
-            cursor = conn.cursor()
+            conn, cursor = self.sqlite3_connection()
 
             if column is not None:
                 cursor.execute(f"SELECT {column} FROM {self.table_name} WHERE TimeStamp BETWEEN '{min_range_utc}' AND '{max_range_utc}';")     
@@ -239,8 +245,7 @@ class SQLDatabaseManager:
             min_range_utc = min_range.astimezone(pytz.utc)
             max_range_utc = max_range.astimezone(pytz.utc)
 
-            conn = sqlite3.connect(f'{self.sql_db_path}')
-            cursor = conn.cursor()
+            conn, cursor = self.sqlite3_connection()
 
             if column is not None:
                 cursor.execute(f"SELECT SUM({column}) FROM {self.table_name} WHERE TimeStamp BETWEEN '{min_range_utc}' AND '{max_range_utc}';")    
@@ -301,8 +306,7 @@ class SQLDatabaseManager:
     def column_exists_in_table(self, target_column):
         try:
 
-            conn = sqlite3.connect(f'{self.sql_db_path}')
-            cursor = conn.cursor()
+            conn, cursor = self.sqlite3_connection()
 
             cursor.execute(f'SELECT * FROM {self.table_name} LIMIT 0')
             columns = [description[0] for description in cursor.description]
@@ -325,8 +329,7 @@ class SQLDatabaseManager:
 
             column_names_array = []
 
-            conn = sqlite3.connect(f'{self.sql_db_path}')
-            cursor = conn.cursor()
+            conn, cursor = self.sqlite3_connection()
 
             cursor.execute(f'SELECT * FROM {self.table_name} LIMIT 0')
             columns = [description[0] for description in cursor.description]

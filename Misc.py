@@ -218,8 +218,7 @@ def manage_db_size(db_manager):
         print("Used: %d GiB" % (used // (2**30)))
         print("Free: %d GiB" % (free // (2**30)))
         if db_manager.get_db_size() >= total-size_buffer: # delete data if sql db file size is above total disk space - size_buffer
-            conn = sqlite3.connect(f'{db_manager.sql_db_path}')
-            cursor = conn.cursor()
+            conn, cursor = db_manager.sqlite3_connection()
 
             cursor.execute(f"DELETE FROM {db_manager.table_name} WHERE TimeStamp IN (SELECT TimeStamp FROM {db_manager.table_name} ORDER BY TimeStamp ASC LIMIT 10)")
 
