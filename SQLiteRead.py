@@ -87,12 +87,16 @@ class SQLDatabaseManager:
 
         except Exception as e:
             print(e)
-            logger.error(f"Get data from table error: {e}", exc_info=True)
+            logger.error(f"Get all data from table error: {e}", exc_info=True)
 
-    def get_last_24_hours_data_from_table(self):
+    def get_last_24_hours_data_from_table(self, date):
         try:
-            end_dt = datetime.now()
-            start_dt = (end_dt - timedelta(hours=24))
+            end_dt = date.replace(hour=0, minute=0, second=0, microsecond=0) # set time data of datetime to 0 for accurate -24 hour log
+            start_dt = (end_dt - timedelta(hours=23, minutes=59, seconds=55)) # set start_dt to 24 hours before end_dt
+            start_dt = start_dt.replace(hour=0, minute=0, second=0, microsecond=0)
+
+            logger.info(f'CSV start dt: {start_dt}')
+            logger.info(f'CSV end dt: {end_dt}')
 
             conn = sqlite3.connect(f'{self.sql_db_path}')
             cursor = conn.cursor()
@@ -100,18 +104,24 @@ class SQLDatabaseManager:
             cursor.execute(f"SELECT * FROM {self.table_name} WHERE TimeStamp BETWEEN '{start_dt}' AND '{end_dt}';")
 
             rows = cursor.fetchall()
-            rowsUnTupled = untuple_all_items(rows)
+            logger.info(f"ROWS (RESULT OF cursor.fetchall()): {rows}")
+
+            if rows:
+                rows_untupled = untuple_all_items(rows)
+                logger.info(f"ROWSUNTUPLED (RESULT OF untuple_all_items(rows)): {rows_untupled}")
+            else:
+                return 0    
 
             cursor.close()
             conn.close()
-    
-            return rowsUnTupled
+
+            return rows_untupled
         
         except Exception as e:
             print(e)
-            logger.error(f"Get data from table error: {e}", exc_info=True)
+            logger.error(f"Get last 24 hours data from table error: {e}", exc_info=True)
 
-    # get the earliest timestamp from the sql database table
+    # get the newest timestamp from the sql database table
     def get_last_timestamp_from_table(self):
         try:
 
@@ -130,6 +140,26 @@ class SQLDatabaseManager:
         except Exception as e:
             print(e)
             logger.error(f"Get last timestamp from table error: {e}", exc_info=True)
+
+    # get the oldest timestamp from the sql database table
+    def get_first_timestamp_from_table(self):
+        try:
+
+            conn = sqlite3.connect(f'{self.sql_db_path}')
+            cursor = conn.cursor()
+
+            cursor.execute(f"SELECT * FROM {self.table_name} ORDER BY TimeStamp ASC LIMIT 1;")
+            last_timestamp_row = cursor.fetchone()
+            last_timestamp = last_timestamp_row[0]
+
+            cursor.close()
+            conn.close()
+
+            return last_timestamp
+
+        except Exception as e:
+            print(e)
+            logger.error(f"Get first timestamp from table error: {e}", exc_info=True)        
 
     # get all timestamp within a range of timestamp
     def get_log_timestamps_within_range(self, min_range, max_range):
