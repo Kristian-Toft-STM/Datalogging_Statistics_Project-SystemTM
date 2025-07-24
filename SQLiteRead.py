@@ -7,6 +7,7 @@ import SQLiteWrite
 import logging
 from logger import logger
 import os
+import time
 
 class SQLDatabaseManager:
     def __init__(self, table_name, setup_file, sql_db_path):
@@ -20,9 +21,9 @@ class SQLDatabaseManager:
             conn = sqlite3.connect(self.sql_db_path)
             if (isolation_level_none):
                 conn.isolation_level = None # sets connection to auto-commit mode (changes to sqldb can be accessed instantly)
+            cursor = conn.cursor()
             conn.execute("PRAGMA busy_timeout = 5000")
             conn.execute("PRAGMA read_uncommitted = true")
-            cursor = conn.cursor()
 
             return conn, cursor
 
@@ -102,7 +103,50 @@ class SQLDatabaseManager:
 
     def get_last_24_hours_data_from_table(self, date):
         try:
+            logger.info('Crash?')
+            end_dt_utc = date.astimezone(pytz.utc) # SQLite DB uses UTC, so we change timezone of datetime to match
+            end_dt_utc = end_dt_utc.replace(minute=0, second=0, microsecond=0) # set time data of datetime to 0 for accurate -24 hour log
+
+            start_dt_utc = (end_dt_utc - timedelta(hours=23, minutes=59, seconds=55)) # set start_dt to 24 hours before end_dt
+            start_dt_utc = start_dt_utc.replace(minute=0, second=0, microsecond=0)
+
+            logger.info(f'CSV start dt (UTC): {start_dt_utc}')
+            logger.info(f'CSV end dt (UTC): {end_dt_utc}')
+
+            conn, cursor = self.sqlite3_connection()
+
+            # logger.info(conn.execute("PRAGMA busy_timeout").fetchone()[0])
+            # logger.info(conn.execute("PRAGMA read_uncommitted").fetchone()[0])
+
+            cursor.execute(f"SELECT * FROM {self.table_name} WHERE TimeStamp BETWEEN '{start_dt_utc}' AND '{end_dt_utc}';")
+
+            # logger.info(conn.execute("PRAGMA busy_timeout").fetchone()[0])
+            # logger.info(conn.execute("PRAGMA read_uncommitted").fetchone()[0])
+
+            rows = cursor.fetchall()
+            # logger.info(f"ROWS (RESULT OF cursor.fetchall()): {rows}")
+
+            if rows:
+                rows_untupled = untuple_all_items(rows)
+                # logger.info(f"ROWSUNTUPLED (RESULT OF untuple_all_items(rows)): {rows_untupled}")
+            else:
+                return 0    
+            
+            time.sleep(0.5)
+            cursor.close()
+            conn.close()
+
+            return rows_untupled
+        
+        except Exception as e:
+            print(e)
+            logger.error(f"Get last 24 hours data from table error: {e}", exc_info=True)
+
+
+    def get_last_24_hours_data_from_table_old(self, date):
+        try:
             end_dt = date.replace(hour=0, minute=0, second=0, microsecond=0) # set time data of datetime to 0 for accurate -24 hour log
+            
             start_dt = (end_dt - timedelta(hours=23, minutes=59, seconds=55)) # set start_dt to 24 hours before end_dt
             start_dt = start_dt.replace(hour=0, minute=0, second=0, microsecond=0)
 
@@ -111,17 +155,24 @@ class SQLDatabaseManager:
 
             conn, cursor = self.sqlite3_connection()
 
+            # logger.info(conn.execute("PRAGMA busy_timeout").fetchone()[0])
+            # logger.info(conn.execute("PRAGMA read_uncommitted").fetchone()[0])
+
             cursor.execute(f"SELECT * FROM {self.table_name} WHERE TimeStamp BETWEEN '{start_dt}' AND '{end_dt}';")
 
+            # logger.info(conn.execute("PRAGMA busy_timeout").fetchone()[0])
+            # logger.info(conn.execute("PRAGMA read_uncommitted").fetchone()[0])
+
             rows = cursor.fetchall()
-            logger.info(f"ROWS (RESULT OF cursor.fetchall()): {rows}")
+            # logger.info(f"ROWS (RESULT OF cursor.fetchall()): {rows}")
 
             if rows:
                 rows_untupled = untuple_all_items(rows)
-                logger.info(f"ROWSUNTUPLED (RESULT OF untuple_all_items(rows)): {rows_untupled}")
+                # logger.info(f"ROWSUNTUPLED (RESULT OF untuple_all_items(rows)): {rows_untupled}")
             else:
                 return 0    
-
+            
+            time.sleep(0.5)
             cursor.close()
             conn.close()
 
@@ -393,7 +444,7 @@ def untuple_all_items(tuples):
     
     except Exception as e:
         print(e)
-        logger.error(f"Untuple all error: {e}", exc_info=True)
+        logger.error(f"Untuple all error: {e}", exc_info=True)    
 
 # get all items in tuple as an array, except first item of tuple
 def untuple_all_excluding_first_item(tuples):

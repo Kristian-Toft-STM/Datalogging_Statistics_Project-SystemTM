@@ -2,6 +2,7 @@ from json_functions import *
 #from SQLiteWrite import *
 from Snap7_Functions import *
 from logger import logger
+from tzlocal import get_localzone
 
 import logging
 import csv
@@ -10,6 +11,7 @@ import sqlite3
 import shutil
 import os
 import glob
+import pytz
 
 from datetime import datetime, timedelta
 
@@ -40,10 +42,14 @@ def export_sql_to_csv(db_manager, datetime_to_export):
         print(f"Number of CSV files in the folder: {files}")
         logger.info(f"Number of CSV files in the folder: {files}")
 
-        
-        table_data = db_manager.get_last_24_hours_data_from_table(datetime_to_export)
-        logger.info(f"TABLE DATA (RESULT OF GET LAST 24): {table_data}")
-        if table_data == 0:
+        table_data_utc = db_manager.get_last_24_hours_data_from_table(datetime_to_export)
+        logger.info(f'Rows before localize: {table_data_utc}')
+
+        localize_rows(table_data_utc)
+        logger.info(f'Rows after localize: {table_data_utc}')
+
+        # logger.info(f"TABLE DATA (RESULT OF GET LAST 24): {table_data_utc}")
+        if table_data_utc == 0:
             return
 
         temp_timestamp = datetime.now().strftime("%m%d%Y%H%M%S")
@@ -58,12 +64,13 @@ def export_sql_to_csv(db_manager, datetime_to_export):
         with open(file_path, 'w', newline='') as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow(header)
-            for row in table_data:
+            for row in table_data_utc:
+                row
                 writer.writerow(row)
 
         manage_folder_size(directory_path)
         #manage_file_size()
-
+        
         return
 
     except Exception as e:
@@ -82,21 +89,24 @@ def csv_export_timer(db_manager):
             latest_file = get_latest_file_from_folder(directory_path)
 
             if not latest_file:
+                print("No files in directory. Generating files from DB")
+                logger.info("No files in directory. Generating files from DB")
+
                 all_days = generate_date_range(db_manager.get_first_timestamp_from_table(), db_manager.get_last_timestamp_from_table())
                 for day in all_days:
                     export_sql_to_csv(db_manager, day)
 
             latest_file_formatted = format_csv_file_name_to_datetime(latest_file)
 
+            # Set next midnight, and add 5 minutes to make sure data has been comitted to DB
             next_midnight = (now + timedelta(days=1)).replace(hour=0, minute=0, second=0, microsecond=0)
             
             # Check if we missed midnight (i.e., it's after midnight and the task hasn't run)
-            if now.hour >= 0 and now.minute >= 0 and now.second >= 15:
+            if now.hour >= 1:
 
                 print(f"It's after midnight ({now}). Executing task now!")
                 logger.info(f"It's after midnight ({now}). Executing task now!")
-
-                
+            
                 missing_days_array = generate_date_range(latest_file_formatted, now_trimmed)
                 
                 logger.info(f"missing days: {missing_days_array}")
@@ -107,6 +117,9 @@ def csv_export_timer(db_manager):
 
             # Calculate how much time is left until the next midnight
             time_until_next_midnight = (next_midnight - now).total_seconds()
+
+            # FOR TEST ONLY, REMOVE AFTER  
+            # time_until_next_midnight = 10
 
             print(f"Next execution at midnight: {next_midnight} (in {time_until_next_midnight} seconds)")
             logger.info(f"Next execution at midnight: {next_midnight} (in {time_until_next_midnight} seconds)")     
@@ -120,6 +133,9 @@ def csv_export_timer(db_manager):
 
             if not (latest_file == now_trimmed):
                 export_sql_to_csv(db_manager, now_trimmed)
+
+            # FOR TEST ONLY, REMOVE AFTER     
+            # break  
 
     except Exception as e:
         print(e)
@@ -277,7 +293,7 @@ def manage_folder_size(folder_path):
             for dirpath, dirname, filenames in os.walk(folder_path):
                 for filename in filenames:
                     file_path = os.path.join(dirpath, filename)
-                    logger.info(f'File size: {os.path.getsize(file_path)}')
+                    # logger.info(f'File size: {os.path.getsize(file_path)}')
                     file_size = os.path.getsize(file_path)
                     file_creation_time = os.path.getctime(file_path)
 
@@ -323,4 +339,21 @@ def manage_file_size(file_path):
         print(e)
         logger.error(f"Get folder size error: {e}", exc_info=True)          
 
+# get all items in tuple as an array
+def localize_rows(rows):
+    try:
+        date_format = "%Y-%m-%d %H:%M:%S"
+        local_tz = get_localzone()
+
+        for row in rows:
+            timestamp = row[0]  # assuming timestamp is the third column (index 0)
+
+            # converts each timestamp from string to datetime, and localize
+            row[0] = pytz.utc.localize(datetime.strptime(timestamp, date_format)).astimezone(local_tz).strftime(date_format)
+
+        return rows    
+        
+    except Exception as e:
+        print(e)
+        logger.error(f"Localize rows error: {e}", exc_info=True)    
 

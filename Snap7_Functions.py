@@ -170,6 +170,10 @@ def write_data_dbresult(db_manager, datetime_end=datetime.datetime.now()):
                     trigger_value = get_data_from_plc_db(statistics_request_db_number, client, trigger_read_index) 
                     if trigger_value == 1: # check for plc requesting data
                         
+
+                        print(f'Data request from plc - fetching data:')
+                        logger.info(f'Data request from plc - fetching data:')
+
                         # check if time_start is 0 - proper error handling pls
                         if get_and_format_dtl_bytearray(statistics_request_db_number, time_start_index) == 0:
                             print('time_start = zero, where do i even begin?...')
@@ -178,8 +182,8 @@ def write_data_dbresult(db_manager, datetime_end=datetime.datetime.now()):
 
                         # get dtl range of logs 
                         start_dtl_datetime = get_and_format_dtl_bytearray(statistics_request_db_number, time_start_index)
-                        print(f'start: {start_dtl_datetime}')
-                        logger.info(f'start: {start_dtl_datetime}')
+                        print(f'From: {start_dtl_datetime}')
+                        logger.info(f'From: {start_dtl_datetime}')
                         
                         # check if time_end is 0 - proper error handling pls
                         if get_and_format_dtl_bytearray(statistics_request_db_number, time_end_index) == 0:
@@ -188,8 +192,8 @@ def write_data_dbresult(db_manager, datetime_end=datetime.datetime.now()):
                             continue
 
                         end_dtl_datetime = get_and_format_dtl_bytearray(statistics_request_db_number, time_end_index)
-                        print(f'end: {end_dtl_datetime}')
-                        logger.info(f'end: {end_dtl_datetime}')
+                        print(f'To: {end_dtl_datetime}')
+                        logger.info(f'To: {end_dtl_datetime}')
                         
                         # check if end dtl is defined, and if it is, use it to get logs. Below 1971 means it has the default value, and therefore has not been defined
                         if end_dtl_datetime.year > 1971:  

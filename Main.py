@@ -157,14 +157,17 @@ def init():
         match setup_file_to_run:
             case 0:
                 print('No setup file found')
+                logger.info('No setup file found')
             case 1:
                 initialization_step7()
             case 2:
                 initialization_opcua()
             case 3:
-                print('Multiple setup files found and no file specified.')    
+                print('Multiple setup files found and no file specified.')
+                logger.info('Multiple setup files found and no file specified.')    
             case _:
                 print('Case mismatch')
+                logger.info('Case mismatch')  
 
     except Exception as e:
         print(e)
@@ -174,6 +177,7 @@ def init():
 def initialization_step7():
     try:
         # read the current setup file, and update previous_setup_file
+        logger.info('Initializing step7')  
         global previous_setup_file
         setup = read_setup_file(setup_file_step7)
         previous_setup_file = setup
