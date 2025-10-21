@@ -232,7 +232,7 @@ def write_data_dbresult(db_manager, datetime_end=datetime.datetime.now()):
                     time.sleep(0.1)           
                        
                 else:
-                    time.sleep(2)
+                    time.sleep(2) # Try to increase?
                     client = connect_snap7_client(db_manager.setup_file) #Re-establish connection        
                     
 

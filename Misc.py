@@ -98,8 +98,8 @@ def csv_export_timer(db_manager):
 
             latest_file_formatted = format_csv_file_name_to_datetime(latest_file)
 
-            # Set next midnight, and add 5 minutes to make sure data has been comitted to DB
-            next_midnight = (now + timedelta(days=1)).replace(hour=0, minute=0, second=0, microsecond=0)
+            # Set next midnight, and add 10 minutes to make sure data has been comitted to DB
+            next_midnight = (now + timedelta(days=1)).replace(hour=0, minute=10, second=0, microsecond=0)
             
             # Check if we missed midnight (i.e., it's after midnight and the task hasn't run)
             if now.hour >= 1:
