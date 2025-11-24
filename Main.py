@@ -116,8 +116,9 @@ def main_loop_snap7_start():
     try:
         # loop for continously monitor for logging requests, cycles limited by monitor_counter
         monitor_count = 1
+        client = connect_snap7_client(db_manager.setup_file)
         while True:
-            monitor_and_insert_data_snap7(db_manager) # monitor for logging requests
+            monitor_and_insert_data_snap7(client, db_manager) # monitor for logging requests
 
             print(f"Monitor count: {monitor_count}")
             if monitor_count > 1000000:

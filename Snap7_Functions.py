@@ -8,7 +8,7 @@ import logging
 import datetime
 
 # initialize snap7 client 
-client = snap7.client.Client()
+# client = snap7.client.Client()
 
 # connect snap7 client to tcp server via step7
 def connect_snap7_client(setup_file_step7):
@@ -20,6 +20,8 @@ def connect_snap7_client(setup_file_step7):
         rack = plc.get('rack')
         slot = plc.get('slot')
         tcpport = plc.get('tcpport')
+
+        client = snap7.client.Client()
 
         client.set_param(snap7.types.RemotePort, tcpport)
         client.connect(ip_address, rack, slot)
@@ -34,9 +36,10 @@ def connect_snap7_client(setup_file_step7):
     except Exception as e:
         print(e)
         logger.error(f"Connect snap7 client error: {e}", exc_info=True)
+        return None
 
 # disconnect snap7 client
-def disconnect_snap7_client():
+"""def disconnect_snap7_client():
     try:     
         
         client.disconnect()
@@ -45,7 +48,7 @@ def disconnect_snap7_client():
     
     except Exception as e:
         print(e)
-        logger.error(f"Disconnect snap7 client error: {e}", exc_info=True)
+        logger.error(f"Disconnect snap7 client error: {e}", exc_info=True)"""
 
 # get single dint data from a given plc db and offset
 def get_data_from_plc_db(db_number, client, index):
@@ -89,13 +92,8 @@ def get_data_array_from_plc_db(db_number, client, setup_file_step7):
         logger.error(f"Get data array from db error: {e}", exc_info=True)                
 
 # monitor insert trigger and log data from plc on request
-def monitor_and_insert_data_snap7(db_manager):               
+def monitor_and_insert_data_snap7(client, db_manager):               
     try:  
-        oneshot = 0  
-        if(oneshot == 0):
-            client = connect_snap7_client(db_manager.setup_file)
-            oneshot = 1
-        
         if (client.get_connected() == False):  
             client = connect_snap7_client(db_manager.setup_file) # connect the snap 7 client
 
@@ -117,7 +115,7 @@ def monitor_and_insert_data_snap7(db_manager):
                     if trigger_value == 1: # check if trigger ready from plc   
                         data_array = get_data_array_from_plc_db(statistics_insert_db_number, client, setup_file_step7) # get dbinsert data 
                         if data_array is not None: # check if data_array has data  
-                            db_manager.insert_data_into_table(data_array) # insert data from dbinsert into the sql database table 
+                            db_manager.insert_data_into_table(client, data_array) # insert data from dbinsert into the sql database table 
                         else: # if no data: skip loop iteration
                             continue      
                         client.db_write(statistics_insert_db_number, trigger_write_index, bytearray_to_write) # update logging trigger to signal python script done writing 
@@ -142,8 +140,8 @@ def monitor_and_insert_data_snap7(db_manager):
     except Exception as e:
         print(e)
         logger.error(f"Monitor and insert data snap7 error: {e}", exc_info=True)    
-    finally:
-        disconnect_snap7_client()
+    #finally:
+        #disconnect_snap7_client()
 
 # monitor write trigger and get data from sql database on request 
 def write_data_dbresult(db_manager, datetime_end=datetime.datetime.now()): 
@@ -175,23 +173,23 @@ def write_data_dbresult(db_manager, datetime_end=datetime.datetime.now()):
                         logger.info(f'Data request from plc - fetching data:')
 
                         # check if time_start is 0 - proper error handling pls
-                        if get_and_format_dtl_bytearray(statistics_request_db_number, time_start_index) == 0:
+                        if get_and_format_dtl_bytearray(client, statistics_request_db_number, time_start_index) == 0:
                             print('time_start = zero, where do i even begin?...')
                             client.db_write(statistics_request_db_number, trigger_read_index, bytearray_to_trigger)
                             continue
 
                         # get dtl range of logs 
-                        start_dtl_datetime = get_and_format_dtl_bytearray(statistics_request_db_number, time_start_index)
+                        start_dtl_datetime = get_and_format_dtl_bytearray(client, statistics_request_db_number, time_start_index)
                         print(f'From: {start_dtl_datetime}')
                         logger.info(f'From: {start_dtl_datetime}')
                         
                         # check if time_end is 0 - proper error handling pls
-                        if get_and_format_dtl_bytearray(statistics_request_db_number, time_end_index) == 0:
+                        if get_and_format_dtl_bytearray(client, statistics_request_db_number, time_end_index) == 0:
                             print('time_end = zero, no end in sight...')
                             client.db_write(statistics_request_db_number, trigger_read_index, bytearray_to_trigger)
                             continue
 
-                        end_dtl_datetime = get_and_format_dtl_bytearray(statistics_request_db_number, time_end_index)
+                        end_dtl_datetime = get_and_format_dtl_bytearray(client, statistics_request_db_number, time_end_index)
                         print(f'To: {end_dtl_datetime}')
                         logger.info(f'To: {end_dtl_datetime}')
                         
@@ -241,12 +239,16 @@ def write_data_dbresult(db_manager, datetime_end=datetime.datetime.now()):
                     logger.error(f'Write data dbresult error: {e}', exc_info=True)
                     time.sleep(2)  # Wait before attempting to reconnect
                     client = connect_snap7_client(db_manager.setup_file) #Re-establish connection        
-                
-    finally:
-        disconnect_snap7_client()   
+
+    except Exception as e:
+                    print(e)
+                    logger.error(f'Write data dbresult error: {e}', exc_info=True)
+          
+    #finally:
+        #disconnect_snap7_client()   
 
 # format dtl from plc to : yyyy-MM-dd-hh-mm-ss
-def get_and_format_dtl_bytearray(db_number, index): 
+def get_and_format_dtl_bytearray(client, db_number, index): 
     dtl_bytearray = client.db_read(db_number, index, 12) # get target dtl as a bytearray
     dtl_array = [] # array for holding converted dtl
     
@@ -268,7 +270,7 @@ def get_and_format_dtl_bytearray(db_number, index):
     year, month, day, hour, minute, second = dtl_array[:6] # map each element of the dtl array to a corresponding variable
     
     if year == 0 : # proper error handling pls
-        return 0  
+        return 0
     
     dtl_datetime = datetime.datetime(year, month, day, hour, minute, second) # create a new datetime object with each of the date and time variables    
     return dtl_datetime

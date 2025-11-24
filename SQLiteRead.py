@@ -423,8 +423,8 @@ class SQLDatabaseManager:
     def setup_sql_table_from_json(self):
         SQLiteWrite.setup_sql_table_from_json(self)    
 
-    def insert_data_into_table(self, data):    
-        SQLiteWrite.insert_data_into_table(self, data)
+    def insert_data_into_table(self, client, data):    
+        SQLiteWrite.insert_data_into_table(self, client, data)
 
 # get first item of tuple 
 def untuple_first_item(tuples):

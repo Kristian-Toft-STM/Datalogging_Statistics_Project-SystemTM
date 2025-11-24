@@ -6,7 +6,7 @@ import logging
 from logger import logger
 
 # insert data into table
-def insert_data_into_table(db_manager, data): # udvid til automatisk også at hente table name?
+def insert_data_into_table(db_manager, client, data): # udvid til automatisk også at hente table name?
     try:
         conn, cursor = db_manager.sqlite3_connection(True)
         
@@ -16,7 +16,7 @@ def insert_data_into_table(db_manager, data): # udvid til automatisk også at he
 
         hs_statistics_db_number = plc.get('hs_statistics_db number')
         time_current_index = plc.get('time_current index')
-        current_dtl_datetime = get_and_format_dtl_bytearray(hs_statistics_db_number, time_current_index)
+        current_dtl_datetime = get_and_format_dtl_bytearray(client, hs_statistics_db_number, time_current_index)
 
         manage_db_size(db_manager)
 
