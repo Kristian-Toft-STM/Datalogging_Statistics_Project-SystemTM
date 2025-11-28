@@ -207,8 +207,8 @@ def initialization_opcua():
 def reinitialize_setup():
     try: 
         # delete table data, then delete the table
-        # db_manager.delete_table_data() 
-        # db_manager.drop_table()
+        #db_manager.delete_table_data() 
+        #db_manager.drop_table()
 
         init() # start initialization again
         return  
